@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans);
+}
+
+.bg-hero {
+  background:
+    radial-gradient(circle at 72% 20%, rgba(14, 165, 233, 0.24), transparent 28%),
+    linear-gradient(115deg, #020617 0%, #062443 52%, #030712 100%);
+}
+
+.bg-office-panel {
+  background:
+    linear-gradient(135deg, rgba(2, 6, 23, 0.15), rgba(14, 165, 233, 0.2)),
+    linear-gradient(120deg, #dbeafe, #f8fafc 48%, #bae6fd);
+}
+
+.bg-dashboard {
+  background:
+    radial-gradient(circle at 82% 40%, rgba(56, 189, 248, 0.18), transparent 24%),
+    linear-gradient(115deg, #020617 0%, #06213d 52%, #020617 100%);
+}
+
+.bg-case-card {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.26), transparent 28%),
+    linear-gradient(135deg, #07182f, #0b3a65);
+}
+
+a {
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+a:hover,
+button:hover {
+  transform: translateY(-1px);
+}
+
+.input-field {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(125, 211, 252, 0.16);
+  background: rgba(15, 23, 42, 0.72);
+  padding: 0.875rem 1rem;
+  color: #f8fafc;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.input-field::placeholder {
+  color: #94a3b8;
+}
+
+.input-field:focus {
+  border-color: rgba(56, 189, 248, 0.78);
+  background: rgba(15, 23, 42, 0.92);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+}
