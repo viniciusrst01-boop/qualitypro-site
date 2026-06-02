@@ -256,9 +256,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="min-w-0 max-w-[22rem] sm:max-w-none">
-            <DashboardMockup />
-          </div>
+
         </div>
 
         <div className="border-t border-white/10 bg-slate-950/60">
