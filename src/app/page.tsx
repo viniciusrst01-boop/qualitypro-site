@@ -73,17 +73,17 @@ const workSteps = [
 function Header() {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-cyan-400/10 bg-slate-950/80 backdrop-blur-xl shadow-lg shadow-cyan-950/20">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-5 sm:py-4">
         <a href="#inicio" className="block">
-  <img
-    src="/logo.png"
-    alt="QualityPro Solutions"
-    style={{
-      width: "170px",
-      height: "auto",
-    }}
-  />
-</a>
+          <Image
+            src="/logo.png"
+            alt="QualityPro Solutions"
+            width={1245}
+            height={451}
+            priority
+            className="h-auto w-36 sm:w-44"
+          />
+        </a>
         <nav className="hidden items-center gap-8 text-sm font-semibold text-slate-300 lg:flex">
           <a
              href="#inicio"
@@ -125,7 +125,7 @@ function Header() {
 
         <a
           href="#contato"
-          className="rounded-md bg-amber-400 px-5 py-3 text-sm font-bold text-slate-950"
+          className="hidden rounded-md bg-amber-400 px-5 py-3 text-sm font-bold text-slate-950 sm:inline-flex"
         >
           Solicitar Consultoria
         </a>
@@ -144,9 +144,11 @@ function Metric({
   detail: string;
 }) {
   return (
-    <div className="rounded-lg border border-sky-400/15 bg-slate-950/75 p-4">
+    <div className="rounded-lg border border-sky-400/15 bg-slate-950/75 p-3 sm:p-4">
       <p className="text-xs uppercase text-slate-400">{label}</p>
-      <strong className="mt-2 block text-3xl text-white">{value}</strong>
+      <strong className="mt-2 block text-2xl text-white sm:text-3xl">
+        {value}
+      </strong>
       <span className="text-xs text-cyan-300">{detail}</span>
     </div>
   );
@@ -154,13 +156,15 @@ function Metric({
 
 function DashboardMockup() {
   return (
-    <div className="rounded-lg border border-sky-300/20 bg-slate-950 p-4 shadow-2xl shadow-sky-950/50">
-      <div className="mb-4 flex items-center justify-between border-b border-slate-800 pb-4">
+    <div className="w-full max-w-[22rem] min-w-0 rounded-lg border border-sky-300/20 bg-slate-950 p-3 shadow-2xl shadow-sky-950/50 sm:max-w-none sm:p-4">
+      <div className="mb-4 flex items-start justify-between gap-4 border-b border-slate-800 pb-4">
         <div>
           <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
             Dashboard Executivo
           </p>
-          <h2 className="mt-1 text-xl font-bold">Qualidade em tempo real</h2>
+          <h2 className="mt-1 text-lg font-bold sm:text-xl">
+            Qualidade em tempo real
+          </h2>
         </div>
         <div className="flex gap-1">
           <span className="h-2 w-2 rounded-full bg-cyan-300" />
@@ -176,7 +180,7 @@ function DashboardMockup() {
       </div>
 
       <div className="mt-3 grid gap-3 lg:grid-cols-[1.4fr_0.8fr]">
-        <div className="rounded-lg border border-slate-800 bg-slate-900/80 p-4">
+        <div className="min-w-0 rounded-lg border border-slate-800 bg-slate-900/80 p-3 sm:p-4">
           <p className="mb-3 text-sm font-semibold text-slate-200">
             Evolução dos indicadores
           </p>
@@ -203,7 +207,7 @@ function SectionTitle({
       <p className="text-xs font-bold uppercase tracking-widest text-cyan-400">
         {eyebrow}
       </p>
-      <h2 className="mt-3 max-w-2xl text-3xl font-black leading-tight md:text-4xl">
+      <h2 className="mt-3 max-w-2xl text-2xl font-black leading-tight sm:text-3xl md:text-4xl">
         {title}
       </h2>
     </div>
@@ -212,49 +216,53 @@ function SectionTitle({
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="min-h-screen overflow-x-hidden bg-slate-950 text-white">
       <Header />
 
       <section
         id="inicio"
-        className="relative overflow-hidden border-b border-sky-400/10 bg-hero pt-28"
+        className="relative overflow-hidden border-b border-sky-400/10 bg-hero pt-24 sm:pt-28"
       >
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 lg:grid-cols-[0.85fr_1.15fr] lg:py-24">
-          <div>
+        <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 py-12 sm:px-5 sm:py-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:py-24">
+          <div className="min-w-0 max-w-[22rem] sm:max-w-xl lg:max-w-none">
             <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
               Gestão - Processos - Resultados
             </p>
-            <h1 className="mt-5 text-4xl font-black leading-tight md:text-6xl">
+            <h1 className="mt-5 max-w-full text-[1.95rem] font-black leading-[1.08] sm:text-5xl md:text-6xl">
               Excelência em{" "}
-              <span className="text-cyan-300">Sistemas de Gestão</span> da
-              Qualidade
+              <span className="block text-cyan-300 sm:inline">
+                Sistemas de Gestão
+              </span>{" "}
+              da Qualidade
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
+            <p className="mt-5 max-w-full text-base leading-7 text-slate-300 sm:mt-6 sm:max-w-xl sm:text-lg sm:leading-8">
               Estruturamos processos, indicadores e gestão para empresas que
               querem crescer com controle, clareza e confiança.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
               <a
                 href="#contato"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-sky-500 px-6 py-4 font-bold"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-sky-500 px-5 py-3.5 font-bold sm:px-6 sm:py-4"
               >
                 Fale conosco <ArrowRight size={18} />
               </a>
               <a
                 href="#servicos"
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 px-6 py-4 font-bold"
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 px-5 py-3.5 font-bold sm:px-6 sm:py-4"
               >
                 Conheça os serviços <ArrowRight size={18} />
               </a>
             </div>
           </div>
 
-          <DashboardMockup />
+          <div className="min-w-0 max-w-[22rem] sm:max-w-none">
+            <DashboardMockup />
+          </div>
         </div>
 
         <div className="border-t border-white/10 bg-slate-950/60">
-          <div className="mx-auto grid max-w-7xl gap-4 px-5 py-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mx-auto grid max-w-7xl gap-4 px-4 py-5 sm:grid-cols-2 sm:px-5 lg:grid-cols-4">
             {[
               ["Empresa nova", "com método claro"],
               ["Foco técnico", "ISO 9001"],
@@ -275,17 +283,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="sobre" className="bg-slate-50 py-20 text-slate-950">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-lg bg-white p-5 shadow-xl ring-1 ring-slate-200">
-            <div className="rounded-lg bg-office-panel p-5">
-              <div className="rounded-lg bg-slate-950 p-5 text-white shadow-lg">
-                <div className="flex items-center justify-between gap-4 border-b border-slate-800 pb-4">
+      <section id="sobre" className="bg-slate-50 py-14 text-slate-950 sm:py-20">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
+          <div className="rounded-lg bg-white p-3 shadow-xl ring-1 ring-slate-200 sm:p-5">
+            <div className="rounded-lg bg-office-panel p-3 sm:p-5">
+              <div className="rounded-lg bg-slate-950 p-4 text-white shadow-lg sm:p-5">
+                <div className="flex items-start justify-between gap-4 border-b border-slate-800 pb-4">
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
                       Roteiro ISO 9001
                     </p>
-                    <h3 className="mt-2 text-2xl font-black">
+                    <h3 className="mt-2 text-xl font-black sm:text-2xl">
                       SGQ estruturado por etapas
                     </h3>
                   </div>
@@ -303,9 +311,9 @@ export default function Home() {
                   ].map(([number, title, text]) => (
                     <div
                       key={number}
-                      className="grid grid-cols-[48px_1fr] gap-4 rounded-lg border border-sky-300/15 bg-slate-900/80 p-4"
+                      className="grid grid-cols-[40px_1fr] gap-3 rounded-lg border border-sky-300/15 bg-slate-900/80 p-3 sm:grid-cols-[48px_1fr] sm:gap-4 sm:p-4"
                     >
-                      <span className="grid h-10 w-10 place-items-center rounded-md bg-sky-500/15 text-sm font-black text-cyan-300">
+                      <span className="grid h-9 w-9 place-items-center rounded-md bg-sky-500/15 text-sm font-black text-cyan-300 sm:h-10 sm:w-10">
                         {number}
                       </span>
                       <div>
@@ -356,20 +364,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="servicos" className="bg-slate-950 py-20">
-        <div className="mx-auto max-w-7xl px-5">
+      <section id="servicos" className="bg-slate-950 py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
             eyebrow="Nossos serviços"
             title="Soluções completas para elevar a gestão da qualidade"
           />
 
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => {
               const Icon = service.icon;
               return (
                 <article
                   key={service.title}
-                  className="rounded-lg border border-sky-300/15 bg-slate-900/70 p-6"
+                  className="rounded-lg border border-sky-300/15 bg-slate-900/70 p-5 sm:p-6"
                 >
                   <Icon className="text-cyan-300" size={32} />
                   <h3 className="mt-5 text-xl font-bold">{service.title}</h3>
@@ -383,8 +391,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="dashboards" className="bg-dashboard py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 lg:grid-cols-[0.7fr_1.3fr]">
+      <section id="dashboards" className="bg-dashboard py-14 sm:py-20">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-5 lg:grid-cols-[0.7fr_1.3fr] lg:gap-10">
           <div>
             <SectionTitle
               eyebrow="Dashboards visuais"
@@ -410,24 +418,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="cases" className="bg-slate-50 py-20 text-slate-950">
-        <div className="mx-auto max-w-7xl px-5">
+      <section id="cases" className="bg-slate-50 py-14 text-slate-950 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
             eyebrow="Indicadores de gestão"
             title="O que ajudamos sua empresa a acompanhar"
           />
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 lg:grid-cols-4">
             {cases.map(([value, title]) => (
               <article
                 key={title}
-                className="rounded-lg bg-case-card p-6 text-white shadow-lg"
+                className="rounded-lg bg-case-card p-5 text-white shadow-lg sm:p-6"
               >
                 <p className="text-sm uppercase tracking-widest text-cyan-300">
                   Indicador
                 </p>
-                <h3 className="mt-4 min-h-20 text-lg font-bold">{title}</h3>
-                <strong className="mt-8 block text-5xl text-cyan-300">
+                <h3 className="mt-4 text-lg font-bold md:min-h-20">{title}</h3>
+                <strong className="mt-7 block text-4xl text-cyan-300 sm:mt-8 sm:text-5xl">
                   {value}
                 </strong>
               </article>
@@ -436,18 +444,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-slate-950 py-20">
-        <div className="mx-auto max-w-7xl px-5">
+      <section className="bg-slate-950 py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
             eyebrow="Método de trabalho"
             title="Como conduzimos cada projeto"
           />
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:mt-10 lg:grid-cols-3 lg:gap-6">
             {workSteps.map(([title, text], index) => (
               <article
                 key={title}
-                className="rounded-lg border border-sky-300/15 bg-slate-900/70 p-6"
+                className="rounded-lg border border-sky-300/15 bg-slate-900/70 p-5 sm:p-6"
               >
                 <span className="grid h-11 w-11 place-items-center rounded-lg bg-sky-500/15 text-sm font-black text-cyan-300">
                   0{index + 1}
@@ -460,8 +468,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-16 text-slate-950">
-        <div className="mx-auto max-w-7xl px-5">
+      <section className="bg-white py-14 text-slate-950 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
             eyebrow="Diferenciais"
             title="Por que escolher a QualityPro Solutions?"
@@ -479,8 +487,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contato" className="bg-slate-900 py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[0.85fr_1.15fr]">
+      <section id="contato" className="bg-slate-900 py-14 sm:py-20">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-5 lg:grid-cols-[0.85fr_1.15fr] lg:gap-10">
           <div>
             <SectionTitle
               eyebrow="Fale conosco"
@@ -504,7 +512,7 @@ export default function Home() {
             </div>
           </div>
 
-          <form className="grid gap-4 rounded-lg border border-sky-300/15 bg-slate-950/45 p-6">
+          <form className="grid gap-4 rounded-lg border border-sky-300/15 bg-slate-950/45 p-4 sm:p-6">
             <div className="grid gap-4 sm:grid-cols-2">
               <input placeholder="Nome" className="input-field" />
               <input placeholder="E-mail" className="input-field" />
@@ -518,7 +526,7 @@ export default function Home() {
             />
             <button
               type="button"
-              className="w-fit rounded-md bg-amber-400 px-6 py-3 font-bold text-slate-950"
+              className="w-full rounded-md bg-amber-400 px-6 py-3 font-bold text-slate-950 sm:w-fit"
             >
               Enviar mensagem
             </button>
