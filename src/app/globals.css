@@ -45,6 +45,30 @@ body {
   background-repeat: no-repeat;
 }
 
+@media (max-width: 640px) {
+  .bg-hero {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(2, 6, 23, 0.96) 0%,
+        rgba(3, 22, 47, 0.9) 34%,
+        rgba(3, 22, 47, 0.74) 64%,
+        rgba(2, 6, 23, 0.94) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(2, 6, 23, 0.92) 0%,
+        rgba(3, 22, 47, 0.68) 48%,
+        rgba(3, 22, 47, 0.32) 100%
+      ),
+      url("/hero-bg.jpg");
+
+    background-size: auto 78%;
+    background-position: 68% bottom;
+    background-repeat: no-repeat;
+  }
+}
+
 .bg-office-panel {
   background:
     linear-gradient(135deg, rgba(2, 6, 23, 0.15), rgba(14, 165, 233, 0.2)),

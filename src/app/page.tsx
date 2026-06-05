@@ -72,6 +72,7 @@ const workSteps = [
 
 function Header() {
   return (
+    <>
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-cyan-400/10 bg-slate-950/80 backdrop-blur-xl shadow-lg shadow-cyan-950/20">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-5 sm:py-4">
         <a href="#inicio" className="block">
@@ -81,7 +82,7 @@ function Header() {
             width={1245}
             height={451}
             priority
-            className="h-auto w-36 sm:w-44"
+            className="h-auto w-32 sm:w-44"
           />
         </a>
         <nav className="hidden items-center gap-8 text-sm font-semibold text-slate-300 lg:flex">
@@ -125,12 +126,14 @@ function Header() {
 
         <a
           href="#contato"
-          className="hidden rounded-md bg-amber-400 px-5 py-3 text-sm font-bold text-slate-950 sm:inline-flex"
+          className="rounded-md bg-amber-400 px-2 py-2 text-[9px] font-black uppercase leading-none text-slate-950 shadow-lg shadow-amber-500/15 sm:px-5 sm:py-3 sm:text-sm sm:normal-case sm:leading-normal"
         >
-          Solicitar Consultoria
+          <span className="sm:hidden">Solicitar Consultoria</span>
+          <span className="hidden sm:inline">Solicitar Consultoria</span>
         </a>
       </div>
     </header>
+    </>
   );
 }
 
@@ -221,7 +224,7 @@ export default function Home() {
 
       <section
         id="inicio"
-        className="relative overflow-hidden border-b border-sky-400/10 bg-hero pt-24 sm:pt-28 min-h-[100vh]"
+        className="relative min-h-[100svh] overflow-hidden border-b border-sky-400/10 bg-hero pt-24 sm:min-h-[100vh] sm:pt-28"
       >
         <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 py-12 sm:px-5 sm:py-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:pt-24 lg:pb-38">
           <div className="min-w-0 max-w-[22rem] sm:max-w-xl lg:max-w-none">
@@ -505,7 +508,7 @@ export default function Home() {
                 contato@qualitypro.com.br
               </p>
               <p className="flex items-center gap-3">
-                <MapPin className="text-cyan-300" size={20} /> São Paulo - SP
+                <MapPin className="text-cyan-300" size={20} /> Rio de Janeiro - RJ
               </p>
             </div>
           </div>
