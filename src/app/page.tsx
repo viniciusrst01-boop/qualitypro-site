@@ -263,7 +263,7 @@ export default function Home() {
 
         </div>
 
-        <div className="border-t border-white/10 bg-slate-950/60">
+        <div className="border-t border-cyan-400/10 bg-slate-950/55 shadow-lg shadow-cyan-950/20 backdrop-blur-md">
           <div className="mx-auto grid max-w-7xl gap-4 px-4 py-5 sm:grid-cols-2 sm:px-5 lg:grid-cols-4">
             {[
               ["Empresa nova", "com método claro"],
