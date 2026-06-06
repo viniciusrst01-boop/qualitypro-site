@@ -16,6 +16,28 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Formulario de contato
+
+O formulario usa uma rota do Next.js e a API do Resend para enviar os dados por
+e-mail.
+
+Crie um arquivo `.env.local` na raiz com:
+
+```env
+RESEND_API_KEY=re_xxxxxxxxx
+CONTACT_TO_EMAIL=seu-email@gmail.com
+CONTACT_FROM_EMAIL=QualityPro Site <onboarding@resend.dev>
+```
+
+Na Vercel, adicione as mesmas variaveis em:
+
+`Project Settings > Environment Variables`
+
+Depois, faca um novo deploy. Durante os testes com `onboarding@resend.dev`, o
+destinatario deve ser o e-mail associado a conta do Resend. Para usar um
+remetente como `site@qualitypro.com.br`, verifique o dominio no Resend e altere
+`CONTACT_FROM_EMAIL`.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

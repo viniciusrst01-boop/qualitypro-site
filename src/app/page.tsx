@@ -13,6 +13,7 @@ import {
   Workflow,
 } from "lucide-react";
 import DashboardChart from "@/components/DashboardChart";
+import ContactForm from "@/components/ContactForm";
 import Image from "next/image";
 
 const services = [
@@ -513,25 +514,7 @@ export default function Home() {
             </div>
           </div>
 
-          <form className="grid gap-4 rounded-lg border border-sky-300/15 bg-slate-950/45 p-4 sm:p-6">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <input placeholder="Nome" className="input-field" />
-              <input placeholder="E-mail" className="input-field" />
-              <input placeholder="Telefone" className="input-field" />
-              <input placeholder="Empresa" className="input-field" />
-            </div>
-            <textarea
-              placeholder="Como podemos ajudar sua empresa?"
-              rows={5}
-              className="input-field resize-none"
-            />
-            <button
-              type="button"
-              className="w-full rounded-md bg-amber-400 px-6 py-3 font-bold text-slate-950 sm:w-fit"
-            >
-              Enviar mensagem
-            </button>
-          </form>
+          <ContactForm />
         </div>
       </section>
 
