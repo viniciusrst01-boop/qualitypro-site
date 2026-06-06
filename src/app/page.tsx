@@ -230,7 +230,7 @@ export default function Home() {
         <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 py-12 sm:px-5 sm:py-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:pt-24 lg:pb-38">
           <div className="min-w-0 max-w-[22rem] sm:max-w-xl lg:max-w-none">
             <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
-              Gestão - Processos - Resultados
+              Qualidade • Gestão • Conformidade • Excelência
             </p>
             <h1 className="mt-5 max-w-full text-[1.95rem] font-black leading-[1.08] sm:text-5xl md:text-6xl">
               Excelência em{" "}
