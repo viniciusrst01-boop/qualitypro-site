@@ -83,14 +83,14 @@ const cases = [
 ];
 
 const differentials = [
-  "Atuação prática e orientada à realidade da empresa",
-  "Foco em soluções úteis e não apenas burocráticas",
-  "Visão da qualidade como ferramenta de gestão",
-  "Estratégia técnica com linguagem clara e objetiva",
-  "Integração entre conformidade, processos e resultados",
-  "Estímulo à digitalização da qualidade",
-  "Desenvolvimento de pessoas-chave para sustentação do sistema",
-  "Soluções personalizadas conforme a maturidade da organização",
+  "Atuação prática para a realidade da empresa",
+  "Soluções úteis, sem burocracia desnecessária",
+  "Qualidade como ferramenta de gestão",
+  "Estratégia técnica, clara e objetiva",
+  "Integração entre processos e resultados",
+  "Incentivo à digitalização da qualidade",
+  "Desenvolvimento de pessoas-chave",
+  "Soluções conforme a maturidade da empresa",
 ];
 
 const clientBenefits = [
@@ -101,9 +101,9 @@ const clientBenefits = [
   "Melhor preparação para auditorias",
   "Desenvolvimento de equipes",
   "Processos mais padronizados",
-  "Indicadores para tomada de decisão",
+  "Indicadores para decisões",
   "Redução de desperdícios",
-  "Sistema de gestão mais funcional e sustentável",
+  "Gestão mais funcional e sustentável",
 ];
 
 const serviceModes = [
@@ -563,7 +563,7 @@ export default function Home() {
             title="Por que escolher a QualityPro Solutions?"
           />
 
-          <div className="mt-8 grid items-stretch gap-4 lg:grid-cols-3">
+          <div className="mt-8 grid items-stretch gap-4 lg:grid-cols-[1.15fr_0.95fr_0.9fr]">
             <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
               <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600">
@@ -577,12 +577,11 @@ export default function Home() {
                 {differentials.map((item) => (
                   <p
                     key={item}
-                    className="flex items-start gap-3 text-sm leading-6 text-slate-600"
+                    className="grid grid-cols-[44px_1fr] items-start gap-3 text-sm leading-6 text-slate-600 lg:whitespace-nowrap lg:text-[13px]"
                   >
-                    <CheckCircle2
-                      className="mt-0.5 shrink-0 text-sky-500"
-                      size={18}
-                    />
+                    <span className="grid h-6 w-11 place-items-center text-sky-500">
+                      <CheckCircle2 size={18} />
+                    </span>
                     {item}
                   </p>
                 ))}
@@ -602,12 +601,11 @@ export default function Home() {
                 {clientBenefits.map((benefit) => (
                   <p
                     key={benefit}
-                    className="flex items-start gap-3 text-sm leading-6 text-slate-600"
+                    className="grid grid-cols-[44px_1fr] items-start gap-3 text-sm leading-6 text-slate-600 lg:whitespace-nowrap lg:text-[13px]"
                   >
-                    <CheckCircle2
-                      className="mt-0.5 shrink-0 text-sky-500"
-                      size={18}
-                    />
+                    <span className="grid h-6 w-11 place-items-center text-sky-500">
+                      <CheckCircle2 size={18} />
+                    </span>
                     {benefit}
                   </p>
                 ))}
@@ -629,9 +627,9 @@ export default function Home() {
                   return (
                     <div
                       key={mode.title}
-                      className="flex items-start gap-4 py-4 first:pt-0 last:pb-0"
+                      className="flex items-start gap-3 py-4 first:pt-0 last:pb-0"
                     >
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600">
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600">
                         <Icon size={21} />
                       </span>
                       <div>
