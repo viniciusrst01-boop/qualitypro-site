@@ -1,15 +1,19 @@
 import {
   ArrowRight,
   Award,
+  BadgeCheck,
   BarChart3,
   CheckCircle2,
   ClipboardCheck,
   Mail,
   MapPin,
   Phone,
+  Presentation,
+  SearchCheck,
+  Settings2,
   ShieldCheck,
   TrendingUp,
-  Users,
+  Truck,
   Workflow,
 } from "lucide-react";
 import DashboardChart from "@/components/DashboardChart";
@@ -18,33 +22,48 @@ import Image from "next/image";
 
 const services = [
   {
-    title: "Consultoria ISO 9001",
-    text: "Implementação e adequação dos processos aos requisitos da norma.",
+    title: "Diagnóstico SGQ",
+    text: "Avaliação da situação atual do Sistema de Gestão da Qualidade, identificando lacunas, riscos, fragilidades e oportunidades de melhoria.",
+    icon: SearchCheck,
+  },
+  {
+    title: "Implantação de SGQ",
+    text: "Estruturação completa do Sistema de Gestão da Qualidade, conforme o contexto da organização, com escopo, responsabilidades e rotinas de gestão.",
+    icon: Settings2,
+  },
+  {
+    title: "Implantação ISO 9001",
+    text: "Apoio técnico para implantação ou adequação do sistema aos requisitos da ISO 9001, preparando a empresa para auditorias e certificação.",
+    icon: BadgeCheck,
+  },
+  {
+    title: "Auditoria Interna | SGI",
+    text: "Planejamento e execução de auditorias internas com foco em evidências, conformidade, eficácia, riscos e oportunidades de melhoria.",
     icon: ClipboardCheck,
   },
   {
-    title: "Auditoria Interna",
-    text: "Avaliação completa para identificar riscos, falhas e oportunidades.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Indicadores e KPIs",
-    text: "Dashboards e métricas para acompanhar a qualidade em tempo real.",
-    icon: BarChart3,
-  },
-  {
-    title: "Mapeamento de Processos",
-    text: "Fluxos claros, responsabilidades definidas e padronização.",
-    icon: Workflow,
+    title: "Auditoria de Fornecedor",
+    text: "Avaliação técnica de fornecedores quanto a processos, controles, atendimento aos requisitos e confiabilidade do fornecimento.",
+    icon: Truck,
   },
   {
     title: "Treinamentos",
-    text: "Capacitação prática para equipes operacionais e lideranças.",
-    icon: Users,
+    text: "Capacitação prática e técnica em qualidade, ISO 9001, auditorias, não conformidades, indicadores, ferramentas da qualidade e melhoria contínua.",
+    icon: Presentation,
   },
   {
-    title: "Melhoria Contínua",
-    text: "Planos de ação para reduzir perdas e elevar resultados.",
+    title: "Padronização de Processos",
+    text: "Mapeamento, revisão e criação de procedimentos, instruções de trabalho, fluxogramas, formulários e padrões operacionais.",
+    icon: Workflow,
+  },
+  {
+    title: "Planilhas de Controle e Indicadores",
+    text: "Desenvolvimento de controles, planilhas, dashboards e indicadores para gestão visual e apoio à tomada de decisões.",
+    icon: BarChart3,
+  },
+  {
+    title: "Projetos de Melhoria Contínua",
+    text: "Aplicação de métodos e ferramentas para reduzir falhas, desperdícios e retrabalho, melhorando a rastreabilidade e o desempenho dos processos.",
     icon: TrendingUp,
   },
 ];
