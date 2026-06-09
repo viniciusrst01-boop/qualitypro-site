@@ -3,6 +3,7 @@ import {
   Award,
   BadgeCheck,
   BarChart3,
+  Building2,
   CheckCircle2,
   ClipboardCheck,
   Mail,
@@ -12,6 +13,7 @@ import {
   SearchCheck,
   Settings2,
   ShieldCheck,
+  Target,
   TrendingUp,
   Truck,
   Workflow,
@@ -88,6 +90,18 @@ const workSteps = [
   ["Diagnóstico", "Entendimento dos processos, riscos e pontos críticos."],
   ["Planejamento", "Priorização das ações, responsáveis e prazos."],
   ["Implantação", "Documentação, indicadores, rotinas e treinamentos."],
+];
+
+const qualityChallenges = [
+  "SGQ desorganizado e sem controle",
+  "Excesso de documentos e checklists sem padrão",
+  "Falta de indicadores para tomada de decisão",
+  "Auditorias internas fracas ou mal planejadas",
+  "Certificado ativo, mas sistema sem funcionamento real",
+  "Falta de treinamento técnico em qualidade",
+  "Não conformidades recorrentes",
+  "Processos sem padronização",
+  "Resistência à digitalização e automação dos controles",
 ];
 
 function Header() {
@@ -308,42 +322,33 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
           <div className="rounded-lg bg-white p-3 shadow-xl ring-1 ring-slate-200 sm:p-5">
             <div className="rounded-lg bg-office-panel p-3 sm:p-5">
-              <div className="rounded-lg bg-slate-950 p-4 text-white shadow-lg sm:p-5">
+              <div className="h-full rounded-lg bg-slate-950 p-5 text-white shadow-lg sm:p-7">
                 <div className="flex items-start justify-between gap-4 border-b border-slate-800 pb-4">
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
-                      Roteiro ISO 9001
+                      Desafios da qualidade
                     </p>
                     <h3 className="mt-2 text-xl font-black sm:text-2xl">
-                      SGQ estruturado por etapas
+                      Principais dores que resolvemos
                     </h3>
                   </div>
-                  <span className="grid h-12 w-12 place-items-center rounded-lg bg-cyan-400/10 text-cyan-300">
-                    <ClipboardCheck size={28} />
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-cyan-400/10 text-cyan-300">
+                    <SearchCheck size={27} />
                   </span>
                 </div>
 
-                <div className="mt-5 grid gap-3">
-                  {[
-                    ["01", "Diagnóstico", "Mapeamento de processos, lacunas e riscos."],
-                    ["02", "Padronização", "Procedimentos, registros e responsabilidades."],
-                    ["03", "Indicadores", "KPIs, metas, análise crítica e plano de ação."],
-                    ["04", "Auditoria", "Verificação interna e melhoria contínua."],
-                  ].map(([number, title, text]) => (
-                    <div
-                      key={number}
-                      className="grid grid-cols-[40px_1fr] gap-3 rounded-lg border border-sky-300/15 bg-slate-900/80 p-3 sm:grid-cols-[48px_1fr] sm:gap-4 sm:p-4"
+                <div className="mt-5 grid gap-2.5">
+                  {qualityChallenges.map((challenge) => (
+                    <p
+                      key={challenge}
+                      className="flex items-start gap-3 rounded-lg border border-sky-300/15 bg-slate-900/80 p-3 text-sm leading-6 text-slate-300"
                     >
-                      <span className="grid h-9 w-9 place-items-center rounded-md bg-sky-500/15 text-sm font-black text-cyan-300 sm:h-10 sm:w-10">
-                        {number}
-                      </span>
-                      <div>
-                        <strong className="block">{title}</strong>
-                        <p className="mt-1 text-sm leading-6 text-slate-400">
-                          {text}
-                        </p>
-                      </div>
-                    </div>
+                      <CheckCircle2
+                        className="mt-0.5 shrink-0 text-cyan-300"
+                        size={18}
+                      />
+                      {challenge}
+                    </p>
                   ))}
                 </div>
               </div>
@@ -353,33 +358,54 @@ export default function Home() {
           <div>
             <SectionTitle
               eyebrow="Sobre a empresa"
-              title="Excelência que começa com processo bem estruturado"
+              title="Transformamos a qualidade em organização, conformidade, controle e resultados"
             />
-            <p className="mt-5 max-w-2xl leading-7 text-slate-600">
-              A QualityPro Solutions nasce para apoiar empresas na organização
-              de Sistemas de Gestão da Qualidade, com consultoria ISO 9001,
-              auditorias, indicadores e melhoria contínua aplicados de forma
-              prática.
-            </p>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {[
-                ["Missão", "Gerar valor por meio de soluções em gestão."],
-                ["Visão", "Ser referência nacional em qualidade."],
-                ["Valores", "Ética, compromisso e excelência."],
-                ["Foco", "Resultados sustentáveis e melhoria contínua."],
-              ].map(([title, text]) => (
-                <div
-                  key={title}
-                  className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm"
-                >
-                  <Award className="text-sky-500" size={22} />
-                  <h3 className="mt-4 font-bold">{title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">
-                    {text}
+            <div className="mt-8 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+              <div className="flex items-start gap-4">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-500">
+                  <Building2 size={24} />
+                </span>
+                <div>
+                  <h3 className="text-lg font-black">Quem somos</h3>
+                  <p className="mt-3 leading-7 text-slate-600">
+                    A QualityPro Solutions atua com soluções técnicas voltadas
+                    à estruturação, organização, padronização e melhoria dos
+                    sistemas de gestão das empresas.
+                  </p>
+                  <p className="mt-3 leading-7 text-slate-600">
+                    Apoiamos organizações que precisam fortalecer processos,
+                    melhorar controles, desenvolver pessoas, organizar
+                    documentos, estruturar auditorias e acompanhar indicadores.
+                  </p>
+                  <p className="mt-3 leading-7 text-slate-600">
+                    Mais do que atender requisitos normativos, transformamos a
+                    qualidade em uma ferramenta real de gestão, útil para a
+                    rotina da empresa e alinhada aos resultados do negócio.
                   </p>
                 </div>
-              ))}
+              </div>
+            </div>
+
+            <div className="mt-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+              <div className="flex items-start gap-4">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-500">
+                  <Target size={24} />
+                </span>
+                <div>
+                  <h3 className="text-lg font-black">Nosso propósito</h3>
+                  <p className="mt-3 leading-7 text-slate-600">
+                    Ajudar empresas a saírem de um modelo burocrático e
+                    desorganizado de qualidade para um sistema estruturado,
+                    funcional, auditável, controlado e voltado para resultados.
+                  </p>
+                  <p className="mt-3 leading-7 text-slate-600">
+                    Tornamos a qualidade um apoio estratégico à gestão, com mais
+                    clareza, padronização, confiabilidade, rastreabilidade,
+                    desenvolvimento de equipes e melhoria contínua.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
