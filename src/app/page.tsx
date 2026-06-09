@@ -617,7 +617,7 @@ export default function Home() {
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600">
                   <Headphones size={23} />
                 </span>
-                <h3 className="text-lg font-black">
+                <h3 className="whitespace-nowrap text-sm font-black sm:text-lg">
                   Modalidades de atendimento
                 </h3>
               </div>
@@ -627,13 +627,13 @@ export default function Home() {
                   return (
                     <div
                       key={mode.title}
-                      className="flex items-start gap-3 py-4 first:pt-0 last:pb-0"
+                      className="grid grid-cols-[44px_1fr] items-start gap-3 py-4 first:pt-0 last:pb-0"
                     >
-                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600">
+                      <span className="grid h-8 w-11 place-items-center rounded-lg bg-sky-50 text-sky-600">
                         <Icon size={21} />
                       </span>
                       <div>
-                        <h4 className="font-black uppercase text-sky-700">
+                        <h4 className="flex h-8 items-center font-black uppercase text-sky-700">
                           {mode.title}
                         </h4>
                         <p className="mt-1 text-sm leading-6 text-slate-600">
