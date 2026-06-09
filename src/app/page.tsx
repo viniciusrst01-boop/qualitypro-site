@@ -6,8 +6,12 @@ import {
   Building2,
   CheckCircle2,
   ClipboardCheck,
+  Blend,
+  Headphones,
+  HeartHandshake,
   Mail,
   MapPin,
+  Monitor,
   Phone,
   Presentation,
   SearchCheck,
@@ -16,6 +20,7 @@ import {
   Target,
   TrendingUp,
   Truck,
+  UsersRound,
   Workflow,
 } from "lucide-react";
 import DashboardChart from "@/components/DashboardChart";
@@ -78,12 +83,45 @@ const cases = [
 ];
 
 const differentials = [
-  "Método alinhado à ISO 9001",
-  "Estruturação de SGQ",
-  "Dashboards e indicadores",
-  "Foco em processo",
-  "Atendimento personalizado",
-  "Visão industrial e operacional",
+  "Atuação prática e orientada à realidade da empresa",
+  "Foco em soluções úteis e não apenas burocráticas",
+  "Visão da qualidade como ferramenta de gestão",
+  "Estratégia técnica com linguagem clara e objetiva",
+  "Integração entre conformidade, processos e resultados",
+  "Estímulo à digitalização da qualidade",
+  "Desenvolvimento de pessoas-chave para sustentação do sistema",
+  "Soluções personalizadas conforme a maturidade da organização",
+];
+
+const clientBenefits = [
+  "Mais organização",
+  "Mais controle",
+  "Redução de falhas",
+  "Melhoria na rastreabilidade",
+  "Melhor preparação para auditorias",
+  "Desenvolvimento de equipes",
+  "Processos mais padronizados",
+  "Indicadores para tomada de decisão",
+  "Redução de desperdícios",
+  "Sistema de gestão mais funcional e sustentável",
+];
+
+const serviceModes = [
+  {
+    title: "Online",
+    text: "Ideal para reuniões, análise documental, treinamentos, desenvolvimento de documentos, indicadores e suporte técnico remoto.",
+    icon: Monitor,
+  },
+  {
+    title: "Presencial",
+    text: "Ideal para diagnósticos em campo, auditorias, treinamentos e acompanhamento da implantação dos processos.",
+    icon: UsersRound,
+  },
+  {
+    title: "Híbrido",
+    text: "Combinação de atendimento online e presencial, oferecendo mais flexibilidade, melhor custo-benefício e proximidade.",
+    icon: Blend,
+  },
 ];
 
 const workSteps = [
@@ -515,21 +553,114 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-14 text-slate-950 sm:py-16">
+      <section
+        id="diferenciais"
+        className="bg-white py-14 text-slate-950 sm:py-16"
+      >
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
             eyebrow="Diferenciais"
             title="Por que escolher a QualityPro Solutions?"
           />
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {differentials.map((item) => (
-              <p key={item} className="flex items-center gap-3 font-bold">
-                <span className="grid h-10 w-10 place-items-center rounded-lg bg-sky-50 text-sky-600">
-                  <Award size={20} />
+
+          <div className="mt-8 grid items-stretch gap-4 lg:grid-cols-3">
+            <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+              <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600">
+                  <Award size={23} />
                 </span>
-                {item}
-              </p>
-            ))}
+                <h3 className="text-lg font-black">
+                  Diferenciais da QualityPro
+                </h3>
+              </div>
+              <div className="mt-5 grid gap-3">
+                {differentials.map((item) => (
+                  <p
+                    key={item}
+                    className="flex items-start gap-3 text-sm leading-6 text-slate-600"
+                  >
+                    <CheckCircle2
+                      className="mt-0.5 shrink-0 text-sky-500"
+                      size={18}
+                    />
+                    {item}
+                  </p>
+                ))}
+              </div>
+            </article>
+
+            <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+              <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600">
+                  <HeartHandshake size={23} />
+                </span>
+                <h3 className="text-lg font-black">
+                  Benefícios para o cliente
+                </h3>
+              </div>
+              <div className="mt-5 grid gap-3">
+                {clientBenefits.map((benefit) => (
+                  <p
+                    key={benefit}
+                    className="flex items-start gap-3 text-sm leading-6 text-slate-600"
+                  >
+                    <CheckCircle2
+                      className="mt-0.5 shrink-0 text-sky-500"
+                      size={18}
+                    />
+                    {benefit}
+                  </p>
+                ))}
+              </div>
+            </article>
+
+            <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+              <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600">
+                  <Headphones size={23} />
+                </span>
+                <h3 className="text-lg font-black">
+                  Modalidades de atendimento
+                </h3>
+              </div>
+              <div className="mt-5 divide-y divide-slate-200">
+                {serviceModes.map((mode) => {
+                  const Icon = mode.icon;
+                  return (
+                    <div
+                      key={mode.title}
+                      className="flex items-start gap-4 py-4 first:pt-0 last:pb-0"
+                    >
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600">
+                        <Icon size={21} />
+                      </span>
+                      <div>
+                        <h4 className="font-black uppercase text-sky-700">
+                          {mode.title}
+                        </h4>
+                        <p className="mt-1 text-sm leading-6 text-slate-600">
+                          {mode.text}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </article>
+          </div>
+
+          <div className="mt-4 flex items-start gap-4 rounded-lg border border-amber-300/60 bg-amber-50 p-5 sm:p-6">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-amber-400 text-slate-950">
+              <TrendingUp size={23} />
+            </span>
+            <p className="text-sm font-semibold leading-7 text-slate-700 sm:text-base">
+              A QualityPro Solutions acredita que a qualidade deve ser vista
+              como elemento de sustentação da empresa, e não apenas como
+              evidência documental. Nosso compromisso é entregar soluções
+              técnicas, organizadas e aplicáveis, ajudando empresas a construir
+              sistemas de gestão mais maduros, eficientes e conectados aos
+              resultados do negócio.
+            </p>
           </div>
         </div>
       </section>
