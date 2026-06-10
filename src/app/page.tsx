@@ -26,6 +26,7 @@ import {
 import DashboardChart from "@/components/DashboardChart";
 import ContactForm from "@/components/ContactForm";
 import Image from "next/image";
+import Link from "next/link";
 
 const services = [
   {
@@ -680,7 +681,7 @@ export default function Home() {
               </p>
               <p className="flex items-center gap-3">
                 <Mail className="text-cyan-300" size={20} />
-                contato@qualitypro.com.br
+                contato@qualityprosolutions.com.br
               </p>
               <p className="flex items-center gap-3">
                 <MapPin className="text-cyan-300" size={20} /> Rio de Janeiro - RJ
@@ -692,8 +693,40 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-slate-950 px-5 py-10 text-center text-sm text-slate-400">
-        QualityPro Solutions - qualidade com propósito.
+      <footer className="border-t border-sky-400/10 bg-slate-950 px-4 py-10 text-sm text-slate-400 sm:px-5">
+        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_auto_1fr]">
+          <div>
+            <h2 className="text-base font-black text-white">
+              QualityPro Solutions
+            </h2>
+            <p className="mt-2 text-slate-300">
+              Consultoria em Gestão da Qualidade
+            </p>
+            <div className="mt-5 space-y-2 font-mono text-xs text-slate-300 sm:text-sm">
+              <p>contato@qualityprosolutions.com.br</p>
+              <p>www.qualityprosolutions.com.br</p>
+            </div>
+          </div>
+
+          <div className="md:justify-self-center">
+            <h3 className="text-xs font-black uppercase tracking-[0.22em] text-cyan-300">
+              Institucional
+            </h3>
+            <div className="mt-4 grid gap-2">
+              <Link href="/politica-de-privacidade" className="hover:text-white">
+                Política de Privacidade
+              </Link>
+              <Link href="/termos-de-uso" className="hover:text-white">
+                Termos de Uso
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-8 flex max-w-7xl flex-col gap-2 border-t border-slate-800 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 QualityPro Solutions. Todos os direitos reservados.</p>
+          <p>Qualidade com propósito.</p>
+        </div>
       </footer>
     </main>
   );
