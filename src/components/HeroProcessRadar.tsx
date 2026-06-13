@@ -22,18 +22,18 @@ const radarFrames = [
     { process: "Qualidade", value: 94 },
     { process: "Entrega", value: 84 },
     { process: "Custo", value: 79 },
-    { process: "Estoque", value: 61 },
+    { process: "Estoque", value: 70 },
   ],
   [
     { process: "Manufatura", value: 93 },
-    { process: "Qualidade", value: 75 },
-    { process: "Entrega", value: 88 },
+    { process: "Qualidade", value: 88 },
+    { process: "Entrega", value: 90 },
     { process: "Custo", value: 66 },
-    { process: "Estoque", value: 86 },
+    { process: "Estoque", value: 96 },
   ],
   [
     { process: "Manufatura", value: 76 },
-    { process: "Qualidade", value: 84 },
+    { process: "Qualidade", value: 88 },
     { process: "Entrega", value: 69 },
     { process: "Custo", value: 91 },
     { process: "Estoque", value: 80 },
@@ -59,6 +59,17 @@ const originalPanel = {
   height: 320,
 };
 
+const radarAxes = [
+  { process: "Manufatura", x: 50, y: 15.5 },
+  { process: "Qualidade", x: 77.5, y: 38.7 },
+  { process: "Entrega", x: 67, y: 76.2 },
+  { process: "Custo", x: 33, y: 76.2 },
+  { process: "Estoque", x: 22.5, y: 38.7 },
+];
+
+const minimumHighlightedValue = 88;
+const highlightedValueMargin = 8;
+
 export default function HeroProcessRadar() {
   const [isDesktop, setIsDesktop] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
@@ -66,6 +77,20 @@ export default function HeroProcessRadar() {
   const [panelStyle, setPanelStyle] = useState<CSSProperties>();
   const radarDataRef = useRef(radarFrames[0]);
   const frameIndexRef = useRef(0);
+  const maximumValue = Math.max(...radarData.map(({ value }) => value));
+  const activeProcesses = [...radarData]
+    .sort((first, second) => second.value - first.value)
+    .filter(
+      ({ value }) =>
+        value >= minimumHighlightedValue &&
+        maximumValue - value <= highlightedValueMargin,
+    )
+    .slice(0, 3)
+    .map(({ process }) => process);
+  const activeProcessSet = new Set(activeProcesses);
+  const radarValueByProcess = new Map(
+    radarData.map(({ process, value }) => [process, value]),
+  );
 
   useEffect(() => {
     const desktopQuery = window.matchMedia("(min-width: 1024px)");
@@ -111,10 +136,10 @@ export default function HeroProcessRadar() {
       const offsetY = (height - renderedHeight) / 2;
 
       setPanelStyle({
-        left: offsetX + originalPanel.x * imageScale,
-        top: offsetY + originalPanel.y * imageScale,
-        width: originalPanel.width * imageScale,
-        height: originalPanel.height * imageScale,
+        left: Math.round(offsetX + originalPanel.x * imageScale),
+        top: Math.round(offsetY + originalPanel.y * imageScale),
+        width: Math.round(originalPanel.width * imageScale),
+        height: Math.round(originalPanel.height * imageScale),
       });
     };
 
@@ -183,58 +208,136 @@ export default function HeroProcessRadar() {
       className="hero-radar-panel pointer-events-none absolute z-20 flex flex-col overflow-hidden border border-sky-200/65 bg-[#031127] shadow-[0_18px_50px_rgba(0,0,0,0.5),0_0_28px_rgba(14,165,233,0.14)]"
       style={panelStyle}
     >
-      <div className="flex items-center justify-between gap-3 px-4 pb-1 pt-4">
-        <h2 className="whitespace-nowrap text-[13px] font-bold text-white">
+      <div className="flex items-center justify-between gap-2 px-3 pb-1 pt-4">
+        <h2 className="hero-radar-title whitespace-nowrap text-white">
           Performance por Processo
         </h2>
         <Waypoints className="shrink-0 text-sky-400" size={17} strokeWidth={2} />
       </div>
 
       <div className="hero-radar-chart relative min-h-0 w-full flex-1 px-4 pb-3 pt-1">
-        <span className="absolute left-1/2 top-0 z-10 -translate-x-1/2 text-[10px] font-semibold text-slate-50">
+        <span
+          className={`hero-radar-label absolute left-1/2 top-[3%] z-10 -translate-x-1/2 ${
+            activeProcessSet.has("Manufatura")
+              ? "hero-radar-label-active"
+              : ""
+          }`}
+        >
           Manufatura
         </span>
-        <span className="absolute right-1 top-[43%] z-10 -translate-y-1/2 text-[10px] font-semibold text-slate-50">
+        <span
+          className={`hero-radar-label absolute right-1 top-[43%] z-10 -translate-y-1/2 ${
+            activeProcessSet.has("Qualidade")
+              ? "hero-radar-label-active"
+              : ""
+          }`}
+        >
           Qualidade
         </span>
-        <span className="absolute bottom-1 right-[16%] z-10 text-[10px] font-semibold text-slate-50">
+        <span
+          className={`hero-radar-label absolute bottom-[13%] right-[16%] z-10 ${
+            activeProcessSet.has("Entrega") ? "hero-radar-label-active" : ""
+          }`}
+        >
           Entrega
         </span>
-        <span className="absolute bottom-1 left-[20%] z-10 text-[10px] font-semibold text-slate-50">
+        <span
+          className={`hero-radar-label absolute bottom-[13%] left-[20%] z-10 ${
+            activeProcessSet.has("Custo") ? "hero-radar-label-active" : ""
+          }`}
+        >
           Custo
         </span>
-        <span className="absolute left-1 top-[43%] z-10 -translate-y-1/2 text-[10px] font-semibold text-slate-50">
+        <span
+          className={`hero-radar-label absolute left-1 top-[43%] z-10 -translate-y-1/2 ${
+            activeProcessSet.has("Estoque")
+              ? "hero-radar-label-active"
+              : ""
+          }`}
+        >
           Estoque
         </span>
 
-        <ResponsiveContainer width="100%" height="100%">
-          <RadarChart
-            data={radarData}
-            cx="50%"
-            cy="49%"
-            outerRadius="55%"
+        <div className="absolute inset-x-4 bottom-3 top-1">
+          <svg
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-[3] h-full w-full"
+            preserveAspectRatio="none"
+            viewBox="0 0 100 100"
           >
-            <PolarGrid
-              gridType="polygon"
-              radialLines
-              stroke="rgba(125, 211, 252, 0.24)"
-            />
-            <Radar
-              dataKey="value"
-              stroke="#38bdf8"
-              strokeWidth={2}
-              fill="#0ea5e9"
-              fillOpacity={0.42}
-              dot={{
-                r: 2.5,
-                fill: "#67e8f9",
-                stroke: "#e0f2fe",
-                strokeWidth: 1,
-              }}
-              isAnimationActive={false}
-            />
-          </RadarChart>
-        </ResponsiveContainer>
+            {radarAxes.map(({ process, x, y }) => {
+              const isActive = activeProcessSet.has(process);
+              const value = radarValueByProcess.get(process) ?? 0;
+              const pointX = 50 + (x - 50) * (value / 100);
+              const pointY = 49 + (y - 49) * (value / 100);
+
+              return (
+                <g key={process}>
+                  <line
+                    className={
+                      isActive
+                        ? "hero-radar-axis hero-radar-axis-active"
+                        : "hero-radar-axis"
+                    }
+                    x1="50"
+                    x2={x}
+                    y1="49"
+                    y2={y}
+                  />
+                  {isActive ? (
+                    <>
+                      <ellipse
+                        className="hero-radar-vertex-halo"
+                        cx={pointX}
+                        cy={pointY}
+                        rx="2.4"
+                        ry="2.7"
+                      />
+                      <ellipse
+                        className="hero-radar-vertex-active"
+                        cx={pointX}
+                        cy={pointY}
+                        rx="0.95"
+                        ry="1.1"
+                      />
+                    </>
+                  ) : null}
+                </g>
+              );
+            })}
+          </svg>
+
+          <div className="absolute inset-0 z-[2]">
+            <ResponsiveContainer width="100%" height="100%">
+              <RadarChart
+                data={radarData}
+                cx="50%"
+                cy="49%"
+                outerRadius="67%"
+              >
+                <PolarGrid
+                  gridType="polygon"
+                  radialLines
+                  stroke="rgba(125, 211, 252, 0.24)"
+                />
+                <Radar
+                  dataKey="value"
+                  stroke="#38bdf8"
+                  strokeWidth={2}
+                  fill="#0ea5e9"
+                  fillOpacity={0.42}
+                  dot={{
+                    r: 2.5,
+                    fill: "#67e8f9",
+                    stroke: "#e0f2fe",
+                    strokeWidth: 1,
+                  }}
+                  isAnimationActive={false}
+                />
+              </RadarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
       </div>
     </aside>
   );
