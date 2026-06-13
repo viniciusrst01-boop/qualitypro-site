@@ -1,11 +1,8 @@
 import {
   ArrowRight,
   Award,
-  BadgeCheck,
-  BarChart3,
   Building2,
   CheckCircle2,
-  ClipboardCheck,
   Blend,
   Headphones,
   HeartHandshake,
@@ -13,70 +10,19 @@ import {
   MapPin,
   Monitor,
   Phone,
-  Presentation,
   SearchCheck,
-  Settings2,
   ShieldCheck,
   Target,
   TrendingUp,
-  Truck,
   UsersRound,
-  Workflow,
 } from "lucide-react";
 import DashboardShowcase from "@/components/DashboardShowcase";
 import ContactForm from "@/components/ContactForm";
 import MobileExpandable from "@/components/MobileExpandable";
+import ServicesGrid from "@/components/ServicesGrid";
 import TrackedLink from "@/components/TrackedLink";
 import Image from "next/image";
 import Link from "next/link";
-
-const services = [
-  {
-    title: "Diagnóstico SGQ",
-    text: "Avaliação da situação atual do Sistema de Gestão da Qualidade, identificando lacunas, riscos, fragilidades e oportunidades de melhoria.",
-    icon: SearchCheck,
-  },
-  {
-    title: "Implantação de SGQ",
-    text: "Estruturação completa do Sistema de Gestão da Qualidade, conforme o contexto da organização, com escopo, responsabilidades e rotinas de gestão.",
-    icon: Settings2,
-  },
-  {
-    title: "Implantação ISO 9001",
-    text: "Apoio técnico para implantação ou adequação do sistema aos requisitos da ISO 9001, preparando a empresa para auditorias e certificação.",
-    icon: BadgeCheck,
-  },
-  {
-    title: "Auditoria Interna | SGI",
-    text: "Planejamento e execução de auditorias internas com foco em evidências, conformidade, eficácia, riscos e oportunidades de melhoria.",
-    icon: ClipboardCheck,
-  },
-  {
-    title: "Auditoria de Fornecedor",
-    text: "Avaliação técnica de fornecedores quanto a processos, controles, atendimento aos requisitos e confiabilidade do fornecimento.",
-    icon: Truck,
-  },
-  {
-    title: "Treinamentos",
-    text: "Capacitação prática e técnica em qualidade, ISO 9001, auditorias, não conformidades, indicadores, ferramentas da qualidade e melhoria contínua.",
-    icon: Presentation,
-  },
-  {
-    title: "Padronização de Processos",
-    text: "Mapeamento, revisão e criação de procedimentos, instruções de trabalho, fluxogramas, formulários e padrões operacionais.",
-    icon: Workflow,
-  },
-  {
-    title: "Planilhas de Controle e Indicadores",
-    text: "Desenvolvimento de controles, planilhas, dashboards e indicadores para gestão visual e apoio à tomada de decisões.",
-    icon: BarChart3,
-  },
-  {
-    title: "Projetos de Melhoria Contínua",
-    text: "Aplicação de métodos e ferramentas para reduzir falhas, desperdícios e retrabalho, melhorando a rastreabilidade e o desempenho dos processos.",
-    icon: TrendingUp,
-  },
-];
 
 const cases = [
   ["NC", "Reduzir não conformidades com análise de causa"],
@@ -404,29 +350,7 @@ export default function Home() {
             title="Soluções completas para elevar a gestão da qualidade"
           />
 
-          <MobileExpandable
-            initialCount={3}
-            section="services"
-            expandLabel="Ver todos os serviços"
-            className="mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 lg:grid-cols-3"
-            buttonClassName="border border-cyan-300/25 bg-slate-900 text-cyan-200"
-          >
-            {services.map((service) => {
-              const Icon = service.icon;
-              return (
-                <article
-                  key={service.title}
-                  className="h-full rounded-lg border border-sky-300/15 bg-slate-900/70 p-5 sm:p-6"
-                >
-                  <Icon className="text-cyan-300" size={32} />
-                  <h3 className="mt-5 text-xl font-bold">{service.title}</h3>
-                  <p className="mt-3 leading-7 text-slate-400">
-                    {service.text}
-                  </p>
-                </article>
-              );
-            })}
-          </MobileExpandable>
+          <ServicesGrid />
         </div>
       </section>
 
