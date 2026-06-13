@@ -25,6 +25,8 @@ import {
 } from "lucide-react";
 import DashboardChart from "@/components/DashboardChart";
 import ContactForm from "@/components/ContactForm";
+import MobileExpandable from "@/components/MobileExpandable";
+import TrackedLink from "@/components/TrackedLink";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -150,10 +152,10 @@ function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-5 sm:py-4">
         <a href="#inicio" className="block">
           <Image
-            src="/logo.png"
+            src="/logo-optimized.webp"
             alt="QualityPro Solutions"
-            width={1245}
-            height={451}
+            width={600}
+            height={182}
             priority
             className="h-auto w-32 sm:w-44"
           />
@@ -197,13 +199,15 @@ function Header() {
 </a>
         </nav>
 
-        <a
+        <TrackedLink
           href="#contato"
+          eventLabel="Solicitar Consultoria"
+          eventLocation="header"
           className="rounded-md bg-amber-400 px-2 py-2 text-[9px] font-black uppercase leading-none text-slate-950 shadow-lg shadow-amber-500/15 sm:px-5 sm:py-3 sm:text-sm sm:normal-case sm:leading-normal"
         >
           <span className="sm:hidden">Solicitar Consultoria</span>
           <span className="hidden sm:inline">Solicitar Consultoria</span>
-        </a>
+        </TrackedLink>
       </div>
     </header>
     </>
@@ -317,18 +321,22 @@ export default function Home() {
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
-              <a
+              <TrackedLink
                 href="#contato"
+                eventLabel="Fale conosco"
+                eventLocation="hero"
                 className="inline-flex items-center justify-center gap-2 rounded-md bg-sky-500 px-5 py-3.5 font-bold sm:px-6 sm:py-4"
               >
                 Fale conosco <ArrowRight size={18} />
-              </a>
-              <a
+              </TrackedLink>
+              <TrackedLink
                 href="#servicos"
+                eventLabel="Conheça os serviços"
+                eventLocation="hero"
                 className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 px-5 py-3.5 font-bold sm:px-6 sm:py-4"
               >
                 Conheça os serviços <ArrowRight size={18} />
-              </a>
+              </TrackedLink>
             </div>
           </div>
 
@@ -457,13 +465,19 @@ export default function Home() {
             title="Soluções completas para elevar a gestão da qualidade"
           />
 
-          <div className="mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 lg:grid-cols-3">
+          <MobileExpandable
+            initialCount={3}
+            section="services"
+            expandLabel="Ver todos os serviços"
+            className="mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 lg:grid-cols-3"
+            buttonClassName="border border-cyan-300/25 bg-slate-900 text-cyan-200"
+          >
             {services.map((service) => {
               const Icon = service.icon;
               return (
                 <article
                   key={service.title}
-                  className="rounded-lg border border-sky-300/15 bg-slate-900/70 p-5 sm:p-6"
+                  className="h-full rounded-lg border border-sky-300/15 bg-slate-900/70 p-5 sm:p-6"
                 >
                   <Icon className="text-cyan-300" size={32} />
                   <h3 className="mt-5 text-xl font-bold">{service.title}</h3>
@@ -473,7 +487,7 @@ export default function Home() {
                 </article>
               );
             })}
-          </div>
+          </MobileExpandable>
         </div>
       </section>
 
@@ -574,7 +588,13 @@ export default function Home() {
                   Diferenciais da QualityPro
                 </h3>
               </div>
-              <div className="mt-5 grid gap-3">
+              <MobileExpandable
+                initialCount={4}
+                section="differentials"
+                expandLabel="Ver todos os diferenciais"
+                className="mt-5 grid gap-3"
+                buttonClassName="border border-sky-200 bg-sky-50 text-sky-700"
+              >
                 {differentials.map((item) => (
                   <p
                     key={item}
@@ -586,7 +606,7 @@ export default function Home() {
                     {item}
                   </p>
                 ))}
-              </div>
+              </MobileExpandable>
             </article>
 
             <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
@@ -598,7 +618,13 @@ export default function Home() {
                   Benefícios para o cliente
                 </h3>
               </div>
-              <div className="mt-5 grid gap-3">
+              <MobileExpandable
+                initialCount={5}
+                section="client_benefits"
+                expandLabel="Ver todos os benefícios"
+                className="mt-5 grid gap-3"
+                buttonClassName="border border-sky-200 bg-sky-50 text-sky-700"
+              >
                 {clientBenefits.map((benefit) => (
                   <p
                     key={benefit}
@@ -610,7 +636,7 @@ export default function Home() {
                     {benefit}
                   </p>
                 ))}
-              </div>
+              </MobileExpandable>
             </article>
 
             <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">

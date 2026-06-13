@@ -1,7 +1,9 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { FormEvent, useState } from "react";
 import { CheckCircle2, LoaderCircle, Send } from "lucide-react";
+import Link from "next/link";
 
 type FormStatus =
   | { type: "idle"; message: "" }
@@ -16,6 +18,7 @@ export default function ContactForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    track("contact_form_submit", { location: "contact_section" });
     setIsSubmitting(true);
     setStatus({ type: "idle", message: "" });
 
@@ -47,11 +50,13 @@ export default function ContactForm() {
       }
 
       form.reset();
+      track("contact_form_success", { location: "contact_section" });
       setStatus({
         type: "success",
         message: "Mensagem enviada. Entraremos em contato em breve.",
       });
     } catch (error) {
+      track("contact_form_error", { location: "contact_section" });
       setStatus({
         type: "error",
         message:
@@ -164,6 +169,17 @@ export default function ContactForm() {
           </>
         )}
       </button>
+
+      <p className="text-xs leading-5 text-slate-400">
+        Ao enviar, você concorda com nossa{" "}
+        <Link
+          href="/politica-de-privacidade"
+          className="font-semibold text-cyan-300 hover:text-cyan-200"
+        >
+          Política de Privacidade
+        </Link>
+        .
+      </p>
 
       {status.type !== "idle" && (
         <p

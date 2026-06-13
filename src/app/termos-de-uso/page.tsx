@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Termos de Uso | QualityPro Solutions",
+  title: "Termos de Uso",
   description:
     "Termos de Uso do site da QualityPro Solutions para visitantes e interessados em consultoria.",
+  alternates: {
+    canonical: "/termos-de-uso",
+  },
 };
 
 const sections = [

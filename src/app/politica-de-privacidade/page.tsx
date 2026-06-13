@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade | QualityPro Solutions",
+  title: "Política de Privacidade",
   description:
     "Política de Privacidade da QualityPro Solutions para tratamento de dados enviados pelo site.",
+  alternates: {
+    canonical: "/politica-de-privacidade",
+  },
 };
 
 const sections = [
