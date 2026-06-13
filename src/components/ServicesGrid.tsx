@@ -187,7 +187,7 @@ export default function ServicesGrid() {
 
   return (
     <>
-      <div className="mt-8 grid items-start gap-4 sm:mt-10 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid items-stretch gap-4 sm:mt-10 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service, index) => {
           const Icon = service.icon;
           const isExpanded = activeIndex === index;
@@ -198,7 +198,7 @@ export default function ServicesGrid() {
               key={service.title}
               className={`${index >= initialMobileCount && !showAll ? "hidden md:block" : ""} ${
                 isExpanded ? "md:col-span-2 lg:col-span-3" : ""
-              } overflow-hidden rounded-lg border bg-slate-900/70 transition-[border-color,background-color,box-shadow] duration-300 ${
+              } h-full overflow-hidden rounded-lg border bg-slate-900/70 transition-[border-color,background-color,box-shadow] duration-300 ${
                 isExpanded
                   ? "border-cyan-300/45 bg-slate-900 shadow-xl shadow-cyan-950/30"
                   : "border-sky-300/15 hover:border-cyan-300/35 hover:bg-slate-900"
