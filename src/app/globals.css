@@ -38,7 +38,7 @@ body {
       rgba(4, 35, 70, 0.30) 45%,
       rgba(4, 35, 70, 0) 70%
     ),
-    url("/hero-bg-optimized.webp");
+    url("/hero-bg-hq.webp");
 
   background-size: cover;
   background-position: center;
@@ -66,6 +66,39 @@ body {
     background-size: auto 78%;
     background-position: 68% bottom;
     background-repeat: no-repeat;
+  }
+}
+
+.hero-radar-panel {
+  border-radius: 16px;
+  transform-origin: 50% 50%;
+  transform: perspective(900px) rotateY(-4deg) rotateZ(1.7deg);
+  animation: hero-radar-panel-in 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hero-radar-panel-in {
+  from {
+    opacity: 0;
+    transform: perspective(900px) translate3d(24px, 0, 0) rotateY(-4deg)
+      rotateZ(1.7deg) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: perspective(900px) translate3d(0, 0, 0) rotateY(-4deg)
+      rotateZ(1.7deg) scale(1);
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-radar-panel {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-radar-panel {
+    animation: none;
   }
 }
 

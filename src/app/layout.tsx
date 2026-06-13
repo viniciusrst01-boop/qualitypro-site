@@ -36,7 +36,7 @@ export const metadata: Metadata = {
       "Estruturamos processos, indicadores e sistemas de gestão para empresas que querem crescer com controle, clareza e confiança.",
     images: [
       {
-        url: "/hero-bg-optimized.webp",
+        url: "/hero-bg-hq.webp",
         width: 1920,
         height: 1081,
         alt: "QualityPro Solutions - Sistemas de Gestão da Qualidade",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "QualityPro Solutions | Gestão da Qualidade",
     description:
       "Consultoria em gestão da qualidade, ISO 9001, auditorias, indicadores e melhoria contínua.",
-    images: ["/hero-bg-optimized.webp"],
+    images: ["/hero-bg-hq.webp"],
   },
   robots: {
     index: true,
@@ -77,7 +77,7 @@ export default function RootLayout({
         name: "QualityPro Solutions",
         url: siteUrl,
         logo: `${siteUrl}/logo-optimized.webp`,
-        image: `${siteUrl}/hero-bg-optimized.webp`,
+        image: `${siteUrl}/hero-bg-hq.webp`,
         email: "contato@qualityprosolutions.com.br",
         description:
           "Consultoria em gestão da qualidade, implantação ISO 9001, auditorias, indicadores, padronização de processos e melhoria contínua.",

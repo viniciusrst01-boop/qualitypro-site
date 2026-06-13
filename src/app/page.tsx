@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import DashboardShowcase from "@/components/DashboardShowcase";
 import ContactForm from "@/components/ContactForm";
+import HeroProcessRadar from "@/components/HeroProcessRadar";
 import MobileExpandable from "@/components/MobileExpandable";
 import ServicesGrid from "@/components/ServicesGrid";
 import TrackedLink from "@/components/TrackedLink";
@@ -188,6 +189,8 @@ export default function Home() {
         id="inicio"
         className="relative min-h-[100svh] overflow-hidden border-b border-sky-400/10 bg-hero pt-24 sm:min-h-[100vh] sm:pt-28"
       >
+        <HeroProcessRadar />
+
         <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 py-12 sm:px-5 sm:py-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:pt-24 lg:pb-38">
           <div className="min-w-0 max-w-[22rem] sm:max-w-xl lg:max-w-none">
             <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
