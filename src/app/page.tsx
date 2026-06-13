@@ -81,15 +81,15 @@ const workSteps = [
 ];
 
 const qualityChallenges = [
-  "SGQ desorganizado e sem controle",
-  "Excesso de documentos e checklists sem padrão",
-  "Falta de indicadores para tomada de decisão",
-  "Auditorias internas fracas ou mal planejadas",
-  "Certificado ativo, mas sistema sem funcionamento real",
-  "Falta de treinamento técnico em qualidade",
-  "Não conformidades recorrentes",
-  "Processos sem padronização",
-  "Resistência à digitalização e automação dos controles",
+  "O SGQ existe, mas falta controle e acompanhamento efetivo",
+  "Documentos e registros estão espalhados e sem padrão",
+  "Faltam indicadores claros para medir resultados",
+  "Auditorias não geram melhorias concretas",
+  "A certificação é mantida, mas o sistema não evolui",
+  "As equipes não recebem treinamento adequado",
+  "As mesmas não conformidades continuam surgindo",
+  "Cada setor trabalha de uma forma diferente",
+  "Os controles dependem de planilhas e processos manuais",
 ];
 
 function Header() {
@@ -254,17 +254,17 @@ export default function Home() {
       </section>
 
       <section id="sobre" className="bg-slate-50 py-14 text-slate-950 sm:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
-          <div className="rounded-lg bg-white p-3 shadow-xl ring-1 ring-slate-200 sm:p-5">
-            <div className="rounded-lg bg-office-panel p-3 sm:p-5">
-              <div className="h-full rounded-lg bg-slate-950 p-5 text-white shadow-lg sm:p-7">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+          <div className="rounded-lg bg-white p-3 shadow-xl ring-1 ring-slate-200 sm:p-4">
+            <div className="rounded-lg bg-office-panel p-3 sm:p-4">
+              <div className="h-full rounded-lg bg-slate-950 p-5 text-white shadow-lg sm:p-6">
                 <div className="flex items-start justify-between gap-4 border-b border-slate-800 pb-4">
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
                       Desafios da qualidade
                     </p>
-                    <h3 className="mt-2 text-xl font-black sm:text-2xl">
-                      Principais dores que resolvemos
+                    <h3 className="mt-2 max-w-[390px] text-xl font-black sm:text-2xl">
+                      Sua empresa enfrenta algum destes desafios?
                     </h3>
                   </div>
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-cyan-400/10 text-cyan-300">
@@ -276,7 +276,7 @@ export default function Home() {
                   {qualityChallenges.map((challenge) => (
                     <p
                       key={challenge}
-                      className="flex items-start gap-3 rounded-lg border border-sky-300/15 bg-slate-900/80 p-3 text-sm leading-6 text-slate-300"
+                      className="flex items-start gap-3 rounded-lg border border-sky-300/15 bg-slate-900/80 p-3 text-sm leading-6 text-slate-300 lg:items-center lg:whitespace-nowrap lg:text-[13px] xl:text-sm"
                     >
                       <CheckCircle2
                         className="mt-0.5 shrink-0 text-cyan-300"
