@@ -23,7 +23,7 @@ import {
   UsersRound,
   Workflow,
 } from "lucide-react";
-import DashboardChart from "@/components/DashboardChart";
+import DashboardShowcase from "@/components/DashboardShowcase";
 import ContactForm from "@/components/ContactForm";
 import MobileExpandable from "@/components/MobileExpandable";
 import TrackedLink from "@/components/TrackedLink";
@@ -211,67 +211,6 @@ function Header() {
       </div>
     </header>
     </>
-  );
-}
-
-function Metric({
-  label,
-  value,
-  detail,
-}: {
-  label: string;
-  value: string;
-  detail: string;
-}) {
-  return (
-    <div className="rounded-lg border border-sky-400/15 bg-slate-950/75 p-3 sm:p-4">
-      <p className="text-xs uppercase text-slate-400">{label}</p>
-      <strong className="mt-2 block text-2xl text-white sm:text-3xl">
-        {value}
-      </strong>
-      <span className="text-xs text-cyan-300">{detail}</span>
-    </div>
-  );
-}
-
-function DashboardMockup() {
-  return (
-    <div className="w-full max-w-[22rem] min-w-0 rounded-lg border border-sky-300/20 bg-slate-950 p-3 shadow-2xl shadow-sky-950/50 sm:max-w-none sm:p-4">
-      <div className="mb-4 flex items-start justify-between gap-4 border-b border-slate-800 pb-4">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
-            Dashboard Executivo
-          </p>
-          <h2 className="mt-1 text-lg font-bold sm:text-xl">
-            Qualidade em tempo real
-          </h2>
-        </div>
-        <div className="flex gap-1">
-          <span className="h-2 w-2 rounded-full bg-cyan-300" />
-          <span className="h-2 w-2 rounded-full bg-amber-300" />
-          <span className="h-2 w-2 rounded-full bg-sky-500" />
-        </div>
-      </div>
-
-      <div className="grid gap-3 sm:grid-cols-3">
-        <Metric label="Eficiência" value="92,4%" detail="+7% no mês" />
-        <Metric label="Não conformidades" value="23" detail="-18% no mês" />
-        <Metric label="PPM" value="128" detail="-42% no ano" />
-      </div>
-
-      <div className="mt-3 grid gap-3 lg:grid-cols-[1.4fr_0.8fr]">
-        <div className="min-w-0 rounded-lg border border-slate-800 bg-slate-900/80 p-3 sm:p-4">
-          <p className="mb-3 text-sm font-semibold text-slate-200">
-            Evolução dos indicadores
-          </p>
-          <DashboardChart />
-        </div>
-        <div className="grid gap-3">
-          <Metric label="Plano de ação" value="16" detail="itens ativos" />
-          <Metric label="Retrabalho" value="3,2%" detail="queda acumulada" />
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -500,7 +439,7 @@ export default function Home() {
             />
             <div className="mt-8 grid gap-3">
               {[
-                "Dashboards Power BI",
+                "Painéis de acompanhamento",
                 "KPIs industriais",
                 "Indicadores ISO 9001",
                 "Gestão de não conformidades",
@@ -514,7 +453,7 @@ export default function Home() {
             </div>
           </div>
 
-          <DashboardMockup />
+          <DashboardShowcase />
         </div>
       </section>
 
