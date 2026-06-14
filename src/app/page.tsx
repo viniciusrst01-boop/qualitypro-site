@@ -9,7 +9,6 @@ import {
   Mail,
   MapPin,
   Monitor,
-  Phone,
   SearchCheck,
   ShieldCheck,
   Target,
@@ -19,7 +18,6 @@ import {
 import DashboardShowcase from "@/components/DashboardShowcase";
 import ContactForm from "@/components/ContactForm";
 import HeroProcessRadar from "@/components/HeroProcessRadar";
-import MobileExpandable from "@/components/MobileExpandable";
 import ServicesGrid from "@/components/ServicesGrid";
 import TrackedLink from "@/components/TrackedLink";
 import Image from "next/image";
@@ -78,6 +76,10 @@ const workSteps = [
   ["Diagnóstico", "Entendimento dos processos, riscos e pontos críticos."],
   ["Planejamento", "Priorização das ações, responsáveis e prazos."],
   ["Implantação", "Documentação, indicadores, rotinas e treinamentos."],
+  [
+    "Acompanhamento",
+    "Verificação dos resultados, ajustes e orientação das equipes.",
+  ],
 ];
 
 const qualityChallenges = [
@@ -234,7 +236,7 @@ export default function Home() {
         <div className="border-t border-cyan-400/10 bg-slate-950/55 shadow-lg shadow-cyan-950/20 backdrop-blur-md">
           <div className="mx-auto grid max-w-7xl gap-4 px-4 py-5 sm:grid-cols-2 sm:px-5 lg:grid-cols-4">
             {[
-              ["Empresa nova", "com método claro"],
+              ["Atendimento próximo", "com método claro"],
               ["Foco técnico", "ISO 9001"],
               ["Estruturação", "de SGQ"],
               ["Indicadores", "para decisão"],
@@ -253,92 +255,131 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="sobre" className="bg-slate-50 py-14 text-slate-950 sm:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
-          <div className="rounded-lg bg-white p-3 shadow-xl ring-1 ring-slate-200 sm:p-4">
-            <div className="rounded-lg bg-office-panel p-3 sm:p-4">
-              <div className="h-full rounded-lg bg-slate-950 p-5 text-white shadow-lg sm:p-6">
-                <div className="flex items-start justify-between gap-4 border-b border-slate-800 pb-4">
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
-                      Desafios da qualidade
-                    </p>
-                    <h3 className="mt-2 max-w-[390px] text-xl font-black sm:text-2xl">
-                      Sua empresa enfrenta algum destes desafios?
-                    </h3>
-                  </div>
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-cyan-400/10 text-cyan-300">
-                    <SearchCheck size={27} />
-                  </span>
-                </div>
+      <section
+        id="sobre"
+        className="scroll-mt-24 bg-white py-14 text-slate-950 sm:scroll-mt-28 sm:py-20"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-5">
+          <SectionTitle
+            eyebrow="Sobre a empresa"
+            title="Gestão da qualidade estruturada para funcionar na prática"
+          />
 
-                <div className="mt-5 grid gap-2.5">
-                  {qualityChallenges.map((challenge) => (
-                    <p
-                      key={challenge}
-                      className="flex items-start gap-3 rounded-lg border border-sky-300/15 bg-slate-900/80 p-3 text-sm leading-6 text-slate-300 lg:items-center lg:whitespace-nowrap lg:text-[13px] xl:text-sm"
-                    >
-                      <CheckCircle2
-                        className="mt-0.5 shrink-0 text-cyan-300"
-                        size={18}
-                      />
-                      {challenge}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <SectionTitle
-              eyebrow="Sobre a empresa"
-              title="Transformamos a qualidade em organização, conformidade, controle e resultados"
-            />
-
-            <div className="mt-8 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+          <div className="mt-8 grid items-stretch gap-4 lg:grid-cols-2 lg:gap-6">
+            <article className="rounded-lg border border-slate-200 bg-slate-50 p-5 shadow-sm sm:p-6">
               <div className="flex items-start gap-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-500">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-100 text-sky-600">
                   <Building2 size={24} />
                 </span>
                 <div>
                   <h3 className="text-lg font-black">Quem somos</h3>
                   <p className="mt-3 leading-7 text-slate-600">
-                    A QualityPro Solutions atua com soluções técnicas voltadas
-                    à estruturação, organização, padronização e melhoria dos
-                    sistemas de gestão das empresas.
+                    A QualityPro Solutions é uma consultoria voltada à
+                    organização e estruturação de Sistemas de Gestão da
+                    Qualidade. Atuamos com ISO 9001, auditorias, padronização de
+                    processos, indicadores e melhoria contínua.
                   </p>
                   <p className="mt-3 leading-7 text-slate-600">
-                    Apoiamos organizações que precisam fortalecer processos,
-                    melhorar controles, desenvolver pessoas, organizar
-                    documentos, estruturar auditorias e acompanhar indicadores.
+                    Cada projeto parte da realidade, das necessidades e do nível
+                    de maturidade da empresa. Assim, desenvolvemos controles,
+                    documentos e rotinas que possam ser realmente utilizados
+                    pelas equipes.
                   </p>
                   <p className="mt-3 leading-7 text-slate-600">
-                    Mais do que atender requisitos normativos, transformamos a
-                    qualidade em uma ferramenta real de gestão, útil para a
-                    rotina da empresa e alinhada aos resultados do negócio.
+                    Nosso trabalho busca tornar os processos mais claros,
+                    fortalecer a gestão e criar uma base confiável para decisões
+                    e melhorias.
                   </p>
                 </div>
               </div>
-            </div>
+            </article>
 
-            <div className="mt-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+            <article className="rounded-lg border border-slate-200 bg-slate-50 p-5 shadow-sm sm:p-6">
               <div className="flex items-start gap-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-500">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-100 text-sky-600">
                   <Target size={24} />
                 </span>
                 <div>
                   <h3 className="text-lg font-black">Nosso propósito</h3>
                   <p className="mt-3 leading-7 text-slate-600">
-                    Ajudar empresas a saírem de um modelo burocrático e
-                    desorganizado de qualidade para um sistema estruturado,
-                    funcional, auditável, controlado e voltado para resultados.
+                    Tornar a qualidade uma ferramenta útil para a gestão, e não
+                    apenas uma exigência documental ou um conjunto de controles
+                    mantidos para auditorias.
                   </p>
                   <p className="mt-3 leading-7 text-slate-600">
-                    Tornamos a qualidade um apoio estratégico à gestão, com mais
-                    clareza, padronização, confiabilidade, rastreabilidade,
-                    desenvolvimento de equipes e melhoria contínua.
+                    Apoiamos empresas na construção de sistemas mais simples,
+                    organizados e sustentáveis, com responsabilidades definidas,
+                    informações confiáveis e equipes preparadas para manter a
+                    melhoria contínua.
                   </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="desafios"
+        className="scroll-mt-24 bg-slate-50 py-14 text-slate-950 sm:scroll-mt-28 sm:py-20"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-5">
+          <div className="grid items-start gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-12">
+            <div className="lg:sticky lg:top-28">
+              <SectionTitle
+                eyebrow="Desafios da qualidade"
+                title="Quando o sistema existe, mas ainda não apoia a gestão"
+              />
+              <div className="mt-6 space-y-4 leading-7 text-slate-600">
+                <p>
+                  Os desafios da qualidade raramente aparecem de forma isolada.
+                  Documentos sem padrão, indicadores pouco claros e não
+                  conformidades recorrentes costumam revelar falhas de
+                  organização, acompanhamento e definição de responsabilidades.
+                </p>
+                <p>
+                  Reconhecer esses sinais ajuda a priorizar ações e construir um
+                  sistema mais simples, confiável e conectado à rotina da
+                  empresa.
+                </p>
+              </div>
+              <p className="mt-7 border-l-2 border-cyan-500 pl-4 text-sm font-semibold leading-6 text-slate-700">
+                O primeiro passo é entender onde estão os gargalos e quais
+                mudanças podem gerar maior impacto.
+              </p>
+            </div>
+
+            <div className="rounded-lg bg-white p-3 shadow-xl ring-1 ring-slate-200 sm:p-4">
+              <div className="rounded-lg bg-office-panel p-3 sm:p-4">
+                <div className="h-full rounded-lg bg-slate-950 p-5 text-white shadow-lg sm:p-6">
+                  <div className="flex items-start justify-between gap-4 border-b border-slate-800 pb-4">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
+                        Sinais de atenção
+                      </p>
+                      <h3 className="mt-2 max-w-[390px] text-xl font-black sm:text-2xl">
+                        Sua empresa enfrenta algum destes desafios?
+                      </h3>
+                    </div>
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-cyan-400/10 text-cyan-300">
+                      <SearchCheck size={27} />
+                    </span>
+                  </div>
+
+                  <div className="mt-5 grid gap-2.5">
+                    {qualityChallenges.map((challenge) => (
+                      <p
+                        key={challenge}
+                        className="flex items-start gap-3 rounded-lg border border-sky-300/15 bg-slate-900/80 p-3 text-sm leading-6 text-slate-300 lg:items-center lg:whitespace-nowrap lg:text-[13px] xl:text-sm"
+                      >
+                        <CheckCircle2
+                          className="mt-0.5 shrink-0 text-cyan-300"
+                          size={18}
+                        />
+                        {challenge}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -378,6 +419,10 @@ export default function Home() {
                 </p>
               ))}
             </div>
+            <p className="mt-6 border-l-2 border-cyan-300/70 pl-4 text-sm leading-6 text-slate-400">
+              Os painéis e dados apresentados são demonstrações visuais e
+              possuem valores meramente ilustrativos.
+            </p>
           </div>
 
           <DashboardShowcase />
@@ -417,7 +462,7 @@ export default function Home() {
             title="Como conduzimos cada projeto"
           />
 
-          <div className="mt-8 grid gap-4 sm:mt-10 lg:grid-cols-3 lg:gap-6">
+          <div className="mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {workSteps.map(([title, text], index) => (
               <article
                 key={title}
@@ -454,13 +499,7 @@ export default function Home() {
                   Diferenciais da QualityPro
                 </h3>
               </div>
-              <MobileExpandable
-                initialCount={4}
-                section="differentials"
-                expandLabel="Ver todos os diferenciais"
-                className="mt-5 grid gap-3"
-                buttonClassName="border border-sky-200 bg-sky-50 text-sky-700"
-              >
+              <div className="mt-5 grid gap-3">
                 {differentials.map((item) => (
                   <p
                     key={item}
@@ -472,7 +511,7 @@ export default function Home() {
                     {item}
                   </p>
                 ))}
-              </MobileExpandable>
+              </div>
             </article>
 
             <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
@@ -484,13 +523,7 @@ export default function Home() {
                   Benefícios para o cliente
                 </h3>
               </div>
-              <MobileExpandable
-                initialCount={5}
-                section="client_benefits"
-                expandLabel="Ver todos os benefícios"
-                className="mt-5 grid gap-3"
-                buttonClassName="border border-sky-200 bg-sky-50 text-sky-700"
-              >
+              <div className="mt-5 grid gap-3">
                 {clientBenefits.map((benefit) => (
                   <p
                     key={benefit}
@@ -502,7 +535,7 @@ export default function Home() {
                     {benefit}
                   </p>
                 ))}
-              </MobileExpandable>
+              </div>
             </article>
 
             <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
@@ -561,20 +594,20 @@ export default function Home() {
           <div>
             <SectionTitle
               eyebrow="Fale conosco"
-              title="Leve sua gestão da qualidade para outro nível"
+              title="Conte qual desafio sua empresa enfrenta"
             />
             <p className="mt-5 leading-7 text-slate-300">
-              Entre em contato e descubra como podemos transformar sua gestão em
-              resultados reais.
+              Envie uma breve descrição. Entraremos em contato para entender o
+              cenário e indicar os próximos passos.
             </p>
             <div className="mt-8 space-y-4 text-slate-200">
-              <p className="flex items-center gap-3">
-                <Phone className="text-cyan-300" size={20} /> (11) 99999-9999
-              </p>
-              <p className="flex items-center gap-3">
+              <a
+                href="mailto:contato@qualityprosolutions.com.br"
+                className="flex items-center gap-3 transition hover:text-cyan-300"
+              >
                 <Mail className="text-cyan-300" size={20} />
                 contato@qualityprosolutions.com.br
-              </p>
+              </a>
               <p className="flex items-center gap-3">
                 <MapPin className="text-cyan-300" size={20} /> Rio de Janeiro - RJ
               </p>
@@ -595,7 +628,12 @@ export default function Home() {
               Consultoria em Gestão da Qualidade
             </p>
             <div className="mt-5 space-y-2 font-mono text-xs text-slate-300 sm:text-sm">
-              <p>contato@qualityprosolutions.com.br</p>
+              <a
+                href="mailto:contato@qualityprosolutions.com.br"
+                className="block transition hover:text-cyan-300"
+              >
+                contato@qualityprosolutions.com.br
+              </a>
               <p>www.qualityprosolutions.com.br</p>
             </div>
           </div>
