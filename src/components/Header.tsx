@@ -68,7 +68,7 @@ export default function Header() {
 
         <nav
           aria-label="Navegação principal"
-          className="hidden items-center gap-8 text-sm font-semibold text-slate-300 lg:flex"
+          className="hidden items-center gap-8 text-sm font-semibold text-slate-300 lg:ml-8 lg:flex xl:ml-10"
         >
           {desktopNavigation.map(([label, href]) => (
             <a
