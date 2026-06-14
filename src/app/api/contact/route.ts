@@ -15,6 +15,18 @@ function cleanText(value: unknown, maxLength: number) {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
 }
 
+function hasValidBrazilianPhone(phone: string) {
+  if (!phone) {
+    return true;
+  }
+
+  const digits = phone.replace(/\D/g, "");
+  const nationalDigits =
+    digits.startsWith("55") && digits.length > 11 ? digits.slice(2) : digits;
+
+  return /^[1-9]\d{9,10}$/.test(nationalDigits);
+}
+
 function escapeHtml(value: string) {
   return value.replace(
     /[&<>"']/g,
@@ -62,11 +74,14 @@ export async function POST(request: Request) {
   if (
     name.length < 2 ||
     !emailPattern.test(email) ||
-    phone.length < 8 ||
+    !hasValidBrazilianPhone(phone) ||
     message.length < 10
   ) {
     return Response.json(
-      { message: "Revise os campos obrigatórios e tente novamente." },
+      {
+        message:
+          "Revise os campos obrigatórios. Se informar um telefone, inclua o DDD.",
+      },
       { status: 400 },
     );
   }
@@ -87,7 +102,7 @@ export async function POST(request: Request) {
 
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
-  const safePhone = escapeHtml(phone);
+  const safePhone = escapeHtml(phone || "Não informado");
   const safeCompany = escapeHtml(company || "Não informada");
   const safeMessage = escapeHtml(message).replace(/\n/g, "<br />");
 
@@ -101,7 +116,7 @@ export async function POST(request: Request) {
       text: [
         `Nome: ${name}`,
         `E-mail: ${email}`,
-        `Telefone: ${phone}`,
+        `Telefone: ${phone || "Não informado"}`,
         `Empresa: ${company || "Não informada"}`,
         "",
         "Mensagem:",

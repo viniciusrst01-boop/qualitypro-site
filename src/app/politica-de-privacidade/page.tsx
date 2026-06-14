@@ -17,7 +17,7 @@ const sections = [
   },
   {
     title: "2. Dados que podemos coletar",
-    text: "Podemos coletar nome, e-mail, telefone, empresa e mensagem quando você preenche o formulário de contato. Também podemos receber dados técnicos básicos de navegação, como páginas acessadas, origem do acesso e métricas de uso do site.",
+    text: "Podemos coletar nome, e-mail, empresa, mensagem e telefone, quando informado, por meio do formulário de contato. Também podemos receber dados técnicos básicos de navegação, como páginas acessadas, origem do acesso e métricas de uso do site.",
   },
   {
     title: "3. Como usamos os dados",

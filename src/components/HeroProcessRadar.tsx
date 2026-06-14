@@ -166,9 +166,9 @@ export default function HeroProcessRadar() {
       style={panelStyle}
     >
       <div className="flex items-center justify-between gap-2 px-3 pb-1 pt-4">
-        <h2 className="hero-radar-title whitespace-nowrap text-white">
+        <p className="hero-radar-title whitespace-nowrap text-white">
           Performance por Processo
-        </h2>
+        </p>
         <Waypoints className="shrink-0 text-sky-400" size={17} strokeWidth={2} />
       </div>
 

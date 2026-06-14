@@ -17,10 +17,10 @@ import {
 } from "lucide-react";
 import DashboardShowcase from "@/components/DashboardShowcase";
 import ContactForm from "@/components/ContactForm";
+import Header from "@/components/Header";
 import HeroProcessRadar from "@/components/HeroProcessRadar";
 import ServicesGrid from "@/components/ServicesGrid";
 import TrackedLink from "@/components/TrackedLink";
-import Image from "next/image";
 import Link from "next/link";
 
 const cases = [
@@ -31,27 +31,27 @@ const cases = [
 ];
 
 const differentials = [
-  "Atuação prática para a realidade da empresa",
-  "Soluções úteis, sem burocracia desnecessária",
-  "Qualidade como ferramenta de gestão",
-  "Estratégia técnica, clara e objetiva",
-  "Integração entre processos e resultados",
-  "Incentivo à digitalização da qualidade",
-  "Desenvolvimento de pessoas-chave",
-  "Soluções conforme a maturidade da empresa",
+  "Diagnóstico conectado à rotina da empresa",
+  "Orientação direta e aplicável",
+  "Controles proporcionais à necessidade",
+  "Integração entre documentos, processos e resultados",
+  "Comunicação clara com as equipes",
+  "Apoio à digitalização dos controles",
+  "Desenvolvimento das pessoas responsáveis",
+  "Atendimento conforme a maturidade da empresa",
 ];
 
 const clientBenefits = [
-  "Mais organização",
-  "Mais controle",
-  "Redução de falhas",
-  "Melhoria na rastreabilidade",
-  "Melhor preparação para auditorias",
-  "Desenvolvimento de equipes",
-  "Processos mais padronizados",
-  "Indicadores para decisões",
-  "Redução de desperdícios",
-  "Gestão mais funcional e sustentável",
+  "Rotinas mais organizadas",
+  "Responsabilidades mais claras",
+  "Menos falhas e retrabalho",
+  "Registros fáceis de localizar",
+  "Auditorias mais bem preparadas",
+  "Equipes orientadas para executar",
+  "Processos consistentes",
+  "Dados úteis para decidir",
+  "Melhor acompanhamento das ações",
+  "Sistema sustentável no dia a dia",
 ];
 
 const serviceModes = [
@@ -93,75 +93,6 @@ const qualityChallenges = [
   "Cada setor trabalha de uma forma diferente",
   "Os controles dependem de planilhas e processos manuais",
 ];
-
-function Header() {
-  return (
-    <>
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-cyan-400/10 bg-slate-950/80 backdrop-blur-xl shadow-lg shadow-cyan-950/20">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-5 sm:py-4">
-        <a href="#inicio" className="block">
-          <Image
-            src="/logo-optimized.webp"
-            alt="QualityPro Solutions"
-            width={600}
-            height={182}
-            priority
-            className="h-auto w-32 sm:w-44"
-          />
-        </a>
-        <nav className="hidden items-center gap-8 text-sm font-semibold text-slate-300 lg:flex">
-          <a
-             href="#inicio"
-             className="transition hover:text-cyan-300"
->
-  Início
-</a>
-          <a
-             href="#sobre"
-             className="transition hover:text-cyan-300"
->
-  Sobre
-</a>
-          <a
-             href="#servicos"
-             className="transition hover:text-cyan-300"
->
-  Serviços
-</a>
-          <a
-             href="#dashboards"
-             className="transition hover:text-cyan-300"
->
-  Dashboards
-</a>
-          <a
-             href="#cases"
-             className="transition hover:text-cyan-300"
->
-  Indicadores
-</a>
-          <a
-             href="#contato"
-             className="transition hover:text-cyan-300"
->
-  Contato
-</a>
-        </nav>
-
-        <TrackedLink
-          href="#contato"
-          eventLabel="Solicitar Consultoria"
-          eventLocation="header"
-          className="rounded-md bg-amber-400 px-2 py-2 text-[9px] font-black uppercase leading-none text-slate-950 shadow-lg shadow-amber-500/15 sm:px-5 sm:py-3 sm:text-sm sm:normal-case sm:leading-normal"
-        >
-          <span className="sm:hidden">Solicitar Consultoria</span>
-          <span className="hidden sm:inline">Solicitar Consultoria</span>
-        </TrackedLink>
-      </div>
-    </header>
-    </>
-  );
-}
 
 function SectionTitle({
   eyebrow,
@@ -237,9 +168,9 @@ export default function Home() {
           <div className="mx-auto grid max-w-7xl gap-4 px-4 py-5 sm:grid-cols-2 sm:px-5 lg:grid-cols-4">
             {[
               ["Atendimento próximo", "com método claro"],
-              ["Foco técnico", "ISO 9001"],
-              ["Estruturação", "de SGQ"],
-              ["Indicadores", "para decisão"],
+              ["Orientação técnica", "em ISO 9001"],
+              ["Processos definidos", "com responsabilidades claras"],
+              ["Indicadores úteis", "para acompanhar resultados"],
             ].map(([title, subtitle]) => (
               <div key={title} className="flex items-center gap-3">
                 <span className="grid h-10 w-10 place-items-center rounded-lg border border-cyan-300/20 text-cyan-300">
@@ -280,15 +211,9 @@ export default function Home() {
                     processos, indicadores e melhoria contínua.
                   </p>
                   <p className="mt-3 leading-7 text-slate-600">
-                    Cada projeto parte da realidade, das necessidades e do nível
-                    de maturidade da empresa. Assim, desenvolvemos controles,
-                    documentos e rotinas que possam ser realmente utilizados
-                    pelas equipes.
-                  </p>
-                  <p className="mt-3 leading-7 text-slate-600">
-                    Nosso trabalho busca tornar os processos mais claros,
-                    fortalecer a gestão e criar uma base confiável para decisões
-                    e melhorias.
+                    Cada projeto parte da realidade e do nível de maturidade da
+                    organização para criar documentos, controles e rotinas que
+                    façam sentido para as equipes e apoiem a gestão.
                   </p>
                 </div>
               </div>
@@ -307,10 +232,9 @@ export default function Home() {
                     mantidos para auditorias.
                   </p>
                   <p className="mt-3 leading-7 text-slate-600">
-                    Apoiamos empresas na construção de sistemas mais simples,
-                    organizados e sustentáveis, com responsabilidades definidas,
-                    informações confiáveis e equipes preparadas para manter a
-                    melhoria contínua.
+                    Buscamos construir sistemas compreensíveis e sustentáveis,
+                    com responsabilidades definidas e informações confiáveis
+                    para orientar o trabalho diário.
                   </p>
                 </div>
               </div>
@@ -332,20 +256,14 @@ export default function Home() {
               />
               <div className="mt-6 space-y-4 leading-7 text-slate-600">
                 <p>
-                  Os desafios da qualidade raramente aparecem de forma isolada.
-                  Documentos sem padrão, indicadores pouco claros e não
-                  conformidades recorrentes costumam revelar falhas de
-                  organização, acompanhamento e definição de responsabilidades.
-                </p>
-                <p>
-                  Reconhecer esses sinais ajuda a priorizar ações e construir um
-                  sistema mais simples, confiável e conectado à rotina da
-                  empresa.
+                  Documentos sem padrão, indicadores pouco claros e problemas
+                  recorrentes costumam ter a mesma origem: falta de método,
+                  acompanhamento ou responsabilidades bem definidas.
                 </p>
               </div>
               <p className="mt-7 border-l-2 border-cyan-500 pl-4 text-sm font-semibold leading-6 text-slate-700">
-                O primeiro passo é entender onde estão os gargalos e quais
-                mudanças podem gerar maior impacto.
+                Identificar esses sinais ajuda a escolher por onde começar e
+                quais ações podem gerar maior impacto.
               </p>
             </div>
 
@@ -391,7 +309,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
             eyebrow="Nossos serviços"
-            title="Soluções completas para elevar a gestão da qualidade"
+            title="Apoio técnico para estruturar e melhorar seu sistema de gestão"
           />
 
           <ServicesGrid />
@@ -402,16 +320,16 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-5 lg:grid-cols-[0.7fr_1.3fr] lg:gap-10">
           <div>
             <SectionTitle
-              eyebrow="Dashboards visuais"
-              title="Transformamos dados em decisões estratégicas"
+              eyebrow="Indicadores organizados"
+              title="Organizamos indicadores para apoiar decisões"
             />
             <div className="mt-8 grid gap-3">
               {[
                 "Painéis de acompanhamento",
-                "KPIs industriais",
-                "Indicadores ISO 9001",
-                "Gestão de não conformidades",
-                "Planos de ação",
+                "Indicadores operacionais e da qualidade",
+                "Não conformidades e ações",
+                "Metas e prazos",
+                "Análise de tendências",
               ].map((item) => (
                 <p key={item} className="flex items-center gap-3 text-slate-300">
                   <CheckCircle2 className="text-cyan-300" size={20} />
@@ -578,12 +496,8 @@ export default function Home() {
               <TrendingUp size={23} />
             </span>
             <p className="text-sm font-semibold leading-7 text-slate-700 sm:text-base">
-              A QualityPro Solutions acredita que a qualidade deve ser vista
-              como elemento de sustentação da empresa, e não apenas como
-              evidência documental. Nosso compromisso é entregar soluções
-              técnicas, organizadas e aplicáveis, ajudando empresas a construir
-              sistemas de gestão mais maduros, eficientes e conectados aos
-              resultados do negócio.
+              Nosso compromisso é transformar requisitos e necessidades em
+              práticas que a equipe consiga entender, utilizar e manter.
             </p>
           </div>
         </div>
@@ -634,7 +548,12 @@ export default function Home() {
               >
                 contato@qualityprosolutions.com.br
               </a>
-              <p>www.qualityprosolutions.com.br</p>
+              <a
+                href="https://www.qualityprosolutions.com.br"
+                className="block transition hover:text-cyan-300"
+              >
+                www.qualityprosolutions.com.br
+              </a>
             </div>
           </div>
 

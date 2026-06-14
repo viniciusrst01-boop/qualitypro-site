@@ -74,13 +74,13 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
       className="grid gap-4 rounded-lg border border-sky-300/15 bg-slate-950/45 p-4 sm:p-6"
     >
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid items-start gap-4 sm:grid-cols-2">
         <label className="grid gap-2">
-          <span className="sr-only">Nome</span>
+          <span className="text-sm font-semibold text-slate-200">Nome</span>
           <input
             name="name"
             type="text"
-            placeholder="Nome"
+            placeholder="Seu nome"
             autoComplete="name"
             minLength={2}
             maxLength={100}
@@ -90,11 +90,11 @@ export default function ContactForm() {
         </label>
 
         <label className="grid gap-2">
-          <span className="sr-only">E-mail</span>
+          <span className="text-sm font-semibold text-slate-200">E-mail</span>
           <input
             name="email"
             type="email"
-            placeholder="E-mail"
+            placeholder="Seu e-mail"
             autoComplete="email"
             maxLength={160}
             required
@@ -103,25 +103,36 @@ export default function ContactForm() {
         </label>
 
         <label className="grid gap-2">
-          <span className="sr-only">Telefone</span>
+          <span className="text-sm font-semibold text-slate-200">
+            Telefone{" "}
+            <span className="font-normal text-slate-400">(opcional)</span>
+          </span>
           <input
             name="phone"
             type="tel"
-            placeholder="Telefone"
+            placeholder="(21) 99999-9999"
             autoComplete="tel"
             inputMode="tel"
-            maxLength={30}
-            required
+            maxLength={20}
+            pattern="(?:\+?55\s?)?\(?[1-9]{2}\)?\s?\d{4,5}[-\s]?\d{4}"
+            title="Informe o DDD e o número, por exemplo: (21) 99999-9999."
+            aria-describedby="phone-help"
             className="input-field"
           />
+          <span id="phone-help" className="text-xs leading-5 text-slate-400">
+            Se preencher, inclua o DDD.
+          </span>
         </label>
 
         <label className="grid gap-2">
-          <span className="sr-only">Empresa</span>
+          <span className="text-sm font-semibold text-slate-200">
+            Empresa{" "}
+            <span className="font-normal text-slate-400">(opcional)</span>
+          </span>
           <input
             name="company"
             type="text"
-            placeholder="Empresa"
+            placeholder="Nome da empresa"
             autoComplete="organization"
             maxLength={120}
             className="input-field"
@@ -130,7 +141,7 @@ export default function ContactForm() {
       </div>
 
       <label className="grid gap-2">
-        <span className="sr-only">Mensagem</span>
+        <span className="text-sm font-semibold text-slate-200">Mensagem</span>
         <textarea
           name="message"
           placeholder="Como podemos ajudar sua empresa?"

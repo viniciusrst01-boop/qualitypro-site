@@ -230,6 +230,7 @@ export default function ServicesGrid() {
 
               <div
                 id={serviceDetailsId}
+                aria-hidden={!isExpanded}
                 className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
                   isExpanded
                     ? "grid-rows-[1fr] opacity-100"
