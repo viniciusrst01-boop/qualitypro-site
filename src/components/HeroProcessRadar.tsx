@@ -57,7 +57,7 @@ const radarAxes = [
 const minimumHighlightedValue = 88;
 const highlightedValueMargin = 8;
 const panelStyle: CSSProperties = {
-  right: "clamp(18px, 1.25vw, 24px)",
+  right: "clamp(10px, 0.85vw, 16px)",
   top: "41%",
   width: "clamp(215px, 12.4vw, 235px)",
   aspectRatio: "250 / 258",
