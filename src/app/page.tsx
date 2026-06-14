@@ -261,8 +261,8 @@ export default function Home() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
-            eyebrow="Sobre a empresa"
-            title="Gestão da qualidade estruturada para funcionar na prática"
+            eyebrow="Sobre nós"
+            title="Conheça a QualityPro e o propósito que orienta nosso trabalho"
           />
 
           <div className="mt-8 grid items-stretch gap-4 lg:grid-cols-2 lg:gap-6">
@@ -324,7 +324,7 @@ export default function Home() {
         className="scroll-mt-24 bg-slate-50 py-14 text-slate-950 sm:scroll-mt-28 sm:py-20"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
-          <div className="grid items-start gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-12">
+          <div className="grid items-start gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
             <div className="lg:sticky lg:top-28">
               <SectionTitle
                 eyebrow="Desafios da qualidade"
@@ -349,7 +349,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="rounded-lg bg-white p-3 shadow-xl ring-1 ring-slate-200 sm:p-4">
+            <div className="rounded-lg bg-white p-3 shadow-xl ring-1 ring-slate-200 sm:p-4 lg:w-full lg:max-w-[620px] lg:justify-self-end">
               <div className="rounded-lg bg-office-panel p-3 sm:p-4">
                 <div className="h-full rounded-lg bg-slate-950 p-5 text-white shadow-lg sm:p-6">
                   <div className="flex items-start justify-between gap-4 border-b border-slate-800 pb-4">
