@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { Waypoints } from "lucide-react";
 import {
-  PolarGrid,
-  Radar,
-  RadarChart,
-  ResponsiveContainer,
-} from "recharts";
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
+import { Waypoints } from "lucide-react";
 
 const radarFrames = [
   [
@@ -47,18 +46,6 @@ const radarFrames = [
   ],
 ];
 
-const heroImage = {
-  width: 2560,
-  height: 1441,
-};
-
-const originalPanel = {
-  x: 2227,
-  y: 610,
-  width: 310,
-  height: 320,
-};
-
 const radarAxes = [
   { process: "Manufatura", x: 50, y: 15.5 },
   { process: "Qualidade", x: 77.5, y: 38.7 },
@@ -69,12 +56,16 @@ const radarAxes = [
 
 const minimumHighlightedValue = 88;
 const highlightedValueMargin = 8;
+const panelStyle: CSSProperties = {
+  right: "clamp(18px, 1.25vw, 24px)",
+  top: "41%",
+  width: "clamp(215px, 12.4vw, 235px)",
+  aspectRatio: "250 / 258",
+};
 
 export default function HeroProcessRadar() {
-  const [isDesktop, setIsDesktop] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const [radarData, setRadarData] = useState(radarFrames[0]);
-  const [panelStyle, setPanelStyle] = useState<CSSProperties>();
   const radarDataRef = useRef(radarFrames[0]);
   const frameIndexRef = useRef(0);
   const maximumValue = Math.max(...radarData.map(({ value }) => value));
@@ -91,6 +82,14 @@ export default function HeroProcessRadar() {
   const radarValueByProcess = new Map(
     radarData.map(({ process, value }) => [process, value]),
   );
+  const radarPoints = radarAxes
+    .map(({ process, x, y }) => {
+      const value = radarValueByProcess.get(process) ?? 0;
+      return `${50 + (x - 50) * (value / 100)},${
+        49 + (y - 49) * (value / 100)
+      }`;
+    })
+    .join(" ");
 
   useEffect(() => {
     const desktopQuery = window.matchMedia("(min-width: 1024px)");
@@ -99,7 +98,6 @@ export default function HeroProcessRadar() {
     );
 
     const syncPreferences = () => {
-      setIsDesktop(desktopQuery.matches);
       setShouldAnimate(desktopQuery.matches && motionQuery.matches);
     };
 
@@ -112,43 +110,6 @@ export default function HeroProcessRadar() {
       motionQuery.removeEventListener("change", syncPreferences);
     };
   }, []);
-
-  useEffect(() => {
-    if (!isDesktop) {
-      return;
-    }
-
-    const hero = document.getElementById("inicio");
-
-    if (!hero) {
-      return;
-    }
-
-    const positionPanel = () => {
-      const { width, height } = hero.getBoundingClientRect();
-      const imageScale = Math.max(
-        width / heroImage.width,
-        height / heroImage.height,
-      );
-      const renderedWidth = heroImage.width * imageScale;
-      const renderedHeight = heroImage.height * imageScale;
-      const offsetX = (width - renderedWidth) / 2;
-      const offsetY = (height - renderedHeight) / 2;
-
-      setPanelStyle({
-        left: Math.round(offsetX + originalPanel.x * imageScale),
-        top: Math.round(offsetY + originalPanel.y * imageScale),
-        width: Math.round(originalPanel.width * imageScale),
-        height: Math.round(originalPanel.height * imageScale),
-      });
-    };
-
-    const observer = new ResizeObserver(positionPanel);
-    observer.observe(hero);
-    positionPanel();
-
-    return () => observer.disconnect();
-  }, [isDesktop]);
 
   useEffect(() => {
     if (!shouldAnimate) {
@@ -197,10 +158,6 @@ export default function HeroProcessRadar() {
       window.clearTimeout(transitionTimer);
     };
   }, [shouldAnimate]);
-
-  if (!isDesktop || !panelStyle) {
-    return null;
-  }
 
   return (
     <aside
@@ -265,6 +222,21 @@ export default function HeroProcessRadar() {
             preserveAspectRatio="none"
             viewBox="0 0 100 100"
           >
+            {[0.25, 0.5, 0.75, 1].map((level) => (
+              <polygon
+                key={level}
+                fill="none"
+                points={radarAxes
+                  .map(
+                    ({ x, y }) =>
+                      `${50 + (x - 50) * level},${49 + (y - 49) * level}`,
+                  )
+                  .join(" ")}
+                stroke="rgba(125, 211, 252, 0.24)"
+                strokeWidth="0.45"
+              />
+            ))}
+
             {radarAxes.map(({ process, x, y }) => {
               const isActive = activeProcessSet.has(process);
               const value = radarValueByProcess.get(process) ?? 0;
@@ -273,6 +245,15 @@ export default function HeroProcessRadar() {
 
               return (
                 <g key={process}>
+                  <line
+                    opacity="0.42"
+                    stroke="rgba(125, 211, 252, 0.24)"
+                    strokeWidth="0.38"
+                    x1="50"
+                    x2={x}
+                    y1="49"
+                    y2={y}
+                  />
                   <line
                     className={
                       isActive
@@ -285,58 +266,48 @@ export default function HeroProcessRadar() {
                     y2={y}
                   />
                   {isActive ? (
-                    <>
-                      <ellipse
-                        className="hero-radar-vertex-halo"
-                        cx={pointX}
-                        cy={pointY}
-                        rx="2.4"
-                        ry="2.7"
-                      />
-                      <ellipse
-                        className="hero-radar-vertex-active"
-                        cx={pointX}
-                        cy={pointY}
-                        rx="0.95"
-                        ry="1.1"
-                      />
-                    </>
+                    <ellipse
+                      className="hero-radar-vertex-halo"
+                      cx={pointX}
+                      cy={pointY}
+                      rx="2.4"
+                      ry="2.7"
+                    />
                   ) : null}
                 </g>
               );
             })}
-          </svg>
 
-          <div className="absolute inset-0 z-[2]">
-            <ResponsiveContainer width="100%" height="100%">
-              <RadarChart
-                data={radarData}
-                cx="50%"
-                cy="49%"
-                outerRadius="67%"
-              >
-                <PolarGrid
-                  gridType="polygon"
-                  radialLines
-                  stroke="rgba(125, 211, 252, 0.24)"
+            <polygon
+              fill="#0ea5e9"
+              fillOpacity="0.42"
+              points={radarPoints}
+              stroke="#38bdf8"
+              strokeLinejoin="round"
+              strokeWidth="1.2"
+            />
+
+            {radarAxes.map(({ process, x, y }) => {
+              const value = radarValueByProcess.get(process) ?? 0;
+              const pointX = 50 + (x - 50) * (value / 100);
+              const pointY = 49 + (y - 49) * (value / 100);
+              const isActive = activeProcessSet.has(process);
+
+              return (
+                <ellipse
+                  key={process}
+                  className={isActive ? "hero-radar-vertex-active" : ""}
+                  cx={pointX}
+                  cy={pointY}
+                  fill={isActive ? undefined : "#67e8f9"}
+                  rx="0.95"
+                  ry="1.1"
+                  stroke={isActive ? undefined : "#e0f2fe"}
+                  strokeWidth={isActive ? undefined : "0.45"}
                 />
-                <Radar
-                  dataKey="value"
-                  stroke="#38bdf8"
-                  strokeWidth={2}
-                  fill="#0ea5e9"
-                  fillOpacity={0.42}
-                  dot={{
-                    r: 2.5,
-                    fill: "#67e8f9",
-                    stroke: "#e0f2fe",
-                    strokeWidth: 1,
-                  }}
-                  isAnimationActive={false}
-                />
-              </RadarChart>
-            </ResponsiveContainer>
-          </div>
+              );
+            })}
+          </svg>
         </div>
       </div>
     </aside>
