@@ -74,9 +74,9 @@ export default function Header() {
             <a
               key={href}
               href={href}
-              className="transition hover:text-cyan-300"
+              className="group py-2 transition hover:text-cyan-300 focus-visible:text-cyan-300"
             >
-              {label}
+              <span className="nav-link-underline">{label}</span>
             </a>
           ))}
         </nav>

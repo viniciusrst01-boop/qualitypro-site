@@ -3,52 +3,21 @@
 import { track } from "@vercel/analytics";
 import {
   BadgeCheck,
-  BarChart3,
   CheckCircle2,
   ChevronDown,
   ClipboardCheck,
   Presentation,
   SearchCheck,
-  Settings2,
   TrendingUp,
   Truck,
+  Wrench,
   Workflow,
 } from "lucide-react";
 import { useId, useState } from "react";
 
 const services = [
   {
-    title: "Diagnóstico SGQ",
-    text: "Avaliação da situação atual do Sistema de Gestão da Qualidade, identificando lacunas, riscos, fragilidades e oportunidades de melhoria.",
-    detail:
-      "Realizamos um levantamento da rotina, dos processos e dos controles existentes para mostrar com clareza o que já funciona e o que precisa ser priorizado.",
-    deliverables: [
-      "Entrevistas e análise da rotina da empresa",
-      "Avaliação de documentos e controles existentes",
-      "Identificação de lacunas, riscos e prioridades",
-      "Plano inicial de melhorias recomendado",
-    ],
-    result:
-      "Uma visão objetiva do cenário atual para orientar os próximos passos.",
-    icon: SearchCheck,
-  },
-  {
-    title: "Implantação de SGQ",
-    text: "Estruturação completa do Sistema de Gestão da Qualidade, conforme o contexto da organização, com escopo, responsabilidades e rotinas de gestão.",
-    detail:
-      "Estruturamos o sistema de forma compatível com o porte, a operação e a maturidade da empresa, evitando controles que não agregam valor à rotina.",
-    deliverables: [
-      "Definição do escopo e dos processos do SGQ",
-      "Distribuição de responsabilidades e autoridades",
-      "Criação de documentos, registros e controles",
-      "Implantação de rotinas de acompanhamento",
-    ],
-    result:
-      "Um sistema organizado, aplicável e integrado à gestão da empresa.",
-    icon: Settings2,
-  },
-  {
-    title: "Implantação ISO 9001",
+    title: "Consultoria para implantação ISO 9001",
     text: "Apoio técnico para implantação ou adequação do sistema aos requisitos da ISO 9001, preparando a empresa para auditorias e certificação.",
     detail:
       "Traduzimos os requisitos da norma para a realidade da organização e acompanhamos a adequação dos processos até a preparação para as auditorias.",
@@ -63,7 +32,7 @@ const services = [
     icon: BadgeCheck,
   },
   {
-    title: "Auditoria Interna | SGI",
+    title: "Auditoria Interna",
     text: "Planejamento e execução de auditorias internas com foco em evidências, conformidade, eficácia, riscos e oportunidades de melhoria.",
     detail:
       "Avaliamos se os processos e controles estão sendo aplicados e se permanecem eficazes, registrando evidências e oportunidades de evolução.",
@@ -76,6 +45,21 @@ const services = [
     result:
       "Uma avaliação independente para fortalecer o sistema antes das auditorias externas.",
     icon: ClipboardCheck,
+  },
+  {
+    title: "Consultoria de Manutenção",
+    text: "Estruturação das rotinas de manutenção, controles, registros, planos preventivos e oportunidades de melhoria para maior confiabilidade operacional.",
+    detail:
+      "Apoiamos a organização das rotinas de manutenção para que planos, registros, evidências e controles sejam acompanhados de forma consistente.",
+    deliverables: [
+      "Estruturação de planos e registros de manutenção",
+      "Análise de aderência às rotinas definidas",
+      "Identificação de riscos e oportunidades",
+      "Recomendações para aumentar a confiabilidade",
+    ],
+    result:
+      "Rotinas de manutenção mais controladas, rastreáveis e alinhadas à operação.",
+    icon: Wrench,
   },
   {
     title: "Auditoria de Fornecedor",
@@ -93,49 +77,19 @@ const services = [
     icon: Truck,
   },
   {
-    title: "Treinamentos",
-    text: "Capacitação prática e técnica em qualidade, ISO 9001, auditorias, não conformidades, indicadores, ferramentas da qualidade e melhoria contínua.",
+    title: "Consultoria para implantação SGQ",
+    text: "Estruturação completa do Sistema de Gestão da Qualidade, conforme o contexto da organização, com escopo, responsabilidades e rotinas de gestão.",
     detail:
-      "Preparamos conteúdos aplicáveis à rotina da empresa, conectando conceitos técnicos a exemplos e situações vividas pelas equipes.",
+      "Estruturamos o sistema de forma compatível com o porte, a operação e a maturidade da empresa, evitando controles que não agregam valor à rotina.",
     deliverables: [
-      "Conteúdo adaptado ao público e ao objetivo",
-      "Material de apoio e exercícios práticos",
-      "Aplicação online, presencial ou híbrida",
-      "Registro de participação e avaliação",
+      "Definição do escopo e dos processos do SGQ",
+      "Distribuição de responsabilidades e autoridades",
+      "Criação de documentos, registros e controles",
+      "Implantação de rotinas de acompanhamento",
     ],
     result:
-      "Equipes mais preparadas para aplicar os controles e sustentar as melhorias.",
-    icon: Presentation,
-  },
-  {
-    title: "Padronização de Processos",
-    text: "Mapeamento, revisão e criação de procedimentos, instruções de trabalho, fluxogramas, formulários e padrões operacionais.",
-    detail:
-      "Organizamos a forma de executar e registrar as atividades para reduzir variações, dúvidas, retrabalho e dependência de conhecimento informal.",
-    deliverables: [
-      "Mapeamento do fluxo e das responsabilidades",
-      "Procedimentos e instruções de trabalho",
-      "Fluxogramas, formulários e registros",
-      "Organização de versões e aprovações",
-    ],
-    result:
-      "Processos mais claros, repetíveis e fáceis de acompanhar.",
-    icon: Workflow,
-  },
-  {
-    title: "Planilhas de Controle e Indicadores",
-    text: "Desenvolvimento de controles, planilhas e indicadores para gestão visual e apoio à tomada de decisões.",
-    detail:
-      "Criamos controles objetivos para consolidar informações importantes e facilitar o acompanhamento dos resultados sem depender de ferramentas complexas.",
-    deliverables: [
-      "Definição dos indicadores e critérios de medição",
-      "Planilhas de registro e acompanhamento",
-      "Gráficos e painéis visuais de controle",
-      "Orientação para atualização e análise dos dados",
-    ],
-    result:
-      "Informações mais organizadas e úteis para acompanhar tendências e tomar decisões.",
-    icon: BarChart3,
+      "Um sistema organizado, aplicável e integrado à gestão da empresa.",
+    icon: SearchCheck,
   },
   {
     title: "Projetos de Melhoria Contínua",
@@ -151,6 +105,51 @@ const services = [
     result:
       "Melhorias sustentadas por evidências, com menos reincidência e maior controle.",
     icon: TrendingUp,
+  },
+  {
+    title: "Treinamentos",
+    text: "Capacitação prática e técnica em qualidade, ISO 9001, auditorias, não conformidades, indicadores, ferramentas da qualidade e melhoria contínua.",
+    detail:
+      "Preparamos conteúdos aplicáveis à rotina da empresa, conectando conceitos técnicos a exemplos e situações vividas pelas equipes.",
+    deliverables: [
+      "Conteúdo adaptado ao público e ao objetivo",
+      "Material de apoio e exercícios práticos",
+      "Aplicação online, presencial ou híbrida",
+      "Registro de participação e avaliação",
+    ],
+    result:
+      "Equipes mais preparadas para aplicar os controles e sustentar as melhorias.",
+    icon: Presentation,
+  },
+  {
+    title: "Diagnóstico SGQ",
+    text: "Avaliação da situação atual do Sistema de Gestão da Qualidade, identificando lacunas, riscos, fragilidades e oportunidades de melhoria.",
+    detail:
+      "Realizamos um levantamento da rotina, dos processos e dos controles existentes para mostrar com clareza o que já funciona e o que precisa ser priorizado.",
+    deliverables: [
+      "Entrevistas e análise da rotina da empresa",
+      "Avaliação de documentos e controles existentes",
+      "Identificação de lacunas, riscos e prioridades",
+      "Plano inicial de melhorias recomendado",
+    ],
+    result:
+      "Uma visão objetiva do cenário atual para orientar os próximos passos.",
+    icon: SearchCheck,
+  },
+  {
+    title: "Padronização de Processos",
+    text: "Mapeamento, revisão e criação de procedimentos, instruções de trabalho, fluxogramas, formulários e padrões operacionais.",
+    detail:
+      "Organizamos a forma de executar e registrar as atividades para reduzir variações, dúvidas, retrabalho e dependência de conhecimento informal.",
+    deliverables: [
+      "Mapeamento do fluxo e das responsabilidades",
+      "Procedimentos e instruções de trabalho",
+      "Fluxogramas, formulários e registros",
+      "Organização de versões e aprovações",
+    ],
+    result:
+      "Processos mais claros, repetíveis e fáceis de acompanhar.",
+    icon: Workflow,
   },
 ];
 

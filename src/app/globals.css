@@ -238,6 +238,35 @@ body {
     linear-gradient(135deg, #07182f, #0b3a65);
 }
 
+.nav-link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-link-underline::after {
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  content: "";
+  background: #67e8f9;
+  border-radius: 9999px;
+  opacity: 0;
+  transform: translateY(1px);
+  transition:
+    width 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 260ms ease,
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .nav-link-underline::after,
+.group:focus-visible .nav-link-underline::after {
+  width: 100%;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 a {
   transition:
     color 180ms ease,
