@@ -275,11 +275,6 @@ a {
     transform 180ms ease;
 }
 
-a:hover,
-button:hover {
-  transform: translateY(-1px);
-}
-
 .input-field {
   width: 100%;
   border-radius: 8px;
