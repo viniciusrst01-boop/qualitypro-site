@@ -159,9 +159,30 @@ export default function ServicesGrid() {
   const detailsId = useId();
   const initialMobileCount = 3;
 
-  function toggleService(index: number) {
+  function revealServiceCard(card: HTMLElement | null) {
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+    const topLimit = 96;
+    const bottomLimit = window.innerHeight - 24;
+    if (rect.bottom > bottomLimit || rect.top < topLimit) {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      card.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: rect.bottom > bottomLimit ? "end" : "start",
+      });
+    }
+  }
+
+  function toggleService(index: number, card: HTMLElement | null) {
     const nextIndex = activeIndex === index ? null : index;
     setActiveIndex(nextIndex);
+    if (nextIndex !== null) {
+      window.setTimeout(() => revealServiceCard(card), 380);
+    }
     track("service_card_toggle", {
       service: services[index].title,
       action: nextIndex === null ? "collapse" : "expand",
@@ -208,7 +229,9 @@ export default function ServicesGrid() {
                 data-service-card={index}
                 aria-expanded={isExpanded}
                 aria-controls={serviceDetailsId}
-                onClick={() => toggleService(index)}
+                onClick={(event) =>
+                  toggleService(index, event.currentTarget.closest("article"))
+                }
                 className="group w-full cursor-pointer p-5 text-left focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-cyan-300 sm:p-6"
               >
                 <div className="flex items-start justify-between gap-5">
@@ -230,6 +253,15 @@ export default function ServicesGrid() {
               <div
                 id={serviceDetailsId}
                 aria-hidden={!isExpanded}
+                onTransitionEnd={(event) => {
+                  if (
+                    isExpanded &&
+                    event.target === event.currentTarget &&
+                    event.propertyName === "grid-template-rows"
+                  ) {
+                    revealServiceCard(event.currentTarget.closest("article"));
+                  }
+                }}
                 className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
                   isExpanded
                     ? "grid-rows-[1fr] opacity-100"
