@@ -49,7 +49,7 @@ export default function Header() {
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-cyan-400/10 bg-slate-950/80 shadow-lg shadow-cyan-950/20 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-5 sm:py-4">
+      <div className="qhd-header-inner mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-5 sm:py-4">
         <a
           href="#inicio"
           className="block shrink-0"
@@ -62,13 +62,13 @@ export default function Header() {
             width={600}
             height={182}
             priority
-            className="h-auto w-28 sm:w-44"
+            className="qhd-header-logo h-auto w-28 sm:w-44"
           />
         </a>
 
         <nav
           aria-label="Navegação principal"
-          className="hidden items-center gap-8 text-sm font-semibold text-slate-300 lg:ml-8 lg:flex xl:ml-10"
+          className="qhd-header-nav hidden items-center gap-8 text-sm font-semibold text-slate-300 lg:ml-8 lg:flex xl:ml-10"
         >
           {desktopNavigation.map(([label, href]) => (
             <a
@@ -98,7 +98,7 @@ export default function Header() {
             eventLabel="Solicitar Consultoria"
             eventLocation="header"
             onClick={closeMenu}
-            className="whitespace-nowrap rounded-md bg-amber-400 px-2 py-2 text-[9px] font-black uppercase leading-none text-slate-950 shadow-lg shadow-amber-500/15 sm:px-5 sm:py-3 sm:text-sm sm:normal-case sm:leading-normal"
+            className="qhd-header-cta whitespace-nowrap rounded-md bg-amber-400 px-2 py-2 text-[9px] font-black uppercase leading-none text-slate-950 shadow-lg shadow-amber-500/15 sm:px-5 sm:py-3 sm:text-sm sm:normal-case sm:leading-normal"
           >
             Solicitar Consultoria
           </TrackedLink>

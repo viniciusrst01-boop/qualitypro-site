@@ -63,9 +63,17 @@ const panelStyle: CSSProperties = {
   aspectRatio: "250 / 258",
 };
 
-export default function HeroProcessRadar() {
-  const [shouldAnimate, setShouldAnimate] = useState(false);
+type HeroProcessRadarProps = {
+  placement?: "hero" | "section";
+};
+
+export default function HeroProcessRadar({
+  placement = "hero",
+}: HeroProcessRadarProps) {
+  const [canAnimate, setCanAnimate] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const [radarData, setRadarData] = useState(radarFrames[0]);
+  const panelRef = useRef<HTMLElement>(null);
   const radarDataRef = useRef(radarFrames[0]);
   const frameIndexRef = useRef(0);
   const maximumValue = Math.max(...radarData.map(({ value }) => value));
@@ -98,7 +106,7 @@ export default function HeroProcessRadar() {
     );
 
     const syncPreferences = () => {
-      setShouldAnimate(desktopQuery.matches && motionQuery.matches);
+      setCanAnimate(desktopQuery.matches && motionQuery.matches);
     };
 
     syncPreferences();
@@ -112,7 +120,24 @@ export default function HeroProcessRadar() {
   }, []);
 
   useEffect(() => {
-    if (!shouldAnimate) {
+    const panel = panelRef.current;
+
+    if (!panel || typeof IntersectionObserver === "undefined") {
+      setIsInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.25 },
+    );
+
+    observer.observe(panel);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!canAnimate || !isInView) {
       return;
     }
 
@@ -157,19 +182,30 @@ export default function HeroProcessRadar() {
       window.cancelAnimationFrame(animationFrame);
       window.clearTimeout(transitionTimer);
     };
-  }, [shouldAnimate]);
+  }, [canAnimate, isInView]);
+
+  const isSectionPlacement = placement === "section";
 
   return (
     <aside
+      ref={panelRef}
       aria-label="Desempenho dos processos"
-      className="hero-radar-panel pointer-events-none absolute z-20 flex flex-col overflow-hidden border border-sky-200/65 bg-[#031127] shadow-[0_18px_50px_rgba(0,0,0,0.5),0_0_28px_rgba(14,165,233,0.14)]"
-      style={panelStyle}
+      className={`hero-radar-panel pointer-events-none z-20 flex flex-col overflow-hidden ${
+        isSectionPlacement
+          ? "process-radar-section relative mx-auto aspect-[250/258] w-full max-w-[330px] border-0 bg-transparent shadow-none"
+          : "absolute border border-sky-200/65 bg-[#031127] shadow-[0_18px_50px_rgba(0,0,0,0.5),0_0_28px_rgba(14,165,233,0.14)]"
+      }`}
+      style={isSectionPlacement ? undefined : panelStyle}
     >
-      <div className="flex items-center justify-between gap-2 px-3 pb-1 pt-4">
-        <p className="hero-radar-title whitespace-nowrap text-white">
+      <div className="relative flex items-center justify-center px-3 pb-1 pt-4">
+        <p className="hero-radar-title whitespace-nowrap text-center text-white">
           Performance por Processo
         </p>
-        <Waypoints className="shrink-0 text-sky-400" size={17} strokeWidth={2} />
+        <Waypoints
+          className="absolute right-3 shrink-0 text-sky-400"
+          size={17}
+          strokeWidth={2}
+        />
       </div>
 
       <div className="hero-radar-chart relative min-h-0 w-full flex-1 px-4 pb-3 pt-1">

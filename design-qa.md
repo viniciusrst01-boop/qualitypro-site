@@ -1,44 +1,50 @@
-# Design QA - Hero Process Radar
+# Design QA - Hero QualityPro
 
-- Source visual truth: `C:\Users\ADMINI~1\AppData\Local\Temp\codex-clipboard-444a1220-26cc-4872-a279-e7fcb4167b71.png`
-- Implementation screenshot: `C:\Users\Administrator\AppData\Local\Temp\qualitypro-hero-final.png`
-- Focused comparison: `C:\Users\Administrator\AppData\Local\Temp\qualitypro-hero-comparison.png`
-- Viewport: 1280 x 720
-- State: desktop hero, radar visible after entrance animation
+## Visual truth
 
-## Full-view comparison evidence
+- Reference: `V:\Downloads\ChatGPT Image 19 de jun. de 2026, 15_04_08\ChatGPT Image 19 de jun. de 2026, 15_04_08.png`
+- Implementation capture: `C:\Users\Administrator\AppData\Local\Temp\qualitypro-hero-validated.png`
+- Comparison: `C:\Users\Administrator\AppData\Local\Temp\qualitypro-hero-comparison-final.png`
+- Viewport: 1280 x 720, desktop, initial hero state.
 
-The animated panel occupies the same visual role as the original static panel: it is attached to the right side of the notebook, has a near-square proportion, rounded corners, a dark blue surface, a light cyan border, and matching perspective.
+## Checks
 
-## Focused region comparison evidence
+- Background composition preserves the industrial meeting scene.
+- Animated dashboard is smaller, visually behind the people, and does not require foreground cutouts.
+- Dashboard content remains readable and its bars animate without moving the surrounding layout.
+- Current desktop panel bounds are approximately 349 x 275 px at position
+  716 x 92 in a 1280 x 720 viewport.
+- The complete action-status list remains inside the compact panel without clipping.
+- Hero copy retains strong contrast over the image.
+- The hero contains only the `Ver Serviços` action; `Solicitar Consultoria` remains in the header as requested.
+- Animated dashboard is disabled below the desktop breakpoint.
+- No horizontal overflow was observed in the validated desktop capture.
+- At 2560 x 1440, the header, hero copy, animated dashboard, and service cards
+  scale together and use the available width without horizontal overflow.
+- QHD dashboard bounds are approximately 656 x 496 px at position 1605 x 184.
 
-The side-by-side crop confirms that the title, five process labels, polygon grid, blue radar fill, perspective, corner radius, and overall density match the supplied reference closely. The new opaque panel covers the static radar area beneath it.
+## Intentional differences
 
-## Required fidelity surfaces
+- The dashboard is smaller and farther in the background than the original mockup, following the latest user feedback.
+- Person cutouts were removed because they produced visible clipping artifacts.
+- The duplicate hero consultation button from the mockup was omitted.
 
-- Fonts and typography: compact white title and small process labels match the visual hierarchy of the reference.
-- Spacing and layout rhythm: title spacing, chart centering, panel proportion, and exterior placement are consistent with the reference.
-- Colors and visual tokens: dark navy surface, cyan outline, blue radar fill, and pale blue labels integrate with the existing hero.
-- Image quality and asset fidelity: the desktop hero now uses a 2560 px WebP with careful sharpening and compression; mobile retains the lighter optimized asset.
-- Copy and content: title and process labels match the supplied visual.
+## Result
 
-## Findings
+Passed. No remaining P0, P1, or P2 visual issues were found in the requested hero adjustment.
 
-No actionable P0, P1, or P2 differences remain.
+## Dashboard content update - 21/06/2026
 
-## Patches made
+- Reference: `C:\Users\ADMINI~1\AppData\Local\Temp\codex-clipboard-9a6c2a71-36ce-420f-aa41-0da5b878943f.png`
+- Implementation capture: `C:\Users\Administrator\AppData\Local\Temp\qualitypro-dashboard-reference-update.png`
+- The existing dashboard container dimensions, responsive transforms, and
+  position rules were preserved.
+- Internal content now follows the reference hierarchy: SGQ summary rings,
+  nonconformities, process performance, ISO 9001 requirement compliance,
+  action plan, latest occurrences, and key indicators.
+- All five chart surfaces render and animate inside the existing panel.
+- Measured layout dimensions equal scroll dimensions (`518 x 358` before the
+  existing visual transform), so no internal overflow or clipping is present.
+- Lint and production build pass.
 
-- Replaced the desktop hero background with a sharper 2560 px WebP.
-- Added an animated radar chart with three smoothly transitioning data states.
-- Matched the original panel's square proportion, rounded border, perspective, and placement.
-- Disabled the animated component below 1024 px and for reduced-motion preferences.
-- Kept the lighter background image on mobile.
-
-## Verification
-
-- `npm run lint`: passed.
-- `npm run build`: passed.
-- Desktop radar path changes automatically between animation frames.
-- Mobile viewport 390 x 844: animated panel is not rendered and no horizontal overflow is introduced.
-
-final result: passed
+Final result: passed.

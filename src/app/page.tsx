@@ -1,8 +1,10 @@
 import {
   ArrowRight,
   Award,
+  BadgeCheck,
   Building2,
   CheckCircle2,
+  ClipboardCheck,
   Blend,
   Headphones,
   HeartHandshake,
@@ -10,18 +12,48 @@ import {
   MapPin,
   Monitor,
   SearchCheck,
-  ShieldCheck,
   Target,
   TrendingUp,
   UsersRound,
+  Workflow,
+  Wrench,
 } from "lucide-react";
 import DashboardShowcase from "@/components/DashboardShowcase";
 import ContactForm from "@/components/ContactForm";
 import Header from "@/components/Header";
+import HeroQualityDashboard from "@/components/HeroQualityDashboard";
 import HeroProcessRadar from "@/components/HeroProcessRadar";
 import ServicesGrid from "@/components/ServicesGrid";
 import TrackedLink from "@/components/TrackedLink";
 import Link from "next/link";
+
+const heroServices = [
+  {
+    title: "ISO 9001",
+    text: "Implantação e adequação à norma com foco em resultados.",
+    icon: BadgeCheck,
+  },
+  {
+    title: "Auditoria Interna",
+    text: "Avaliação imparcial para identificar oportunidades de melhoria.",
+    icon: ClipboardCheck,
+  },
+  {
+    title: "Consultoria de Manutenção",
+    text: "Rotinas, controles e registros para maior confiabilidade.",
+    icon: Wrench,
+  },
+  {
+    title: "Diagnóstico SGQ",
+    text: "Análise do sistema de gestão com plano de ação objetivo.",
+    icon: SearchCheck,
+  },
+  {
+    title: "Padronização de Processos",
+    text: "Processos claros e responsabilidades bem definidas.",
+    icon: Workflow,
+  },
+];
 
 const cases = [
   ["NC", "Reduzir não conformidades com análise de causa"],
@@ -120,67 +152,66 @@ export default function Home() {
 
       <section
         id="inicio"
-        className="relative min-h-[100svh] overflow-hidden border-b border-sky-400/10 bg-hero pt-24 sm:min-h-[100vh] sm:pt-28"
+        className="relative isolate min-h-[100svh] overflow-hidden border-b border-sky-400/10 bg-hero pt-24 sm:pt-24"
       >
-        <HeroProcessRadar />
+        <HeroQualityDashboard />
 
-        <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 py-12 sm:px-5 sm:py-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:pt-24 lg:pb-38">
-          <div className="min-w-0 max-w-[22rem] sm:max-w-xl lg:max-w-none">
-            <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
-              Qualidade • Gestão • Conformidade • Excelência
+        <div className="qhd-hero-content relative z-10 mx-auto flex min-h-[500px] w-full max-w-7xl items-center px-4 py-8 sm:min-h-[520px] sm:px-5 sm:py-8 lg:min-h-[500px] lg:py-6">
+          <div className="qhd-hero-copy relative min-w-0 max-w-[22rem] sm:max-w-xl lg:top-[18px] lg:max-w-[30rem] xl:max-w-[34rem]">
+            <p className="qhd-hero-kicker text-xs font-bold uppercase tracking-widest text-cyan-300 lg:w-max lg:max-w-none lg:whitespace-nowrap">
+              ISO 9001 • Auditorias • Conformidade • Padronização • Melhoria
+              Contínua
             </p>
-            <h1 className="mt-5 max-w-full text-[1.95rem] font-black leading-[1.08] sm:text-5xl md:text-6xl">
-              Excelência em{" "}
-              <span className="block text-cyan-300 sm:inline">
-                Sistemas de Gestão
-              </span>{" "}
-              da Qualidade
+            <h1 className="qhd-hero-title mt-5 max-w-full text-[2.15rem] font-black leading-[1.08] sm:text-5xl lg:text-[2.75rem] xl:text-5xl 2xl:text-[3.45rem]">
+              SGQ estruturado para gerar{" "}
+              <span className="text-cyan-300">conformidade e resultados</span>
             </h1>
-            <p className="mt-5 max-w-full text-base leading-7 text-slate-300 sm:mt-6 sm:max-w-xl sm:text-lg sm:leading-8">
-              Estruturamos processos, indicadores e gestão para empresas que
-              querem crescer com controle, clareza e confiança.
+            <p className="qhd-hero-description mt-5 max-w-full text-base leading-7 text-slate-300 sm:mt-6 sm:max-w-xl">
+              Apoiamos sua empresa na implantação da ISO 9001, auditorias internas e padronização de processos.
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+            <div className="mt-7 flex flex-wrap gap-3 sm:mt-8">
               <TrackedLink
                 href="#contato"
                 eventLabel="Fale conosco"
                 eventLocation="hero"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-sky-500 px-5 py-3.5 font-bold sm:px-6 sm:py-4"
+                className="qhd-hero-button inline-flex items-center justify-center gap-2 rounded-md border border-sky-400 bg-sky-500 px-5 py-3.5 font-bold text-white shadow-lg shadow-sky-500/15 transition hover:border-sky-300 hover:bg-sky-400 sm:px-6 sm:py-4"
               >
                 Fale conosco <ArrowRight size={18} />
               </TrackedLink>
               <TrackedLink
                 href="#servicos"
-                eventLabel="Conheça os serviços"
+                eventLabel="Ver Serviços"
                 eventLocation="hero"
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 px-5 py-3.5 font-bold sm:px-6 sm:py-4"
+                className="qhd-hero-button inline-flex items-center justify-center gap-2 rounded-md border border-cyan-300/35 bg-slate-950/45 px-5 py-3.5 font-bold backdrop-blur-sm transition hover:border-cyan-300 hover:bg-cyan-400/10 sm:px-6 sm:py-4"
               >
-                Conheça os serviços <ArrowRight size={18} />
+                Ver Serviços <ArrowRight size={18} />
               </TrackedLink>
             </div>
           </div>
-
-
         </div>
 
-        <div className="border-t border-cyan-400/10 bg-slate-950/55 shadow-lg shadow-cyan-950/20 backdrop-blur-md">
-          <div className="mx-auto grid max-w-7xl gap-4 px-4 py-5 sm:grid-cols-2 sm:px-5 lg:grid-cols-4">
-            {[
-              ["Atendimento próximo", "com método claro"],
-              ["Orientação técnica", "em ISO 9001"],
-              ["Processos definidos", "com responsabilidades claras"],
-              ["Indicadores úteis", "para acompanhar resultados"],
-            ].map(([title, subtitle]) => (
-              <div key={title} className="flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-lg border border-cyan-300/20 text-cyan-300">
-                  <ShieldCheck size={19} />
+        <div className="hero-service-strip qhd-hero-services relative z-20 mx-auto hidden w-full max-w-[96rem] px-4 pb-5 lg:block xl:px-5">
+          <div className="hero-service-strip-grid qhd-hero-services-grid grid grid-cols-5 gap-3">
+            {heroServices.map(({ title, text, icon: Icon }) => (
+              <article
+                key={title}
+                className="hero-service-strip-item qhd-hero-service-card flex min-h-[142px] items-start gap-4 rounded-lg border border-cyan-300/25 bg-[#031127]/90 p-4 shadow-lg shadow-slate-950/25 backdrop-blur-md"
+              >
+                <span className="hero-service-icon-box">
+                  <Icon
+                    className="qhd-hero-service-icon shrink-0 text-cyan-300"
+                    size={24}
+                    strokeWidth={1.7}
+                  />
                 </span>
-                <p className="text-sm">
-                  <strong className="block">{title}</strong>
-                  <span className="text-slate-400">{subtitle}</span>
-                </p>
-              </div>
+                <div className="min-w-0">
+                  <h2 className="qhd-hero-service-title text-base font-bold leading-6 text-white">
+                    {title}
+                  </h2>
+                  <p className="qhd-hero-service-text mt-2 text-sm leading-6 text-slate-400">{text}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
@@ -313,6 +344,32 @@ export default function Home() {
           />
 
           <ServicesGrid />
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="processos-indicadores-title"
+        className="hidden overflow-hidden border-y border-cyan-400/10 bg-[#071426] py-16 lg:block"
+      >
+        <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-[1fr_0.72fr]">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
+              Da estrutura ao acompanhamento
+            </p>
+            <h2
+              id="processos-indicadores-title"
+              className="mt-4 text-4xl font-black leading-tight text-white"
+            >
+              Processos estruturados geram indicadores mais claros
+            </h2>
+            <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
+              Depois de organizar rotinas, responsabilidades e controles, os
+              indicadores ajudam a enxergar prioridades, acompanhar resultados
+              e direcionar melhorias com mais segurança.
+            </p>
+          </div>
+
+          <HeroProcessRadar placement="section" />
         </div>
       </section>
 
