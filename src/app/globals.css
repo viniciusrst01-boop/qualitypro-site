@@ -94,6 +94,10 @@ body {
   display: none;
 }
 
+.qhd-hero-copy {
+  transform: translateY(-8px);
+}
+
 @media (min-width: 1024px) {
   .hero-quality-dashboard {
     position: absolute;
@@ -148,7 +152,7 @@ body {
 
 @media (min-width: 1320px) and (max-width: 1399px) and (max-height: 850px) {
   .qhd-hero-content .qhd-hero-copy {
-    transform: translateY(-45px);
+    transform: translateY(-53px);
   }
 }
 
