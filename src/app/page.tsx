@@ -175,17 +175,17 @@ export default function Home() {
                 href="#contato"
                 eventLabel="Fale conosco"
                 eventLocation="hero"
-                className="qhd-hero-button inline-flex items-center justify-center gap-2 rounded-md border border-sky-400 bg-sky-500 px-5 py-3.5 font-bold text-white shadow-lg shadow-sky-500/15 transition hover:border-sky-300 hover:bg-sky-400 sm:px-6 sm:py-4"
+                className="qhd-hero-button inline-flex items-center justify-center gap-2 rounded-md border border-sky-400 bg-sky-500 px-[1.1rem] py-3 text-sm font-bold text-white shadow-lg shadow-sky-500/15 transition hover:border-sky-300 hover:bg-sky-400 sm:px-5 sm:py-3.5 sm:text-base"
               >
-                Fale conosco <ArrowRight size={18} />
+                Fale conosco <ArrowRight size={17} />
               </TrackedLink>
               <TrackedLink
                 href="#servicos"
                 eventLabel="Ver Serviços"
                 eventLocation="hero"
-                className="qhd-hero-button inline-flex items-center justify-center gap-2 rounded-md border border-cyan-300/35 bg-slate-950/45 px-5 py-3.5 font-bold backdrop-blur-sm transition hover:border-cyan-300 hover:bg-cyan-400/10 sm:px-6 sm:py-4"
+                className="qhd-hero-button inline-flex items-center justify-center gap-2 rounded-md border border-cyan-300/35 bg-slate-950/45 px-[1.1rem] py-3 text-sm font-bold backdrop-blur-sm transition hover:border-cyan-300 hover:bg-cyan-400/10 sm:px-5 sm:py-3.5 sm:text-base"
               >
-                Ver Serviços <ArrowRight size={18} />
+                Ver Serviços <ArrowRight size={17} />
               </TrackedLink>
             </div>
           </div>
