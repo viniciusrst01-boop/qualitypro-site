@@ -129,16 +129,22 @@ const qualityChallenges = [
 function SectionTitle({
   eyebrow,
   title,
+  singleLine = false,
 }: {
   eyebrow: string;
   title: string;
+  singleLine?: boolean;
 }) {
   return (
     <div>
       <p className="text-xs font-bold uppercase tracking-widest text-cyan-400">
         {eyebrow}
       </p>
-      <h2 className="mt-3 max-w-2xl text-2xl font-black leading-tight sm:text-3xl md:text-4xl">
+      <h2
+        className={`mt-3 text-2xl font-black leading-tight sm:text-3xl md:text-4xl ${
+          singleLine ? "max-w-none md:whitespace-nowrap" : "max-w-2xl"
+        }`}
+      >
         {title}
       </h2>
     </div>
@@ -224,7 +230,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
             eyebrow="Sobre nós"
-            title="Conheça a QualityPro e o propósito que orienta nosso trabalho"
+            title="Conheça a QualityPro Solutions e o propósito que orienta nosso trabalho"
           />
 
           <div className="mt-8 grid items-stretch gap-4 lg:grid-cols-2 lg:gap-6">
@@ -462,6 +468,7 @@ export default function Home() {
           <SectionTitle
             eyebrow="Diferenciais"
             title="Por que escolher a QualityPro Solutions?"
+            singleLine
           />
 
           <div className="mt-8 grid items-stretch gap-4 lg:grid-cols-[1.15fr_0.95fr_0.9fr]">
@@ -471,7 +478,7 @@ export default function Home() {
                   <Award size={23} />
                 </span>
                 <h3 className="text-lg font-black">
-                  Diferenciais da QualityPro
+                  Diferenciais da QualityPro Solutions
                 </h3>
               </div>
               <div className="mt-5 grid gap-3">

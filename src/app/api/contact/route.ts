@@ -90,7 +90,7 @@ export async function POST(request: Request) {
   const toEmail = process.env.CONTACT_TO_EMAIL;
   const fromEmail =
     process.env.CONTACT_FROM_EMAIL ||
-    "QualityPro Site <onboarding@resend.dev>";
+    "QualityPro Solutions - Site <onboarding@resend.dev>";
 
   if (!apiKey || !toEmail) {
     console.error("Contact form email environment variables are missing.");
