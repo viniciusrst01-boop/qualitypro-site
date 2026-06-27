@@ -119,7 +119,7 @@ const workSteps = [
   },
 ];
 
-const qualityChallenges = [
+const qualityChallengeCards = [
   "O SGQ existe, mas falta controle e acompanhamento efetivo",
   "Documentos e registros estão espalhados e sem padrão",
   "Faltam indicadores claros para medir resultados",
@@ -409,44 +409,45 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="rounded-lg bg-white p-2.5 shadow-xl ring-1 ring-slate-200 sm:p-4 lg:w-full lg:max-w-[620px] lg:justify-self-end">
-              <div className="rounded-lg bg-office-panel p-2.5 sm:p-4">
-                <div className="h-full rounded-lg bg-slate-950 p-4 text-white shadow-lg sm:p-6">
-                  <div className="flex items-start justify-between gap-3 border-b border-slate-800 pb-3 sm:gap-4 sm:pb-4">
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
-                        Sinais de atenção
-                      </p>
-                      <h3 className="mt-2 max-w-[390px] text-lg font-black sm:text-2xl">
-                        Sua empresa enfrenta algum destes desafios?
-                      </h3>
-                    </div>
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-cyan-400/10 text-cyan-300 sm:h-12 sm:w-12">
-                      <SearchCheck size={24} />
-                    </span>
-                  </div>
-
-                  <div className="mt-4 grid gap-2 sm:mt-5 sm:gap-2.5">
-                    {qualityChallenges.map((challenge) => (
-                      <p
-                        key={challenge}
-                        className="flex items-start gap-2.5 rounded-lg border border-sky-300/15 bg-slate-900/80 p-2.5 text-sm leading-5 text-slate-300 sm:gap-3 sm:p-3 sm:leading-6 lg:items-center lg:whitespace-nowrap lg:text-[13px] xl:text-sm"
-                      >
-                        <CheckCircle2
-                          className="mt-0.5 shrink-0 text-cyan-300"
-                          size={18}
-                        />
-                        {challenge}
-                      </p>
-                    ))}
-                  </div>
+            <div className="rounded-lg border border-cyan-300/20 bg-slate-950 p-4 text-white shadow-2xl shadow-cyan-950/20 sm:p-6 lg:w-full lg:max-w-[660px] lg:justify-self-end">
+              <div className="flex items-center gap-3">
+                <span className="grid h-11 w-11 place-items-center rounded-lg bg-cyan-400/10 text-cyan-300">
+                  <SearchCheck size={24} />
+                </span>
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-300">
+                    Sinais de atenção
+                  </p>
+                  <h3 className="mt-1 text-xl font-black sm:text-2xl">
+                    Sua empresa enfrenta algum destes desafios?
+                  </h3>
                 </div>
               </div>
+
+              <div className="mt-5 grid gap-2 sm:mt-6 sm:gap-2.5">
+                {qualityChallengeCards.map((challenge) => (
+                  <p
+                    key={challenge}
+                    className="grid grid-cols-[24px_1fr] items-center gap-2.5 rounded-lg border border-cyan-300/15 bg-white/[0.04] px-3 py-2.5 text-sm leading-5 text-slate-200 sm:px-4 sm:py-3 sm:text-[15px] lg:whitespace-nowrap"
+                  >
+                    <CheckCircle2
+                      className="text-cyan-300"
+                      size={18}
+                      strokeWidth={2.4}
+                    />
+                    <span>{challenge}</span>
+                  </p>
+                ))}
+              </div>
+
+              <p className="mt-5 border-l-2 border-cyan-300/70 pl-4 text-sm leading-6 text-slate-300 sm:mt-6">
+                Esses sinais mostram onde o SGQ precisa ganhar método,
+                rastreabilidade e acompanhamento para funcionar melhor na rotina.
+              </p>
             </div>
           </div>
         </div>
       </section>
-
       <section id="servicos" className="bg-slate-950 py-10 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
