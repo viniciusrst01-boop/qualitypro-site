@@ -29,6 +29,16 @@ body {
   font-family: var(--font-geist-sans);
 }
 
+section[id] {
+  scroll-margin-top: 5.25rem;
+}
+
+@media (min-width: 1024px) {
+  section[id] {
+    scroll-margin-top: 8rem;
+  }
+}
+
 .bg-hero {
   background:
     linear-gradient(
@@ -159,7 +169,7 @@ body {
 
 @media (max-width: 767px) {
   .work-timeline {
-    gap: 1.75rem;
+    gap: 2.7rem;
   }
 
   .work-step-flow-card {
@@ -182,9 +192,9 @@ body {
   }
 
   .work-step-arrow {
-    bottom: -1.45rem;
-    width: 34px;
-    height: 34px;
+    bottom: -2.45rem;
+    width: 36px;
+    height: 36px;
   }
 }
 

@@ -193,7 +193,7 @@ export default function Home() {
       >
         <HeroQualityDashboard />
 
-        <div className="qhd-hero-content relative z-10 mx-auto flex min-h-[500px] w-full max-w-7xl items-center px-4 py-8 sm:min-h-[520px] sm:px-5 sm:py-8 lg:min-h-[500px] lg:py-6">
+        <div className="qhd-hero-content relative z-10 mx-auto flex min-h-[500px] w-full max-w-7xl items-start px-4 py-7 sm:min-h-[520px] sm:items-center sm:px-5 sm:py-8 lg:min-h-[500px] lg:py-6">
           <div className="qhd-hero-copy relative min-w-0 max-w-[22rem] sm:max-w-xl lg:top-[18px] lg:max-w-[30rem] xl:max-w-[34rem]">
             <p className="qhd-hero-kicker text-xs font-bold uppercase tracking-widest text-cyan-300 lg:w-max lg:max-w-none lg:whitespace-nowrap">
               ISO 9001 • Auditorias • Conformidade • Padronização • Melhoria
