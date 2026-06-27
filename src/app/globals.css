@@ -77,6 +77,10 @@ section[id] {
 }
 
 @media (max-width: 640px) {
+  #inicio {
+    min-height: 88svh;
+  }
+
   .bg-hero {
     background-image:
       linear-gradient(
@@ -94,17 +98,17 @@ section[id] {
       ),
       url("/hero-bg-optimized.webp");
 
-    background-size: auto 78%;
+    background-size: auto 72%;
     background-position: 68% bottom;
     background-repeat: no-repeat;
   }
 
   .qhd-hero-content {
-    min-height: calc(100svh - 5.5rem);
+    min-height: calc(88svh - 5rem);
     align-items: flex-start;
     justify-content: center;
-    padding-top: clamp(2rem, 8vh, 4rem);
-    padding-bottom: 3.5rem;
+    padding-top: clamp(1.7rem, 6.5vh, 3.25rem);
+    padding-bottom: 2.25rem;
   }
 
   .qhd-hero-copy {
@@ -122,7 +126,7 @@ section[id] {
   }
 
   .qhd-hero-title {
-    margin-top: 1.35rem;
+    margin-top: 1.15rem;
     font-size: clamp(2.1rem, 10vw, 2.75rem);
     line-height: 1.03;
   }
@@ -130,14 +134,30 @@ section[id] {
   .qhd-hero-description {
     max-width: 21rem;
     margin-inline: auto;
-    margin-top: 1.25rem;
-    font-size: 0.98rem;
-    line-height: 1.65;
+    margin-top: 1.05rem;
+    font-size: 0.94rem;
+    line-height: 1.58;
   }
 
   .qhd-hero-copy > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-content: center;
-    margin-top: 1.8rem;
+    gap: 0.7rem;
+    margin-top: 1.45rem;
+  }
+
+  .qhd-hero-button {
+    min-height: 2.95rem;
+    width: 100%;
+    padding: 0.75rem 0.8rem;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .qhd-hero-copy > div {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -728,4 +748,10 @@ a {
   border-color: rgba(56, 189, 248, 0.78);
   background: rgba(15, 23, 42, 0.92);
   box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+}
+
+@media (max-width: 640px) {
+  .input-field {
+    padding: 0.75rem 0.875rem;
+  }
 }

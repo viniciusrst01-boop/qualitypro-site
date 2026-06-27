@@ -72,7 +72,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid gap-3 rounded-lg border border-sky-300/15 bg-slate-950/45 p-4 sm:gap-4 sm:p-6"
+      className="grid gap-3 rounded-lg border border-sky-300/15 bg-slate-950/45 p-3.5 sm:gap-4 sm:p-6"
     >
       <div className="grid items-start gap-3 sm:grid-cols-2 sm:gap-4">
         <label className="grid gap-2">
@@ -145,7 +145,7 @@ export default function ContactForm() {
         <textarea
           name="message"
           placeholder="Como podemos ajudar sua empresa?"
-          rows={4}
+          rows={3}
           minLength={10}
           maxLength={2000}
           required

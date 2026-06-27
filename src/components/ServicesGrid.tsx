@@ -207,7 +207,7 @@ export default function ServicesGrid() {
 
   return (
     <>
-      <div className="mt-8 grid items-stretch gap-4 sm:mt-10 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 grid items-stretch gap-3 sm:mt-10 sm:gap-4 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service, index) => {
           const Icon = service.icon;
           const isExpanded = activeIndex === index;
@@ -232,7 +232,7 @@ export default function ServicesGrid() {
                 onClick={(event) =>
                   toggleService(index, event.currentTarget.closest("article"))
                 }
-                className="group w-full cursor-pointer p-5 text-left focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-cyan-300 sm:p-6"
+                className="group w-full cursor-pointer p-4 text-left focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-cyan-300 sm:p-6"
               >
                 <div className="flex items-start justify-between gap-5">
                   <Icon className="shrink-0 text-cyan-300" size={32} />
@@ -244,8 +244,8 @@ export default function ServicesGrid() {
                     size={22}
                   />
                 </div>
-                <h3 className="mt-5 text-xl font-bold">{service.title}</h3>
-                <p className="mt-3 max-w-3xl leading-7 text-slate-400">
+                <h3 className="mt-4 text-xl font-bold sm:mt-5">{service.title}</h3>
+                <p className="mt-2 max-w-3xl leading-6 text-slate-400 sm:mt-3 sm:leading-7">
                   {service.text}
                 </p>
               </button>
@@ -269,7 +269,7 @@ export default function ServicesGrid() {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <div className="mx-5 grid gap-6 border-t border-sky-300/15 pb-6 pt-5 sm:mx-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
+                  <div className="mx-4 grid gap-5 border-t border-sky-300/15 pb-5 pt-4 sm:mx-6 sm:gap-6 sm:pb-6 sm:pt-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
                     <div>
                       <h4 className="text-base font-bold text-white">
                         Como funciona

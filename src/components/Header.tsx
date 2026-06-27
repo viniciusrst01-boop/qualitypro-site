@@ -103,7 +103,7 @@ export default function Header() {
 
       <div
         id="mobile-navigation"
-        className={`grid border-t border-cyan-400/10 bg-slate-950/95 transition-[grid-template-rows,opacity] duration-200 lg:hidden ${
+        className={`grid border-t border-cyan-400/10 bg-slate-950/92 shadow-2xl shadow-slate-950/40 backdrop-blur-xl transition-[grid-template-rows,opacity] duration-300 lg:hidden ${
           isMenuOpen
             ? "grid-rows-[1fr] opacity-100"
             : "pointer-events-none grid-rows-[0fr] opacity-0"
@@ -114,18 +114,26 @@ export default function Header() {
           aria-hidden={!isMenuOpen}
           className="overflow-hidden"
         >
-          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-1 px-4 py-3 sm:px-5">
-            {mobileNavigation.map(([label, href]) => (
-              <a
-                key={href}
-                href={href}
-                onClick={closeMenu}
-                tabIndex={isMenuOpen ? 0 : -1}
-                className="rounded-md px-3 py-2.5 text-sm font-semibold text-slate-200 hover:bg-cyan-400/10 hover:text-cyan-300"
-              >
-                {label}
-              </a>
-            ))}
+          <div className="mx-auto grid max-w-7xl gap-2 px-4 py-4 sm:px-5">
+            {mobileNavigation.map(([label, href]) => {
+              const isContact = href === "#contato";
+
+              return (
+                <a
+                  key={href}
+                  href={href}
+                  onClick={closeMenu}
+                  tabIndex={isMenuOpen ? 0 : -1}
+                  className={
+                    isContact
+                      ? "rounded-md border border-cyan-300/30 bg-cyan-400/10 px-4 py-3 text-sm font-black text-cyan-200 shadow-lg shadow-cyan-950/20 hover:border-cyan-300/55 hover:bg-cyan-400/15"
+                      : "rounded-md border border-cyan-300/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-slate-200 hover:border-cyan-300/30 hover:bg-cyan-400/10 hover:text-cyan-300"
+                  }
+                >
+                  {label}
+                </a>
+              );
+            })}
           </div>
         </nav>
       </div>

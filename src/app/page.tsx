@@ -256,7 +256,7 @@ export default function Home() {
 
       <section
         id="sobre"
-        className="scroll-mt-24 bg-white py-10 text-slate-950 sm:scroll-mt-28 sm:py-20"
+        className="scroll-mt-24 bg-white py-8 text-slate-950 sm:scroll-mt-28 sm:py-20"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
@@ -314,9 +314,9 @@ export default function Home() {
 
       <section
         id="qualificacoes"
-        className="bg-slate-50 py-10 text-slate-950 sm:py-20"
+        className="bg-slate-50 py-8 text-slate-950 sm:py-20"
       >
-        <div className="mx-auto grid max-w-7xl items-center gap-6 px-4 sm:gap-8 sm:px-5 lg:grid-cols-[1fr_0.95fr] lg:gap-12">
+        <div className="mx-auto grid max-w-7xl items-center gap-5 px-4 sm:gap-8 sm:px-5 lg:grid-cols-[1fr_0.95fr] lg:gap-12">
           <div>
             <span className="inline-flex rounded-full border border-cyan-300/60 bg-cyan-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-cyan-700">
               Qualificações da equipe
@@ -386,7 +386,7 @@ export default function Home() {
 
       <section
         id="desafios"
-        className="scroll-mt-24 bg-slate-50 py-10 text-slate-950 sm:scroll-mt-28 sm:py-20"
+        className="scroll-mt-24 bg-slate-50 py-8 text-slate-950 sm:scroll-mt-28 sm:py-20"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <div className="grid items-start gap-6 sm:gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
@@ -448,7 +448,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="servicos" className="bg-slate-950 py-10 sm:py-20">
+      <section id="servicos" className="bg-slate-950 py-8 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
             eyebrow="Nossos serviços"
@@ -485,7 +485,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-slate-950 pb-10 pt-2 sm:pb-20 sm:pt-6">
+      <section className="bg-slate-950 pb-8 pt-1 sm:pb-20 sm:pt-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
             eyebrow="Método de trabalho"
@@ -525,7 +525,7 @@ export default function Home() {
 
       <section
         id="diferenciais"
-        className="bg-white py-10 text-slate-950 sm:py-16"
+        className="bg-white py-8 text-slate-950 sm:py-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
@@ -631,7 +631,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contato" className="bg-slate-900 py-10 sm:py-20">
+      <section id="contato" className="bg-slate-900 py-8 sm:py-20">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:gap-8 sm:px-5 lg:grid-cols-[0.85fr_1.15fr] lg:gap-10">
           <div>
             <SectionTitle
@@ -660,8 +660,8 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-sky-400/10 bg-slate-950 px-4 py-10 text-sm text-slate-400 sm:px-5">
-        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_auto_1fr]">
+      <footer className="border-t border-sky-400/10 bg-slate-950 px-4 py-7 text-sm text-slate-400 sm:px-5 sm:py-10">
+        <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-[1fr_auto_1fr] md:gap-8">
           <div>
             <h2 className="text-base font-black text-white">
               QualityPro Solutions
@@ -669,7 +669,7 @@ export default function Home() {
             <p className="mt-2 text-slate-300">
               Consultoria em Gestão da Qualidade
             </p>
-            <div className="mt-5 space-y-2 text-sm font-medium text-slate-300">
+            <div className="mt-4 space-y-1.5 text-sm font-medium text-slate-300 sm:mt-5 sm:space-y-2">
               <a
                 href="mailto:contato@qualityprosolutions.com.br"
                 className="block transition hover:text-cyan-300"
@@ -700,7 +700,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mx-auto mt-8 flex max-w-7xl flex-col gap-2 border-t border-slate-800 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto mt-6 flex max-w-7xl flex-col gap-2 border-t border-slate-800 pt-5 text-xs text-slate-500 sm:mt-8 sm:flex-row sm:items-center sm:justify-between sm:pt-6">
           <p>© 2026 QualityPro Solutions. Todos os direitos reservados.</p>
           <p>Qualidade com propósito.</p>
         </div>
