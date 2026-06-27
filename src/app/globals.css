@@ -78,7 +78,7 @@ section[id] {
 
 @media (max-width: 640px) {
   #inicio {
-    min-height: 88svh;
+    min-height: 100svh;
   }
 
   .bg-hero {
@@ -104,11 +104,11 @@ section[id] {
   }
 
   .qhd-hero-content {
-    min-height: calc(88svh - 5rem);
+    min-height: calc(100svh - 5rem);
     align-items: flex-start;
     justify-content: center;
     padding-top: clamp(1.7rem, 6.5vh, 3.25rem);
-    padding-bottom: 2.25rem;
+    padding-bottom: 4rem;
   }
 
   .qhd-hero-copy {
