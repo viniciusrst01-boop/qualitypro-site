@@ -114,7 +114,7 @@ export default function Header() {
           aria-hidden={!isMenuOpen}
           className="overflow-hidden"
         >
-          <div className="mx-auto grid max-w-7xl gap-2 px-4 py-4 sm:px-5">
+          <div className="mx-auto grid max-w-7xl gap-1 px-5 py-4 sm:px-6">
             {mobileNavigation.map(([label, href]) => {
               const isContact = href === "#contato";
 
@@ -126,8 +126,8 @@ export default function Header() {
                   tabIndex={isMenuOpen ? 0 : -1}
                   className={
                     isContact
-                      ? "rounded-md border border-cyan-300/30 bg-cyan-400/10 px-4 py-3 text-sm font-black text-cyan-200 shadow-lg shadow-cyan-950/20 hover:border-cyan-300/55 hover:bg-cyan-400/15"
-                      : "rounded-md border border-cyan-300/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-slate-200 hover:border-cyan-300/30 hover:bg-cyan-400/10 hover:text-cyan-300"
+                      ? "py-2.5 text-sm font-black text-cyan-300 hover:text-cyan-200"
+                      : "py-2.5 text-sm font-semibold text-slate-200 hover:text-cyan-300"
                   }
                 >
                   {label}
