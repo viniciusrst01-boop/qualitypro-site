@@ -98,6 +98,47 @@ section[id] {
     background-position: 68% bottom;
     background-repeat: no-repeat;
   }
+
+  .qhd-hero-content {
+    min-height: calc(100svh - 5.5rem);
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: clamp(2rem, 8vh, 4rem);
+    padding-bottom: 3.5rem;
+  }
+
+  .qhd-hero-copy {
+    max-width: 22rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .qhd-hero-kicker {
+    max-width: 21rem;
+    margin-inline: auto;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    letter-spacing: 0.12em;
+  }
+
+  .qhd-hero-title {
+    margin-top: 1.35rem;
+    font-size: clamp(2.1rem, 10vw, 2.75rem);
+    line-height: 1.03;
+  }
+
+  .qhd-hero-description {
+    max-width: 21rem;
+    margin-inline: auto;
+    margin-top: 1.25rem;
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .qhd-hero-copy > div {
+    justify-content: center;
+    margin-top: 1.8rem;
+  }
 }
 
 .hero-quality-dashboard {
