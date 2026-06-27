@@ -9,8 +9,6 @@ const desktopNavigation = [
   ["Início", "#inicio"],
   ["Sobre", "#sobre"],
   ["Serviços", "#servicos"],
-  ["Dashboards", "#dashboards"],
-  ["Indicadores", "#cases"],
   ["Contato", "#contato"],
 ];
 
@@ -19,8 +17,6 @@ const mobileNavigation = [
   ["Sobre", "#sobre"],
   ["Desafios", "#desafios"],
   ["Serviços", "#servicos"],
-  ["Dashboards", "#dashboards"],
-  ["Indicadores", "#cases"],
   ["Diferenciais", "#diferenciais"],
   ["Contato", "#contato"],
 ];

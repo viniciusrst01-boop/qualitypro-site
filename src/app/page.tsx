@@ -18,7 +18,6 @@ import {
   Workflow,
   Wrench,
 } from "lucide-react";
-import DashboardShowcase from "@/components/DashboardShowcase";
 import ContactForm from "@/components/ContactForm";
 import Header from "@/components/Header";
 import HeroQualityDashboard from "@/components/HeroQualityDashboard";
@@ -53,13 +52,6 @@ const heroServices = [
     text: "Processos claros e responsabilidades bem definidas.",
     icon: Workflow,
   },
-];
-
-const cases = [
-  ["NC", "Reduzir não conformidades com análise de causa"],
-  ["OEE", "Acompanhar eficiência e disponibilidade operacional"],
-  ["KPIs", "Criar indicadores claros para a rotina de gestão"],
-  ["PDCA", "Manter ciclos de melhoria contínua documentados"],
 ];
 
 const differentials = [
@@ -105,13 +97,26 @@ const serviceModes = [
 ];
 
 const workSteps = [
-  ["Diagnóstico", "Entendimento dos processos, riscos e pontos críticos."],
-  ["Planejamento", "Priorização das ações, responsáveis e prazos."],
-  ["Implantação", "Documentação, indicadores, rotinas e treinamentos."],
-  [
-    "Acompanhamento",
-    "Verificação dos resultados, ajustes e orientação das equipes.",
-  ],
+  {
+    title: "Diagnóstico",
+    text: "Leitura da rotina, riscos, documentos e pontos críticos.",
+    icon: ClipboardCheck,
+  },
+  {
+    title: "Planejamento",
+    text: "Definição das prioridades, responsáveis e prazos.",
+    icon: UsersRound,
+  },
+  {
+    title: "Implantação",
+    text: "Organização de documentos, controles e treinamentos.",
+    icon: Workflow,
+  },
+  {
+    title: "Acompanhamento",
+    text: "Indicadores, ajustes e orientação para manter a evolução.",
+    icon: Target,
+  },
 ];
 
 const qualityChallenges = [
@@ -126,18 +131,44 @@ const qualityChallenges = [
   "Os controles dependem de planilhas e processos manuais",
 ];
 
+const teamHighlights = [
+  "Formação multidisciplinar em qualidade, produção, liderança e engenharia",
+  "Auditores Líderes ISO 9001, Lean Six Sigma e ferramentas da qualidade",
+  "Vivência prática em SGQ, auditorias, inspeções, metrologia e indicadores",
+  "Apoio à digitalização de controles, planilhas e rotinas operacionais",
+];
+
+const teamQualifications = [
+  ["ISO 9001", "interpretação, aplicação e preparação para auditorias"],
+  ["SGQ", "organização, manutenção e melhoria de sistemas de gestão"],
+  ["Processos", "padronização, controles, checklists e evidências"],
+  ["Tecnologia", "Sistemas aplicados à gestão e indicadores"],
+];
+
 function SectionTitle({
   eyebrow,
   title,
   singleLine = false,
+  pill = false,
+  strongEyebrow = false,
 }: {
   eyebrow: string;
   title: string;
   singleLine?: boolean;
+  pill?: boolean;
+  strongEyebrow?: boolean;
 }) {
   return (
     <div>
-      <p className="text-xs font-bold uppercase tracking-widest text-cyan-400">
+      <p
+        className={
+          pill
+            ? "inline-flex rounded-full border border-cyan-300/60 bg-cyan-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-cyan-700"
+            : `text-xs font-bold uppercase tracking-widest ${
+                strongEyebrow ? "text-cyan-700" : "text-cyan-400"
+              }`
+        }
+      >
         {eyebrow}
       </p>
       <h2
@@ -225,29 +256,30 @@ export default function Home() {
 
       <section
         id="sobre"
-        className="scroll-mt-24 bg-white py-14 text-slate-950 sm:scroll-mt-28 sm:py-20"
+        className="scroll-mt-24 bg-white py-10 text-slate-950 sm:scroll-mt-28 sm:py-20"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
             eyebrow="Sobre nós"
             title="Conheça a QualityPro Solutions e o propósito que orienta nosso trabalho"
+            strongEyebrow
           />
 
-          <div className="mt-8 grid items-stretch gap-4 lg:grid-cols-2 lg:gap-6">
-            <article className="rounded-lg border border-slate-200 bg-slate-50 p-5 shadow-sm sm:p-6">
+          <div className="mt-6 grid items-stretch gap-3 sm:mt-8 lg:grid-cols-2 lg:gap-6">
+            <article className="rounded-lg border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
               <div className="flex items-start gap-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-100 text-sky-600">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sky-100 text-sky-600 sm:h-11 sm:w-11">
                   <Building2 size={24} />
                 </span>
                 <div>
                   <h3 className="text-lg font-black">Quem somos</h3>
-                  <p className="mt-3 leading-7 text-slate-600">
+                  <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
                     A QualityPro Solutions é uma consultoria voltada à
                     organização e estruturação de Sistemas de Gestão da
                     Qualidade. Atuamos com ISO 9001, auditorias, padronização de
                     processos, indicadores e melhoria contínua.
                   </p>
-                  <p className="mt-3 leading-7 text-slate-600">
+                  <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
                     Cada projeto parte da realidade e do nível de maturidade da
                     organização para criar documentos, controles e rotinas que
                     façam sentido para as equipes e apoiem a gestão.
@@ -256,19 +288,19 @@ export default function Home() {
               </div>
             </article>
 
-            <article className="rounded-lg border border-slate-200 bg-slate-50 p-5 shadow-sm sm:p-6">
+            <article className="rounded-lg border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
               <div className="flex items-start gap-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-100 text-sky-600">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sky-100 text-sky-600 sm:h-11 sm:w-11">
                   <Target size={24} />
                 </span>
                 <div>
                   <h3 className="text-lg font-black">Nosso propósito</h3>
-                  <p className="mt-3 leading-7 text-slate-600">
+                  <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
                     Tornar a qualidade uma ferramenta útil para a gestão, e não
                     apenas uma exigência documental ou um conjunto de controles
                     mantidos para auditorias.
                   </p>
-                  <p className="mt-3 leading-7 text-slate-600">
+                  <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
                     Buscamos construir sistemas compreensíveis e sustentáveis,
                     com responsabilidades definidas e informações confiáveis
                     para orientar o trabalho diário.
@@ -281,51 +313,124 @@ export default function Home() {
       </section>
 
       <section
+        id="qualificacoes"
+        className="bg-slate-50 py-10 text-slate-950 sm:py-20"
+      >
+        <div className="mx-auto grid max-w-7xl items-center gap-6 px-4 sm:gap-8 sm:px-5 lg:grid-cols-[1fr_0.95fr] lg:gap-12">
+          <div>
+            <span className="inline-flex rounded-full border border-cyan-300/60 bg-cyan-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-cyan-700">
+              Qualificações da equipe
+            </span>
+            <h2 className="mt-5 max-w-2xl text-2xl font-black leading-tight tracking-normal text-slate-950 sm:mt-6 sm:text-4xl lg:text-5xl">
+              Competência técnica para estruturar a qualidade na prática
+            </h2>
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-slate-600 sm:mt-5 sm:text-lg sm:leading-7">
+              A QualityPro Solutions reúne experiência prática em ambientes
+              industriais, Sistemas de Gestão da Qualidade, auditorias,
+              inspeções, metrologia, indicadores e melhoria contínua.
+            </p>
+
+            <div className="mt-6 grid gap-2.5 sm:mt-8 sm:gap-3">
+              {teamHighlights.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-lg border border-slate-200 bg-white p-3 shadow-sm sm:gap-4 sm:p-4"
+                >
+                  <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-cyan-500 text-white sm:h-8 sm:w-8">
+                    <CheckCircle2 size={16} strokeWidth={2.4} />
+                  </span>
+                  <p className="text-sm font-semibold leading-5 text-slate-800 sm:text-base sm:leading-6">
+                    {item}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <aside className="rounded-lg border border-cyan-300/20 bg-slate-950 p-4 text-white shadow-2xl shadow-cyan-950/20 sm:p-7">
+            <div className="flex items-center gap-3">
+              <span className="grid h-11 w-11 place-items-center rounded-lg bg-cyan-400/10 text-cyan-300">
+                <Award size={24} />
+              </span>
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-300">
+                  Base técnica
+                </p>
+                <h3 className="mt-1 text-2xl font-black">
+                  Formação aplicada ao SGQ
+                </h3>
+              </div>
+            </div>
+
+            <div className="mt-5 grid gap-2.5 sm:mt-7 sm:grid-cols-2 sm:gap-3">
+              {teamQualifications.map(([title, text]) => (
+                <div
+                  key={title}
+                  className="rounded-lg border border-cyan-300/15 bg-white/[0.04] p-3 sm:p-4"
+                >
+                  <strong className="text-base text-cyan-300 sm:text-lg">{title}</strong>
+                  <p className="mt-1.5 text-sm leading-5 text-slate-300 sm:mt-2 sm:leading-6">
+                    {text}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-5 border-l-2 border-cyan-300/70 pl-4 text-sm leading-6 text-slate-300 sm:mt-6">
+              Unimos qualidade, processos e tecnologia para criar controles
+              simples, rastreáveis e sustentáveis para a rotina da empresa.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section
         id="desafios"
-        className="scroll-mt-24 bg-slate-50 py-14 text-slate-950 sm:scroll-mt-28 sm:py-20"
+        className="scroll-mt-24 bg-slate-50 py-10 text-slate-950 sm:scroll-mt-28 sm:py-20"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
-          <div className="grid items-start gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
+          <div className="grid items-start gap-6 sm:gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
             <div className="lg:sticky lg:top-28">
               <SectionTitle
                 eyebrow="Desafios da qualidade"
                 title="Quando o sistema existe, mas ainda não apoia a gestão"
+                strongEyebrow
               />
-              <div className="mt-6 space-y-4 leading-7 text-slate-600">
+              <div className="mt-4 space-y-3 text-sm leading-6 text-slate-600 sm:mt-6 sm:text-base sm:leading-7">
                 <p>
                   Documentos sem padrão, indicadores pouco claros e problemas
                   recorrentes costumam ter a mesma origem: falta de método,
                   acompanhamento ou responsabilidades bem definidas.
                 </p>
               </div>
-              <p className="mt-7 border-l-2 border-cyan-500 pl-4 text-sm font-semibold leading-6 text-slate-700">
+              <p className="mt-5 border-l-2 border-cyan-500 pl-4 text-sm font-semibold leading-6 text-slate-700 sm:mt-7">
                 Identificar esses sinais ajuda a escolher por onde começar e
                 quais ações podem gerar maior impacto.
               </p>
             </div>
 
-            <div className="rounded-lg bg-white p-3 shadow-xl ring-1 ring-slate-200 sm:p-4 lg:w-full lg:max-w-[620px] lg:justify-self-end">
-              <div className="rounded-lg bg-office-panel p-3 sm:p-4">
-                <div className="h-full rounded-lg bg-slate-950 p-5 text-white shadow-lg sm:p-6">
-                  <div className="flex items-start justify-between gap-4 border-b border-slate-800 pb-4">
+            <div className="rounded-lg bg-white p-2.5 shadow-xl ring-1 ring-slate-200 sm:p-4 lg:w-full lg:max-w-[620px] lg:justify-self-end">
+              <div className="rounded-lg bg-office-panel p-2.5 sm:p-4">
+                <div className="h-full rounded-lg bg-slate-950 p-4 text-white shadow-lg sm:p-6">
+                  <div className="flex items-start justify-between gap-3 border-b border-slate-800 pb-3 sm:gap-4 sm:pb-4">
                     <div>
                       <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
                         Sinais de atenção
                       </p>
-                      <h3 className="mt-2 max-w-[390px] text-xl font-black sm:text-2xl">
+                      <h3 className="mt-2 max-w-[390px] text-lg font-black sm:text-2xl">
                         Sua empresa enfrenta algum destes desafios?
                       </h3>
                     </div>
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-cyan-400/10 text-cyan-300">
-                      <SearchCheck size={27} />
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-cyan-400/10 text-cyan-300 sm:h-12 sm:w-12">
+                      <SearchCheck size={24} />
                     </span>
                   </div>
 
-                  <div className="mt-5 grid gap-2.5">
+                  <div className="mt-4 grid gap-2 sm:mt-5 sm:gap-2.5">
                     {qualityChallenges.map((challenge) => (
                       <p
                         key={challenge}
-                        className="flex items-start gap-3 rounded-lg border border-sky-300/15 bg-slate-900/80 p-3 text-sm leading-6 text-slate-300 lg:items-center lg:whitespace-nowrap lg:text-[13px] xl:text-sm"
+                        className="flex items-start gap-2.5 rounded-lg border border-sky-300/15 bg-slate-900/80 p-2.5 text-sm leading-5 text-slate-300 sm:gap-3 sm:p-3 sm:leading-6 lg:items-center lg:whitespace-nowrap lg:text-[13px] xl:text-sm"
                       >
                         <CheckCircle2
                           className="mt-0.5 shrink-0 text-cyan-300"
@@ -342,7 +447,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="servicos" className="bg-slate-950 py-14 sm:py-20">
+      <section id="servicos" className="bg-slate-950 py-10 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
             eyebrow="Nossos serviços"
@@ -355,23 +460,23 @@ export default function Home() {
 
       <section
         aria-labelledby="processos-indicadores-title"
-        className="hidden overflow-hidden border-y border-cyan-400/10 bg-[#071426] py-16 lg:block"
+        className="hidden overflow-hidden bg-slate-950 py-14 lg:block"
       >
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-[1fr_0.72fr]">
           <div className="max-w-2xl">
             <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
-              Da estrutura ao acompanhamento
+              Processos, controles e indicadores
             </p>
             <h2
               id="processos-indicadores-title"
               className="mt-4 text-4xl font-black leading-tight text-white"
             >
-              Processos estruturados geram indicadores mais claros
+              Indicadores só funcionam quando o processo está organizado
             </h2>
             <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
-              Depois de organizar rotinas, responsabilidades e controles, os
-              indicadores ajudam a enxergar prioridades, acompanhar resultados
-              e direcionar melhorias com mais segurança.
+              Antes de medir resultados, estruturamos rotinas, documentos,
+              responsabilidades e controles. Assim, os indicadores deixam de
+              ser apenas números e passam a orientar decisões reais.
             </p>
           </div>
 
@@ -379,82 +484,39 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="dashboards" className="bg-dashboard py-14 sm:py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-5 lg:grid-cols-[0.7fr_1.3fr] lg:gap-10">
-          <div>
-            <SectionTitle
-              eyebrow="Indicadores organizados"
-              title="Organizamos indicadores para apoiar decisões"
-            />
-            <div className="mt-8 grid gap-3">
-              {[
-                "Painéis de acompanhamento",
-                "Indicadores operacionais e da qualidade",
-                "Não conformidades e ações",
-                "Metas e prazos",
-                "Análise de tendências",
-              ].map((item) => (
-                <p key={item} className="flex items-center gap-3 text-slate-300">
-                  <CheckCircle2 className="text-cyan-300" size={20} />
-                  {item}
-                </p>
-              ))}
-            </div>
-            <p className="mt-6 border-l-2 border-cyan-300/70 pl-4 text-sm leading-6 text-slate-400">
-              Os painéis e dados apresentados são demonstrações visuais e
-              possuem valores meramente ilustrativos.
-            </p>
-          </div>
-
-          <DashboardShowcase />
-        </div>
-      </section>
-
-      <section id="cases" className="bg-slate-50 py-14 text-slate-950 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-5">
-          <SectionTitle
-            eyebrow="Indicadores de gestão"
-            title="O que ajudamos sua empresa a acompanhar"
-          />
-
-          <div className="mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 lg:grid-cols-4">
-            {cases.map(([value, title]) => (
-              <article
-                key={title}
-                className="rounded-lg bg-case-card p-5 text-white shadow-lg sm:p-6"
-              >
-                <p className="text-sm uppercase tracking-widest text-cyan-300">
-                  Indicador
-                </p>
-                <h3 className="mt-4 text-lg font-bold md:min-h-20">{title}</h3>
-                <strong className="mt-7 block text-4xl text-cyan-300 sm:mt-8 sm:text-5xl">
-                  {value}
-                </strong>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-slate-950 py-14 sm:py-20">
+      <section className="bg-slate-950 pb-10 pt-2 sm:pb-20 sm:pt-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
             eyebrow="Método de trabalho"
-            title="Como conduzimos cada projeto"
+            title="Como transformamos diagnóstico em rotina de gestão"
           />
 
-          <div className="mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-            {workSteps.map(([title, text], index) => (
-              <article
-                key={title}
-                className="rounded-lg border border-sky-300/15 bg-slate-900/70 p-5 sm:p-6"
-              >
-                <span className="grid h-11 w-11 place-items-center rounded-lg bg-sky-500/15 text-sm font-black text-cyan-300">
-                  0{index + 1}
-                </span>
-                <h3 className="mt-5 text-xl font-bold">{title}</h3>
-                <p className="mt-3 leading-7 text-slate-300">{text}</p>
-              </article>
+          <div className="work-timeline mt-7 sm:mt-12">
+            {workSteps.map(({ title, text, icon: Icon }, index) => (
+              <div key={title} className="work-step-flow-item">
+                <article className="work-step-flow-card">
+                  <Icon
+                    className="mx-auto text-[var(--step-color)]"
+                    size={58}
+                    strokeWidth={1.6}
+                    aria-hidden="true"
+                  />
+                  <h3 className="mt-6 text-center text-xl font-bold sm:text-2xl">
+                    {title}
+                  </h3>
+                  <p className="mx-auto mt-3 max-w-[16rem] text-center leading-7 text-slate-300">
+                    {text}
+                  </p>
+                </article>
+                {index < workSteps.length - 1 && (
+                  <ArrowRight
+                    className="work-step-arrow"
+                    size={46}
+                    strokeWidth={1.8}
+                    aria-hidden="true"
+                  />
+                )}
+              </div>
             ))}
           </div>
         </div>
@@ -462,17 +524,18 @@ export default function Home() {
 
       <section
         id="diferenciais"
-        className="bg-white py-14 text-slate-950 sm:py-16"
+        className="bg-white py-10 text-slate-950 sm:py-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <SectionTitle
             eyebrow="Diferenciais"
             title="Por que escolher a QualityPro Solutions?"
             singleLine
+            strongEyebrow
           />
 
-          <div className="mt-8 grid items-stretch gap-4 lg:grid-cols-[1.15fr_0.95fr_0.9fr]">
-            <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+          <div className="mt-6 grid items-stretch gap-3 sm:mt-8 sm:gap-4 lg:grid-cols-[1.15fr_0.95fr_0.9fr]">
+            <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
               <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600">
                   <Award size={23} />
@@ -481,14 +544,14 @@ export default function Home() {
                   Diferenciais da QualityPro Solutions
                 </h3>
               </div>
-              <div className="mt-5 grid gap-3">
+              <div className="mt-4 grid gap-2.5 sm:mt-5 sm:gap-3">
                 {differentials.map((item) => (
                   <p
                     key={item}
-                    className="grid grid-cols-[44px_1fr] items-start gap-3 text-sm leading-6 text-slate-600 lg:whitespace-nowrap lg:text-[13px]"
+                    className="grid grid-cols-[32px_1fr] items-start gap-2 text-sm leading-5 text-slate-600 sm:grid-cols-[44px_1fr] sm:gap-3 sm:leading-6 lg:whitespace-nowrap lg:text-[13px]"
                   >
-                    <span className="grid h-6 w-11 place-items-center text-sky-500">
-                      <CheckCircle2 size={18} />
+                    <span className="grid h-5 w-8 place-items-center text-sky-500 sm:h-6 sm:w-11">
+                      <CheckCircle2 size={16} />
                     </span>
                     {item}
                   </p>
@@ -496,7 +559,7 @@ export default function Home() {
               </div>
             </article>
 
-            <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+            <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
               <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600">
                   <HeartHandshake size={23} />
@@ -505,14 +568,14 @@ export default function Home() {
                   Benefícios para o cliente
                 </h3>
               </div>
-              <div className="mt-5 grid gap-3">
+              <div className="mt-4 grid gap-2.5 sm:mt-5 sm:gap-3">
                 {clientBenefits.map((benefit) => (
                   <p
                     key={benefit}
-                    className="grid grid-cols-[44px_1fr] items-start gap-3 text-sm leading-6 text-slate-600 lg:whitespace-nowrap lg:text-[13px]"
+                    className="grid grid-cols-[32px_1fr] items-start gap-2 text-sm leading-5 text-slate-600 sm:grid-cols-[44px_1fr] sm:gap-3 sm:leading-6 lg:whitespace-nowrap lg:text-[13px]"
                   >
-                    <span className="grid h-6 w-11 place-items-center text-sky-500">
-                      <CheckCircle2 size={18} />
+                    <span className="grid h-5 w-8 place-items-center text-sky-500 sm:h-6 sm:w-11">
+                      <CheckCircle2 size={16} />
                     </span>
                     {benefit}
                   </p>
@@ -520,7 +583,7 @@ export default function Home() {
               </div>
             </article>
 
-            <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+            <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
               <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600">
                   <Headphones size={23} />
@@ -529,22 +592,22 @@ export default function Home() {
                   Modalidades de atendimento
                 </h3>
               </div>
-              <div className="mt-5 divide-y divide-slate-200">
+              <div className="mt-4 divide-y divide-slate-200 sm:mt-5">
                 {serviceModes.map((mode) => {
                   const Icon = mode.icon;
                   return (
                     <div
                       key={mode.title}
-                      className="grid grid-cols-[44px_1fr] items-start gap-3 py-4 first:pt-0 last:pb-0"
+                      className="grid grid-cols-[36px_1fr] items-start gap-3 py-3 first:pt-0 last:pb-0 sm:grid-cols-[44px_1fr] sm:py-4"
                     >
-                      <span className="grid h-8 w-11 place-items-center rounded-lg bg-sky-50 text-sky-600">
-                        <Icon size={21} />
+                      <span className="grid h-8 w-9 place-items-center rounded-lg bg-sky-50 text-sky-600 sm:w-11">
+                        <Icon size={20} />
                       </span>
                       <div>
                         <h4 className="flex h-8 items-center font-black uppercase text-sky-700">
                           {mode.title}
                         </h4>
-                        <p className="mt-1 text-sm leading-6 text-slate-600">
+                        <p className="mt-1 text-sm leading-5 text-slate-600 sm:leading-6">
                           {mode.text}
                         </p>
                       </div>
@@ -555,11 +618,11 @@ export default function Home() {
             </article>
           </div>
 
-          <div className="mt-4 flex items-start gap-4 rounded-lg border border-amber-300/60 bg-amber-50 p-5 sm:p-6">
+          <div className="mt-3 flex items-start gap-3 rounded-lg border border-amber-300/60 bg-amber-50 p-4 sm:mt-4 sm:gap-4 sm:p-6">
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-amber-400 text-slate-950">
               <TrendingUp size={23} />
             </span>
-            <p className="text-sm font-semibold leading-7 text-slate-700 sm:text-base">
+            <p className="text-sm font-semibold leading-6 text-slate-700 sm:text-base sm:leading-7">
               Nosso compromisso é transformar requisitos e necessidades em
               práticas que a equipe consiga entender, utilizar e manter.
             </p>
@@ -567,18 +630,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contato" className="bg-slate-900 py-14 sm:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-5 lg:grid-cols-[0.85fr_1.15fr] lg:gap-10">
+      <section id="contato" className="bg-slate-900 py-10 sm:py-20">
+        <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:gap-8 sm:px-5 lg:grid-cols-[0.85fr_1.15fr] lg:gap-10">
           <div>
             <SectionTitle
               eyebrow="Fale conosco"
               title="Conte qual desafio sua empresa enfrenta"
             />
-            <p className="mt-5 leading-7 text-slate-300">
+            <p className="mt-4 text-sm leading-6 text-slate-300 sm:mt-5 sm:text-base sm:leading-7">
               Envie uma breve descrição. Entraremos em contato para entender o
               cenário e indicar os próximos passos.
             </p>
-            <div className="mt-8 space-y-4 text-slate-200">
+            <div className="mt-6 space-y-3 text-sm text-slate-200 sm:mt-8 sm:space-y-4 sm:text-base">
               <a
                 href="mailto:contato@qualityprosolutions.com.br"
                 className="flex items-center gap-3 transition hover:text-cyan-300"
@@ -605,7 +668,7 @@ export default function Home() {
             <p className="mt-2 text-slate-300">
               Consultoria em Gestão da Qualidade
             </p>
-            <div className="mt-5 space-y-2 font-mono text-xs text-slate-300 sm:text-sm">
+            <div className="mt-5 space-y-2 text-sm font-medium text-slate-300">
               <a
                 href="mailto:contato@qualityprosolutions.com.br"
                 className="block transition hover:text-cyan-300"
