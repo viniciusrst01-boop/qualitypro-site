@@ -88,7 +88,7 @@ section[id] {
         rgba(2, 6, 23, 0.96) 0%,
         rgba(3, 22, 47, 0.9) 34%,
         rgba(3, 22, 47, 0.74) 64%,
-        rgba(2, 6, 23, 0.94) 100%
+        rgba(2, 6, 23, 0.86) 100%
       ),
       linear-gradient(
         90deg,
@@ -98,8 +98,8 @@ section[id] {
       ),
       url("/hero-bg-optimized.webp");
 
-    background-size: auto 72%;
-    background-position: 68% bottom;
+    background-size: auto 84%;
+    background-position: 66% bottom;
     background-repeat: no-repeat;
   }
 
@@ -144,7 +144,7 @@ section[id] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-content: center;
     gap: 0.7rem;
-    margin-top: 1.45rem;
+    margin-top: 2rem;
   }
 
   .qhd-hero-button {
