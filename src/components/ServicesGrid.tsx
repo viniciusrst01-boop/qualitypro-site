@@ -170,10 +170,11 @@ export default function ServicesGrid() {
       const reduceMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
+      const top = Math.max(0, rect.top + window.scrollY - topLimit);
 
-      card.scrollIntoView({
+      window.scrollTo({
+        top,
         behavior: reduceMotion ? "auto" : "smooth",
-        block: rect.bottom > bottomLimit ? "end" : "start",
       });
     }
   }
