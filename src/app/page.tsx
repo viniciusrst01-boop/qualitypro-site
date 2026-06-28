@@ -148,12 +148,14 @@ const teamQualifications = [
 function SectionTitle({
   eyebrow,
   title,
+  description,
   singleLine = false,
   pill = false,
   strongEyebrow = false,
 }: {
   eyebrow: string;
   title: string;
+  description?: string;
   singleLine?: boolean;
   pill?: boolean;
   strongEyebrow?: boolean;
@@ -178,6 +180,15 @@ function SectionTitle({
       >
         {title}
       </h2>
+      {description && (
+        <p
+          className={`mt-3 max-w-2xl text-sm leading-6 sm:text-base sm:leading-7 ${
+            strongEyebrow ? "text-slate-600" : "text-slate-300"
+          }`}
+        >
+          {description}
+        </p>
+      )}
     </div>
   );
 }
@@ -225,6 +236,7 @@ export default function Home() {
                 Ver Serviços <ArrowRight size={17} />
               </TrackedLink>
             </div>
+
           </div>
         </div>
 
@@ -262,6 +274,7 @@ export default function Home() {
           <SectionTitle
             eyebrow="Sobre nós"
             title="Conheça a QualityPro Solutions e o propósito que orienta nosso trabalho"
+            description="Soluções práticas para organizar processos, fortalecer controles e tornar o SGQ mais útil para a rotina da empresa."
             strongEyebrow
           />
 
@@ -345,6 +358,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
           </div>
 
           <aside className="rounded-lg border border-cyan-300/20 bg-slate-950 p-4 text-white shadow-2xl shadow-cyan-950/20 sm:p-7">
@@ -356,7 +370,7 @@ export default function Home() {
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-300">
                   Base técnica
                 </p>
-                <h3 className="mt-1 text-2xl font-black">
+                <h3 className="mt-1 text-xl font-black sm:text-2xl">
                   Formação aplicada ao SGQ
                 </h3>
               </div>
@@ -394,6 +408,7 @@ export default function Home() {
               <SectionTitle
                 eyebrow="Desafios da qualidade"
                 title="Quando o sistema existe, mas ainda não apoia a gestão"
+                description="Alguns sinais mostram que o SGQ precisa de mais clareza, método e acompanhamento."
                 strongEyebrow
               />
               <div className="mt-4 space-y-3 text-sm leading-6 text-slate-600 sm:mt-6 sm:text-base sm:leading-7">
@@ -453,6 +468,7 @@ export default function Home() {
           <SectionTitle
             eyebrow="Nossos serviços"
             title="Apoio técnico para estruturar e melhorar seu sistema de gestão"
+            description="Escolha o ponto de partida conforme a necessidade atual da empresa: diagnóstico, auditorias, implantação, manutenção ou melhoria."
           />
 
           <ServicesGrid />
@@ -531,6 +547,7 @@ export default function Home() {
           <SectionTitle
             eyebrow="Diferenciais"
             title="Por que escolher a QualityPro Solutions?"
+            description="Nossa atuação combina diagnóstico prático, comunicação clara e controles proporcionais à maturidade de cada empresa."
             singleLine
             strongEyebrow
           />

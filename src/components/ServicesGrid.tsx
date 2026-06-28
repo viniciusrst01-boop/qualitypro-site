@@ -234,18 +234,25 @@ export default function ServicesGrid() {
           const Icon = service.icon;
           const isExpanded = activeIndex === index;
           const serviceDetailsId = `${detailsId}-${index}`;
+          const serviceNumber = String(index + 1).padStart(2, "0");
 
           return (
             <article
               key={service.title}
               className={`${index >= initialMobileCount && !showAll ? "hidden md:block" : ""} ${
                 isExpanded ? "md:col-span-2 lg:col-span-3" : ""
-              } h-full overflow-hidden rounded-lg border bg-slate-900/70 transition-[border-color,background-color,box-shadow] duration-300 ${
+              } relative h-full overflow-hidden rounded-lg border bg-slate-900/70 transition-[border-color,background-color,box-shadow] duration-300 ${
                 isExpanded
                   ? "border-cyan-300/45 bg-slate-900 shadow-xl shadow-cyan-950/30"
                   : "border-sky-300/15 hover:border-cyan-300/35 hover:bg-slate-900"
               }`}
             >
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-1 -top-5 z-[1] select-none text-[7.2rem] font-black leading-none tracking-[-0.08em] text-cyan-300/[0.16] md:-right-2 md:-top-6 md:text-[8rem] md:text-cyan-300/[0.045] lg:text-[9rem]"
+              >
+                {serviceNumber}
+              </span>
               <button
                 type="button"
                 data-service-card={index}
@@ -254,7 +261,7 @@ export default function ServicesGrid() {
                 onClick={(event) =>
                   toggleService(index, event.currentTarget.closest("article"))
                 }
-                className="group w-full cursor-pointer p-4 text-left focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-cyan-300 sm:p-6"
+                className="group relative z-10 w-full cursor-pointer p-4 text-left focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-cyan-300 sm:p-6"
               >
                 <div className="flex items-start justify-between gap-5">
                   <Icon className="shrink-0 text-cyan-300" size={32} />
