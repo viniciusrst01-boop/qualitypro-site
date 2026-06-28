@@ -13,7 +13,7 @@ import {
   Wrench,
   Workflow,
 } from "lucide-react";
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 
 const services = [
   {
@@ -156,6 +156,7 @@ const services = [
 export default function ServicesGrid() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
+  const gridRef = useRef<HTMLDivElement>(null);
   const detailsId = useId();
   const initialMobileCount = 3;
 
@@ -189,7 +190,7 @@ export default function ServicesGrid() {
     });
   }
 
-  function toggleAllServices() {
+  function toggleAllServices(button: HTMLButtonElement) {
     const nextShowAll = !showAll;
     setShowAll(nextShowAll);
     if (
@@ -203,11 +204,32 @@ export default function ServicesGrid() {
       section: "services",
       action: nextShowAll ? "expand" : "collapse",
     });
+
+    if (!nextShowAll) {
+      window.setTimeout(() => {
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        const buttonTop = button.getBoundingClientRect().top + window.scrollY;
+        const top = Math.max(
+          0,
+          buttonTop - window.innerHeight + button.offsetHeight + 28,
+        );
+
+        window.scrollTo({
+          top,
+          behavior: reduceMotion ? "auto" : "smooth",
+        });
+      }, 240);
+    }
   }
 
   return (
     <>
-      <div className="mt-6 grid items-stretch gap-3 sm:mt-10 sm:gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div
+        ref={gridRef}
+        className="mt-6 grid items-stretch gap-3 sm:mt-10 sm:gap-4 md:grid-cols-2 lg:grid-cols-3"
+      >
         {services.map((service, index) => {
           const Icon = service.icon;
           const isExpanded = activeIndex === index;
@@ -318,7 +340,7 @@ export default function ServicesGrid() {
         <button
           type="button"
           aria-expanded={showAll}
-          onClick={toggleAllServices}
+          onClick={(event) => toggleAllServices(event.currentTarget)}
           className="mt-5 inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-md border border-cyan-300/25 bg-slate-900 px-5 py-3 text-sm font-bold text-cyan-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 md:hidden"
         >
           {showAll ? "Mostrar menos" : "Ver todos os serviços"}
