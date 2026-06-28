@@ -15,6 +15,45 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const servicesCatalog = [
+  {
+    name: "Consultoria para implantação ISO 9001",
+    serviceType: "Consultoria ISO 9001",
+  },
+  {
+    name: "Auditoria Interna",
+    serviceType: "Auditoria interna ISO 9001 e SGQ",
+  },
+  {
+    name: "Consultoria de Manutenção",
+    serviceType: "Organização de rotinas e controles de manutenção",
+  },
+  {
+    name: "Auditoria de Fornecedor",
+    serviceType: "Avaliação e auditoria de fornecedores",
+  },
+  {
+    name: "Consultoria para implantação SGQ",
+    serviceType: "Implantação de Sistema de Gestão da Qualidade",
+  },
+  {
+    name: "Projetos de Melhoria Contínua",
+    serviceType: "Melhoria contínua e planos de ação",
+  },
+  {
+    name: "Treinamentos",
+    serviceType: "Treinamentos em qualidade, ISO 9001 e ferramentas da qualidade",
+  },
+  {
+    name: "Diagnóstico SGQ",
+    serviceType: "Diagnóstico de Sistema de Gestão da Qualidade",
+  },
+  {
+    name: "Padronização de Processos",
+    serviceType: "Mapeamento, procedimentos, formulários e padrões operacionais",
+  },
+];
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -113,14 +152,33 @@ export default function RootLayout({
           addressRegion: "RJ",
           addressCountry: "BR",
         },
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "Atendimento comercial",
+          email: "contato@qualityprosolutions.com.br",
+          availableLanguage: ["pt-BR"],
+          areaServed: "BR",
+        },
         serviceType: [
           "Consultoria em Gestão da Qualidade",
-          "Implantação ISO 9001",
-          "Auditoria Interna",
-          "Indicadores de Gestão",
-          "Padronização de Processos",
-          "Melhoria Contínua",
+          ...servicesCatalog.map((service) => service.name),
         ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Serviços da QualityPro Solutions",
+          itemListElement: servicesCatalog.map((service) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: service.name,
+              serviceType: service.serviceType,
+              provider: {
+                "@id": `${siteUrl}/#organization`,
+              },
+              areaServed: "BR",
+            },
+          })),
+        },
       },
       {
         "@type": "WebSite",
