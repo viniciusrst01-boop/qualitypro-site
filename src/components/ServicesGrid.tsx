@@ -157,6 +157,7 @@ export default function ServicesGrid() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
+  const lastOpenScrollY = useRef<number | null>(null);
   const detailsId = useId();
   const initialMobileCount = 3;
 
@@ -180,10 +181,29 @@ export default function ServicesGrid() {
   }
 
   function toggleService(index: number, card: HTMLElement | null) {
-    const nextIndex = activeIndex === index ? null : index;
+    const isClosing = activeIndex === index;
+    const nextIndex = isClosing ? null : index;
+
+    if (!isClosing) {
+      lastOpenScrollY.current = window.scrollY;
+    }
+
     setActiveIndex(nextIndex);
     if (nextIndex !== null) {
       window.setTimeout(() => revealServiceCard(card), 380);
+    } else if (lastOpenScrollY.current !== null) {
+      const scrollY = lastOpenScrollY.current;
+      window.setTimeout(() => {
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        window.scrollTo({
+          top: scrollY,
+          behavior: reduceMotion ? "auto" : "smooth",
+        });
+        lastOpenScrollY.current = null;
+      }, 80);
     }
     track("service_card_toggle", {
       service: services[index].title,
