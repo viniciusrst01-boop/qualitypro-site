@@ -329,7 +329,7 @@ export default function Home() {
         id="qualificacoes"
         className="bg-slate-50 py-8 text-slate-950 sm:py-20"
       >
-        <div className="mx-auto grid max-w-7xl items-center gap-5 px-4 sm:gap-8 sm:px-5 lg:grid-cols-[1fr_0.95fr] lg:gap-12">
+        <div className="mx-auto grid max-w-7xl items-start gap-5 px-4 sm:gap-8 sm:px-5 lg:grid-cols-[1fr_0.95fr] lg:gap-12">
           <div>
             <span className="inline-flex rounded-full border border-cyan-300/60 bg-cyan-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-cyan-700">
               Qualificações da equipe
@@ -361,7 +361,7 @@ export default function Home() {
 
           </div>
 
-          <aside className="rounded-lg border border-cyan-300/20 bg-slate-950 p-4 text-white shadow-2xl shadow-cyan-950/20 sm:p-7">
+          <aside className="rounded-lg border border-cyan-300/20 bg-slate-950 p-4 text-white shadow-2xl shadow-cyan-950/20 sm:p-7 lg:mt-[4.45rem]">
             <div className="flex items-center gap-3">
               <span className="grid h-11 w-11 place-items-center rounded-lg bg-cyan-400/10 text-cyan-300">
                 <Award size={24} />
