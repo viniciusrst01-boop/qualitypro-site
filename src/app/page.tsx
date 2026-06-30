@@ -4,6 +4,7 @@ import {
   BadgeCheck,
   Building2,
   CheckCircle2,
+  Clock3,
   ClipboardCheck,
   Blend,
   Headphones,
@@ -361,7 +362,8 @@ export default function Home() {
 
           </div>
 
-          <aside className="rounded-lg border border-cyan-300/20 bg-slate-950 p-4 text-white shadow-2xl shadow-cyan-950/20 sm:p-7 lg:mt-[4.45rem]">
+          <div className="space-y-4 lg:mt-[4.45rem]">
+          <aside className="rounded-lg border border-cyan-300/20 bg-slate-950 p-4 text-white shadow-2xl shadow-cyan-950/20 sm:p-7">
             <div className="flex items-center gap-3">
               <span className="grid h-11 w-11 place-items-center rounded-lg bg-cyan-400/10 text-cyan-300">
                 <Award size={24} />
@@ -395,6 +397,18 @@ export default function Home() {
               simples, rastreáveis e sustentáveis para a rotina da empresa.
             </p>
           </aside>
+
+            <div className="flex items-start gap-4 rounded-lg border border-amber-300/80 bg-amber-50 p-4 text-slate-950 shadow-sm sm:p-5">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-amber-400 text-slate-950">
+                <Clock3 size={23} />
+              </span>
+              <p className="text-sm font-bold leading-6 sm:text-base sm:leading-7">
+                Nossa equipe soma 10 anos de experiência na área da qualidade,
+                com atuação prática em SGQ, auditorias, inspeções, metrologia,
+                indicadores e melhoria contínua.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
