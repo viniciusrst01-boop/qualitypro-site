@@ -120,6 +120,39 @@ const workSteps = [
   },
 ];
 
+const consultationTimelineSteps = [
+  {
+    title: "Diagnóstico",
+    text: "Leitura da rotina, riscos, documentos e pontos críticos.",
+    icon: SearchCheck,
+  },
+  {
+    title: "Mapeamento",
+    text: "Organização dos processos, fluxos e responsabilidades.",
+    icon: Workflow,
+  },
+  {
+    title: "Padronização",
+    text: "Procedimentos, registros, checklists e evidências.",
+    icon: ClipboardCheck,
+  },
+  {
+    title: "Treinamentos",
+    text: "Orientação das equipes para aplicar a rotina definida.",
+    icon: UsersRound,
+  },
+  {
+    title: "Auditoria",
+    text: "Verificação dos controles, resultados e oportunidades.",
+    icon: BadgeCheck,
+  },
+  {
+    title: "Melhoria Contínua",
+    text: "Ações corretivas, ajustes e evolução do SGQ.",
+    icon: TrendingUp,
+  },
+];
+
 const qualityChallengeCards = [
   "O SGQ existe, mas falta controle e acompanhamento efetivo",
   "Documentos e registros estão espalhados e sem padrão",
@@ -282,7 +315,7 @@ export default function Home() {
           <div className="mt-6 grid items-stretch gap-3 sm:mt-8 lg:grid-cols-2 lg:gap-6">
             <article className="rounded-lg border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
               <div className="flex items-start gap-4">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sky-100 text-sky-600 sm:h-11 sm:w-11">
+                <span className="-mt-2 grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sky-100 text-sky-600 sm:h-11 sm:w-11">
                   <Building2 size={24} />
                 </span>
                 <div>
@@ -304,7 +337,7 @@ export default function Home() {
 
             <article className="rounded-lg border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
               <div className="flex items-start gap-4">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sky-100 text-sky-600 sm:h-11 sm:w-11">
+                <span className="-mt-2 grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sky-100 text-sky-600 sm:h-11 sm:w-11">
                   <Target size={24} />
                 </span>
                 <div>
