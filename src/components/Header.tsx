@@ -2,27 +2,31 @@
 
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import TrackedLink from "@/components/TrackedLink";
 
 const desktopNavigation = [
-  ["Início", "#inicio"],
-  ["Sobre", "#sobre"],
-  ["Serviços", "#servicos"],
-  ["Contato", "#contato"],
+  ["Início", "/#inicio"],
+  ["Sobre", "/#sobre"],
+  ["Produtos", "/produtos"],
+  ["Serviços", "/#servicos"],
+  ["Contato", "/#contato"],
 ];
 
 const mobileNavigation = [
-  ["Início", "#inicio"],
-  ["Sobre", "#sobre"],
-  ["Desafios", "#desafios"],
-  ["Serviços", "#servicos"],
-  ["Diferenciais", "#diferenciais"],
-  ["Contato", "#contato"],
+  ["Início", "/#inicio"],
+  ["Sobre", "/#sobre"],
+  ["Produtos", "/produtos"],
+  ["Desafios", "/#desafios"],
+  ["Serviços", "/#servicos"],
+  ["Diferenciais", "/#diferenciais"],
+  ["Contato", "/#contato"],
 ];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -43,11 +47,15 @@ export default function Header() {
     setIsMenuOpen(false);
   }
 
+  function isActive(href: string) {
+    return href === "/produtos" && pathname === "/produtos";
+  }
+
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-cyan-400/10 bg-slate-950/80 shadow-lg shadow-cyan-950/20 backdrop-blur-xl">
       <div className="qhd-header-inner mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-5 sm:py-4">
         <a
-          href="#inicio"
+          href="/#inicio"
           className="block shrink-0"
           aria-label="QualityPro Solutions - início"
           onClick={closeMenu}
@@ -66,15 +74,27 @@ export default function Header() {
           aria-label="Navegação principal"
           className="qhd-header-nav hidden items-center gap-8 text-sm font-semibold text-slate-300 lg:ml-8 lg:flex xl:ml-10"
         >
-          {desktopNavigation.map(([label, href]) => (
-            <a
-              key={href}
-              href={href}
-              className="group py-2 transition hover:text-cyan-300 focus-visible:text-cyan-300"
-            >
-              <span className="nav-link-underline">{label}</span>
-            </a>
-          ))}
+          {desktopNavigation.map(([label, href]) => {
+            const active = isActive(href);
+
+            return (
+              <a
+                key={href}
+                href={href}
+                className={`group py-2 transition hover:text-cyan-300 focus-visible:text-cyan-300 ${
+                  active ? "text-cyan-300" : ""
+                }`}
+              >
+                <span
+                  className={`nav-link-underline ${
+                    active ? "nav-link-underline-active" : ""
+                  }`}
+                >
+                  {label}
+                </span>
+              </a>
+            );
+          })}
         </nav>
 
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
@@ -90,7 +110,7 @@ export default function Header() {
           </button>
 
           <TrackedLink
-            href="#contato"
+            href="/#contato"
             eventLabel="Solicitar Consultoria"
             eventLocation="header"
             onClick={closeMenu}
@@ -116,7 +136,8 @@ export default function Header() {
         >
           <div className="mx-auto grid max-w-7xl gap-1 px-5 py-4 sm:px-6">
             {mobileNavigation.map(([label, href]) => {
-              const isContact = href === "#contato";
+              const isContact = href === "/#contato";
+              const active = isActive(href);
 
               return (
                 <a
@@ -127,7 +148,9 @@ export default function Header() {
                   className={
                     isContact
                       ? "py-2.5 text-sm font-black text-cyan-300 hover:text-cyan-200"
-                      : "py-2.5 text-sm font-semibold text-slate-200 hover:text-cyan-300"
+                      : `py-2.5 text-sm font-semibold hover:text-cyan-300 ${
+                          active ? "text-cyan-300" : "text-slate-200"
+                        }`
                   }
                 >
                   {label}

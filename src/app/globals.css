@@ -804,7 +804,8 @@ section[id] {
 }
 
 .group:hover .nav-link-underline::after,
-.group:focus-visible .nav-link-underline::after {
+.group:focus-visible .nav-link-underline::after,
+.nav-link-underline-active::after {
   width: 100%;
   opacity: 1;
   transform: translateY(0);
