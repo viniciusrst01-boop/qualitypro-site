@@ -9,7 +9,7 @@ import TrackedLink from "@/components/TrackedLink";
 const desktopNavigation = [
   ["Início", "/#inicio"],
   ["Sobre", "/#sobre"],
-  ["Produtos", "/produtos"],
+  ["Materiais de Apoio", "/produtos"],
   ["Serviços", "/#servicos"],
   ["Contato", "/#contato"],
 ];
@@ -17,7 +17,7 @@ const desktopNavigation = [
 const mobileNavigation = [
   ["Início", "/#inicio"],
   ["Sobre", "/#sobre"],
-  ["Produtos", "/produtos"],
+  ["Materiais de Apoio", "/produtos"],
   ["Desafios", "/#desafios"],
   ["Serviços", "/#servicos"],
   ["Diferenciais", "/#diferenciais"],

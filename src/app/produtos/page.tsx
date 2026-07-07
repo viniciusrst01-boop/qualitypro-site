@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {
   ArrowRight,
   BadgeCheck,
-  BarChart3,
   CheckCircle2,
   ClipboardCheck,
   DownloadCloud,
@@ -17,9 +16,9 @@ import Header from "@/components/Header";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Produtos | QualityPro Solutions",
+  title: "Materiais de Apoio | QualityPro Solutions",
   description:
-    "Produtos, materiais, sistemas e recursos profissionais para apoiar a Gestão da Qualidade, ISO 9001, auditorias, indicadores e padronização de processos.",
+    "Materiais de apoio, modelos, planilhas e recursos profissionais para apoiar a Gestão da Qualidade, ISO 9001, auditorias, indicadores e padronização de processos.",
   alternates: {
     canonical: "/produtos",
   },
@@ -171,11 +170,11 @@ export default function ProdutosPage() {
       <main className="relative min-h-screen bg-slate-50 pt-24 text-slate-950 sm:pt-28">
         <div
           className="absolute inset-0 z-30 grid min-h-screen place-items-center bg-slate-950/78 px-4 text-center text-white backdrop-blur-md"
-          aria-label="Produtos em breve"
+          aria-label="Materiais de apoio em breve"
         >
           <div className="max-w-xl rounded-lg border border-cyan-300/25 bg-slate-950/70 px-6 py-8 shadow-2xl shadow-cyan-950/40 sm:px-10 sm:py-10">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-cyan-300">
-              Produtos QualityPro Solutions
+              Materiais de Apoio QualityPro Solutions
             </p>
             <h1 className="mt-4 text-4xl font-black uppercase tracking-normal sm:text-6xl">
               Em breve
@@ -194,7 +193,7 @@ export default function ProdutosPage() {
                 Soluções para Gestão da Qualidade
               </p>
               <h1 className="mt-4 text-4xl font-black uppercase leading-none tracking-normal text-slate-950 sm:text-6xl">
-                Produtos
+                Materiais de Apoio
               </h1>
               <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-slate-600 sm:text-xl sm:leading-8">
                 Materiais, sistemas e recursos profissionais desenvolvidos para
@@ -248,7 +247,7 @@ export default function ProdutosPage() {
                       href="/#contato"
                       className={`mt-auto inline-flex items-center justify-center gap-2 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-wide transition ${styles.button}`}
                     >
-                      Ver produtos <ArrowRight size={16} />
+                      Ver materiais <ArrowRight size={16} />
                     </Link>
                   </article>
                 );
