@@ -172,7 +172,7 @@ export default function ProdutosPage() {
           className="absolute inset-0 z-30 grid min-h-screen place-items-center bg-slate-950/78 px-4 text-center text-white backdrop-blur-md"
           aria-label="Materiais de apoio em breve"
         >
-          <div className="max-w-xl rounded-lg border border-cyan-300/25 bg-slate-950/70 px-6 py-8 shadow-2xl shadow-cyan-950/40 sm:px-10 sm:py-10">
+          <div className="max-w-xl -translate-y-28 rounded-lg border border-cyan-300/25 bg-slate-950/70 px-6 py-8 shadow-2xl shadow-cyan-950/40 sm:-translate-y-40 sm:px-10 sm:py-10">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-cyan-300">
               Materiais de Apoio QualityPro Solutions
             </p>
