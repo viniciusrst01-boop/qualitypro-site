@@ -270,7 +270,11 @@ export default function ServicesGrid() {
             >
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute -right-1 -top-5 z-[1] select-none text-[7.2rem] font-black leading-none tracking-[-0.08em] text-cyan-300/[0.16] md:-right-2 md:-top-6 md:text-[8rem] md:text-cyan-300/[0.045] lg:text-[9rem]"
+                className={`pointer-events-none absolute -right-1 -top-5 z-[1] select-none text-[7.2rem] font-black leading-none tracking-[-0.08em] md:-right-2 md:-top-6 md:text-[8rem] lg:text-[9rem] ${
+                  isExpanded
+                    ? "text-cyan-300/[0.055] md:text-cyan-300/[0.025]"
+                    : "text-cyan-300/[0.16] md:text-cyan-300/[0.045]"
+                }`}
               >
                 {serviceNumber}
               </span>
@@ -294,8 +298,14 @@ export default function ServicesGrid() {
                     size={22}
                   />
                 </div>
-                <h3 className="mt-4 text-xl font-bold sm:mt-5">{service.title}</h3>
-                <p className="mt-2 max-w-3xl leading-6 text-slate-400 sm:mt-3 sm:leading-7">
+                <h3
+                  className={`mt-4 font-bold leading-tight sm:mt-5 ${
+                    isExpanded ? "text-2xl sm:text-[1.7rem]" : "text-xl"
+                  }`}
+                >
+                  {service.title}
+                </h3>
+                <p className="mt-2 max-w-4xl text-[0.98rem] leading-6 text-slate-400 sm:mt-3 sm:leading-7">
                   {service.text}
                 </p>
               </button>
@@ -319,33 +329,34 @@ export default function ServicesGrid() {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <div className="mx-4 grid gap-5 border-t border-sky-300/15 pb-5 pt-4 sm:mx-6 sm:gap-6 sm:pb-6 sm:pt-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
-                    <div>
-                      <h4 className="text-base font-bold text-white">
-                        Como funciona
-                      </h4>
-                      <p className="mt-3 leading-7 text-slate-300">
-                        {service.detail}
-                      </p>
-                      <div className="mt-5 border-l-2 border-cyan-300 pl-4">
-                        <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
-                          Resultado esperado
+                  <div className="mx-4 border-t border-sky-300/15 pb-5 pt-4 sm:mx-6 sm:pb-6 sm:pt-5">
+                    <div className="grid gap-4 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:gap-5">
+                      <div className="rounded-lg border border-sky-300/12 bg-white/[0.035] p-4 sm:p-5">
+                        <h4 className="text-[1.05rem] font-bold text-white">
+                          Como funciona
+                        </h4>
+                        <p className="mt-3 text-[0.98rem] leading-7 text-slate-300">
+                          {service.detail}
                         </p>
-                        <p className="mt-2 leading-7 text-slate-300">
-                          {service.result}
-                        </p>
+                        <div className="mt-4 rounded-md border-l-2 border-cyan-300 bg-cyan-300/[0.055] px-4 py-3">
+                          <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">
+                            Resultado esperado
+                          </p>
+                          <p className="mt-2 text-[0.98rem] leading-7 text-slate-200">
+                            {service.result}
+                          </p>
+                        </div>
                       </div>
-                    </div>
 
-                    <div>
-                      <h4 className="text-base font-bold text-white">
+                    <div className="rounded-lg border border-sky-300/12 bg-white/[0.035] p-4 sm:p-5">
+                      <h4 className="text-[1.05rem] font-bold text-white">
                         Entregas possíveis
                       </h4>
-                      <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+                      <ul className="mt-3 grid gap-2.5 sm:grid-cols-2">
                         {service.deliverables.map((deliverable) => (
                           <li
                             key={deliverable}
-                            className="flex items-start gap-3 rounded-lg border border-sky-300/10 bg-slate-950/45 p-3 text-sm leading-6 text-slate-300"
+                            className="flex items-start gap-3 rounded-md border border-sky-300/12 bg-slate-950/50 p-3 text-[0.92rem] leading-6 text-slate-300"
                           >
                             <CheckCircle2
                               className="mt-0.5 shrink-0 text-cyan-300"
@@ -355,6 +366,7 @@ export default function ServicesGrid() {
                           </li>
                         ))}
                       </ul>
+                    </div>
                     </div>
                   </div>
                 </div>
