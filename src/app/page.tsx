@@ -227,6 +227,22 @@ function SectionTitle({
   );
 }
 
+const whatsappHref =
+  "https://wa.me/5521995579106?text=Ol%C3%A1%21%20Gostaria%20de%20falar%20com%20a%20QualityPro%20Solutions%20sobre%20uma%20consultoria.";
+
+function WhatsAppIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M12.04 2C6.58 2 2.13 6.42 2.13 11.86c0 1.75.47 3.45 1.35 4.95L2 22l5.32-1.39a9.93 9.93 0 0 0 4.72 1.2h.01c5.46 0 9.9-4.42 9.9-9.86A9.83 9.83 0 0 0 12.04 2Zm0 18.13h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.15.82.84-3.06-.2-.32a8.16 8.16 0 0 1-1.25-4.39c0-4.51 3.7-8.18 8.25-8.18a8.24 8.24 0 0 1 8.26 8.19c0 4.5-3.7 8.16-8.26 8.16Zm4.52-6.12c-.25-.12-1.47-.72-1.7-.8-.23-.09-.4-.13-.57.12-.17.25-.65.8-.8.96-.15.17-.3.19-.55.07-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.3.38-.45.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.57-1.37-.78-1.88-.2-.49-.41-.42-.57-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.43 1.03 2.6c.13.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.43.52.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.3Z" />
+    </svg>
+  );
+}
+
 export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-slate-950 text-white">
@@ -717,6 +733,16 @@ export default function Home() {
               <p className="flex items-center gap-3">
                 <MapPin className="text-cyan-300" size={20} /> Rio de Janeiro - RJ
               </p>
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 transition hover:text-cyan-300"
+                aria-label="Falar com a QualityPro Solutions pelo WhatsApp"
+              >
+                <WhatsAppIcon className="h-5 w-5 text-cyan-300" />
+                (21) 99557-9106
+              </a>
             </div>
           </div>
 
