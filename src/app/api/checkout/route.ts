@@ -4,6 +4,7 @@ export const runtime = "nodejs";
 
 type CheckoutPayload = {
   productId?: unknown;
+  testKey?: unknown;
 };
 
 function getSiteUrl() {
@@ -43,6 +44,13 @@ export async function POST(request: Request) {
     return Response.json({ message: "Produto nao encontrado." }, { status: 404 });
   }
 
+  const checkoutTestKey = process.env.TEST_CHECKOUT_KEY;
+  const incomingTestKey =
+    typeof payload.testKey === "string" ? payload.testKey.trim() : "";
+  const isTestCheckout =
+    Boolean(checkoutTestKey) && incomingTestKey === checkoutTestKey;
+  const priceInCents = isTestCheckout ? 100 : product.priceInCents;
+
   const siteUrl = getSiteUrl();
   const preferenceResponse = await fetch(
     "https://api.mercadopago.com/checkout/preferences",
@@ -56,14 +64,18 @@ export async function POST(request: Request) {
         items: [
           {
             id: product.id,
-            title: product.name,
+            title: isTestCheckout ? `${product.name} - Teste` : product.name,
             description: product.description,
             quantity: 1,
             currency_id: "BRL",
-            unit_price: product.priceInCents / 100,
+            unit_price: priceInCents / 100,
           },
         ],
         external_reference: product.id,
+        metadata: {
+          checkout_test: isTestCheckout,
+          product_id: product.id,
+        },
         back_urls: {
           success: `${siteUrl}/compra/obrigado?status=approved`,
           pending: `${siteUrl}/compra/obrigado?status=pending`,

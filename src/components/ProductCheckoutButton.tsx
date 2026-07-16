@@ -20,12 +20,14 @@ export default function ProductCheckoutButton({
     setMessage("");
 
     try {
+      const searchParams = new URLSearchParams(window.location.search);
+      const testKey = searchParams.get("teste")?.trim();
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ productId }),
+        body: JSON.stringify({ productId, ...(testKey ? { testKey } : {}) }),
       });
       const data = (await response.json()) as {
         checkoutUrl?: string;
