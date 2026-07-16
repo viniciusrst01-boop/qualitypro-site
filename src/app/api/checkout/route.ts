@@ -49,7 +49,7 @@ export async function POST(request: Request) {
     typeof payload.testKey === "string" ? payload.testKey.trim() : "";
   const isTestCheckout =
     Boolean(checkoutTestKey) && incomingTestKey === checkoutTestKey;
-  const priceInCents = isTestCheckout ? 100 : product.priceInCents;
+  const priceInCents = isTestCheckout ? 1 : product.priceInCents;
 
   const siteUrl = getSiteUrl();
   const preferenceResponse = await fetch(
@@ -89,6 +89,7 @@ export async function POST(request: Request) {
   );
 
   const preference = (await preferenceResponse.json()) as {
+    id?: string;
     init_point?: string;
     sandbox_init_point?: string;
     message?: string;
@@ -102,5 +103,8 @@ export async function POST(request: Request) {
     );
   }
 
-  return Response.json({ checkoutUrl: preference.init_point });
+  return Response.json({
+    checkoutUrl: preference.init_point,
+    preferenceId: preference.id || "",
+  });
 }

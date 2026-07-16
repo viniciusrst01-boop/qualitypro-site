@@ -4,6 +4,7 @@ import { ArrowRight, Download, MailCheck } from "lucide-react";
 import Header from "@/components/Header";
 import { createDownloadToken } from "@/lib/download-token";
 import { getPaidProduct } from "@/lib/products";
+import CheckoutRecovery from "./CheckoutRecovery";
 
 export const metadata: Metadata = {
   title: "Compra recebida | QualityPro Solutions",
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 type CompraObrigadoPageProps = {
   searchParams: Promise<{
     collection_id?: string;
+    merchant_order_id?: string;
     payment_id?: string;
     status?: string;
     preference_id?: string;
@@ -23,11 +25,23 @@ type CompraObrigadoPageProps = {
 };
 
 type MercadoPagoPayment = {
+  id?: number | string;
   status?: string;
   external_reference?: string;
   payer?: {
     email?: string;
   };
+};
+
+type MercadoPagoMerchantOrder = {
+  payments?: Array<{
+    id?: number | string;
+    status?: string;
+  }>;
+};
+
+type MercadoPagoMerchantOrderSearch = {
+  elements?: MercadoPagoMerchantOrder[];
 };
 
 function getSiteUrl() {
@@ -38,34 +52,104 @@ function getSiteUrl() {
   ).replace(/\/$/, "");
 }
 
-async function getApprovedDownloadUrl(paymentId: string) {
-  const accessToken = process.env.MERCADO_PAGO_ACCESS_TOKEN;
+async function fetchMercadoPagoJson<T>(url: string, accessToken: string) {
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+    cache: "no-store",
+  });
 
-  if (!accessToken || !paymentId) {
+  if (!response.ok) {
+    console.error("Mercado Pago lookup failed:", await response.text());
     return null;
   }
 
-  const paymentResponse = await fetch(
+  return (await response.json()) as T;
+}
+
+async function getPaymentById(paymentId: string, accessToken: string) {
+  if (!paymentId || paymentId === "null") {
+    return null;
+  }
+
+  return fetchMercadoPagoJson<MercadoPagoPayment>(
     `https://api.mercadopago.com/v1/payments/${paymentId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-      cache: "no-store",
-    },
+    accessToken,
+  );
+}
+
+async function getApprovedPaymentIdFromMerchantOrder(
+  merchantOrderId: string,
+  accessToken: string,
+) {
+  if (!merchantOrderId || merchantOrderId === "null") {
+    return null;
+  }
+
+  const merchantOrder = await fetchMercadoPagoJson<MercadoPagoMerchantOrder>(
+    `https://api.mercadopago.com/merchant_orders/${merchantOrderId}`,
+    accessToken,
   );
 
-  if (!paymentResponse.ok) {
-    console.error(
-      "Mercado Pago return payment lookup failed:",
-      await paymentResponse.text(),
-    );
+  return (
+    merchantOrder?.payments?.find((payment) => payment.status === "approved")
+      ?.id || null
+  );
+}
+
+async function getApprovedPaymentIdFromPreference(
+  preferenceId: string,
+  accessToken: string,
+) {
+  if (!preferenceId || preferenceId === "null") {
     return null;
   }
 
-  const payment = (await paymentResponse.json()) as MercadoPagoPayment;
+  const search = await fetchMercadoPagoJson<MercadoPagoMerchantOrderSearch>(
+    `https://api.mercadopago.com/merchant_orders/search?preference_id=${encodeURIComponent(
+      preferenceId,
+    )}`,
+    accessToken,
+  );
 
-  if (payment.status !== "approved") {
+  for (const merchantOrder of search?.elements || []) {
+    const approvedPayment = merchantOrder.payments?.find(
+      (payment) => payment.status === "approved",
+    );
+
+    if (approvedPayment?.id) {
+      return approvedPayment.id;
+    }
+  }
+
+  return null;
+}
+
+async function getApprovedDownloadUrl({
+  merchantOrderId,
+  paymentId,
+  preferenceId,
+}: {
+  merchantOrderId: string;
+  paymentId: string;
+  preferenceId: string;
+}) {
+  const accessToken = process.env.MERCADO_PAGO_ACCESS_TOKEN;
+
+  if (!accessToken) {
+    return null;
+  }
+
+  const resolvedPaymentId =
+    paymentId ||
+    (await getApprovedPaymentIdFromMerchantOrder(merchantOrderId, accessToken)) ||
+    (await getApprovedPaymentIdFromPreference(preferenceId, accessToken));
+  const payment = resolvedPaymentId
+    ? await getPaymentById(String(resolvedPaymentId), accessToken)
+    : null;
+
+  if (payment?.status !== "approved") {
     return null;
   }
 
@@ -89,7 +173,11 @@ export default async function CompraObrigadoPage({
 }: CompraObrigadoPageProps) {
   const params = await searchParams;
   const paymentId = params.payment_id || params.collection_id || "";
-  const download = await getApprovedDownloadUrl(paymentId);
+  const download = await getApprovedDownloadUrl({
+    merchantOrderId: params.merchant_order_id || "",
+    paymentId,
+    preferenceId: params.preference_id || "",
+  });
 
   return (
     <>
@@ -121,11 +209,15 @@ export default async function CompraObrigadoPage({
               </a>
             </>
           ) : (
-            <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-              Assim que o Mercado Pago confirmar o pagamento, enviaremos o link
-              de download para o e-mail informado na compra. O link ficara
-              disponivel por 3 dias.
-            </p>
+            <>
+              <CheckoutRecovery />
+              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+                Estamos verificando a confirmacao do Mercado Pago. Se o
+                pagamento ja foi aprovado, recarregue esta pagina em alguns
+                segundos. O link tambem sera enviado para o e-mail informado na
+                compra e fica disponivel por 3 dias.
+              </p>
+            </>
           )}
           <Link
             href="/produtos"
