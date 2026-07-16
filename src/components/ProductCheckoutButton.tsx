@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
 type ProductCheckoutButtonProps = {
@@ -14,6 +14,12 @@ export default function ProductCheckoutButton({
 }: ProductCheckoutButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [isTestMode, setIsTestMode] = useState(false);
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    setIsTestMode(Boolean(searchParams.get("teste")?.trim()));
+  }, []);
 
   async function handleCheckout() {
     setIsLoading(true);
@@ -57,7 +63,11 @@ export default function ProductCheckoutButton({
         disabled={isLoading}
         className={`${className} disabled:cursor-not-allowed disabled:opacity-60`}
       >
-        {isLoading ? "Abrindo pagamento..." : "Comprar por R$ 100"}
+        {isLoading
+          ? "Abrindo pagamento..."
+          : isTestMode
+            ? "Comprar teste por R$ 1"
+            : "Comprar por R$ 100"}
         {!isLoading && <ArrowRight size={16} />}
       </button>
       {message && (

@@ -107,7 +107,7 @@ const individualKits = [
       "Modelos profissionais para planejar, executar, registrar e acompanhar auditorias internas ISO 9001.",
     color: "blue",
     icon: ClipboardCheck,
-    status: "Disponível em breve",
+    status: "Disponível",
     items: [
       "Plano e programa de auditoria",
       "Checklist ISO 9001 e gap analysis",
@@ -123,7 +123,7 @@ const individualKits = [
       "Documentos e controles para registrar não conformidades, tratar causas e verificar a eficácia das ações.",
     color: "orange",
     icon: BadgeCheck,
-    status: "Disponível em breve",
+    status: "Disponível",
     items: [
       "Relatório de não conformidade",
       "Controle de NC e eficácia",
@@ -139,7 +139,7 @@ const individualKits = [
       "Pacote combinado para estruturar auditorias internas e controlar não conformidades em um único conjunto.",
     color: "navy",
     icon: PackageCheck,
-    status: "Disponível em breve",
+    status: "Disponível",
     items: [
       "Kit Auditoria ISO 9001",
       "Kit Não Conformidade",
