@@ -9,10 +9,12 @@ import {
   GraduationCap,
   Headphones,
   MonitorCog,
+  PackageCheck,
   ShieldCheck,
   UserRound,
 } from "lucide-react";
 import Header from "@/components/Header";
+import ProductCheckoutButton from "@/components/ProductCheckoutButton";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -97,6 +99,73 @@ const productLines = [
   },
 ];
 
+const individualKits = [
+  {
+    id: "kit-auditoria-iso-9001",
+    title: "Kit Auditoria ISO 9001",
+    description:
+      "Modelos profissionais para planejar, executar, registrar e acompanhar auditorias internas ISO 9001.",
+    color: "blue",
+    icon: ClipboardCheck,
+    status: "Disponível em breve",
+    items: [
+      "Plano e programa de auditoria",
+      "Checklist ISO 9001 e gap analysis",
+      "Relatório de auditoria",
+      "Qualificação de auditores",
+      "Manual prático de auditoria interna",
+    ],
+  },
+  {
+    id: "kit-nao-conformidade-acao-corretiva",
+    title: "Kit Não Conformidade e Ação Corretiva",
+    description:
+      "Documentos e controles para registrar não conformidades, tratar causas e verificar a eficácia das ações.",
+    color: "orange",
+    icon: BadgeCheck,
+    status: "Disponível em breve",
+    items: [
+      "Relatório de não conformidade",
+      "Controle de NC e eficácia",
+      "Fluxo do processo de NC",
+      "Procedimento de tratativa",
+      "Acompanhamento de ações corretivas",
+    ],
+  },
+  {
+    id: "combo-auditoria-nao-conformidade",
+    title: "Combo Auditoria + Não Conformidade",
+    description:
+      "Pacote combinado para estruturar auditorias internas e controlar não conformidades em um único conjunto.",
+    color: "navy",
+    icon: PackageCheck,
+    status: "Disponível em breve",
+    items: [
+      "Kit Auditoria ISO 9001",
+      "Kit Não Conformidade",
+      "Fluxos, formulários e relatórios",
+      "Controles de acompanhamento",
+      "Materiais editáveis",
+    ],
+  },
+  {
+    id: "kit-controles-essenciais-sgq",
+    title: "Kit Controles Essenciais do SGQ",
+    description:
+      "Base de controles para organizar documentos, registros, rotinas e evidências do Sistema de Gestão da Qualidade.",
+    color: "green",
+    icon: MonitorCog,
+    status: "Em preparação",
+    items: [
+      "Controle de documentos",
+      "Controle de registros",
+      "Listas mestras",
+      "Rotinas de acompanhamento",
+      "Indicadores básicos do SGQ",
+    ],
+  },
+];
+
 const colorStyles = {
   blue: {
     icon: "bg-blue-600 text-white",
@@ -168,23 +237,6 @@ export default function ProdutosPage() {
     <>
       <Header />
       <main className="relative min-h-screen bg-slate-50 pt-24 text-slate-950 sm:pt-28">
-        <div
-          className="absolute inset-0 z-30 grid min-h-screen place-items-center bg-slate-950/78 px-4 text-center text-white backdrop-blur-md"
-          aria-label="Materiais de apoio em breve"
-        >
-          <div className="max-w-xl -translate-y-28 rounded-lg border border-cyan-300/25 bg-slate-950/70 px-6 py-8 shadow-2xl shadow-cyan-950/40 sm:-translate-y-40 sm:px-10 sm:py-10">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-cyan-300">
-              Materiais de Apoio QualityPro Solutions
-            </p>
-            <h1 className="mt-4 text-4xl font-black uppercase tracking-normal sm:text-6xl">
-              Em breve
-            </h1>
-            <p className="mx-auto mt-4 max-w-md text-sm leading-6 text-slate-300 sm:text-base sm:leading-7">
-              Estamos preparando materiais, modelos, planilhas e recursos
-              profissionais para apoiar a rotina da qualidade.
-            </p>
-          </div>
-        </div>
         <section className="relative overflow-hidden py-10 sm:py-14">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(14,165,233,0.10),transparent_28%),linear-gradient(135deg,rgba(15,23,42,0.04),transparent_32%,rgba(14,165,233,0.06))]" />
           <div className="relative mx-auto max-w-7xl px-4 sm:px-5">
@@ -202,7 +254,94 @@ export default function ProdutosPage() {
               <span className="mx-auto mt-5 block h-1 w-16 rounded-full bg-sky-500" />
             </div>
 
-            <div className="mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            <div className="mt-9">
+              <div className="flex flex-col gap-2 text-center">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-700">
+                  Kits individuais
+                </p>
+                <h2 className="text-2xl font-black text-slate-950 sm:text-3xl">
+                  Materiais prontos para apoiar a rotina da qualidade
+                </h2>
+              </div>
+
+              <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                {individualKits.map((product) => {
+                  const Icon = product.icon;
+                  const styles =
+                    colorStyles[product.color as keyof typeof colorStyles];
+
+                  return (
+                    <article
+                      key={product.title}
+                      className="relative flex min-h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white p-5 text-center shadow-lg shadow-slate-200/60 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-300/60"
+                    >
+                      <span className="absolute left-1/2 top-3 min-w-[11.75rem] -translate-x-1/2 whitespace-nowrap rounded-full border border-cyan-200 bg-cyan-50 px-4 py-1 text-center text-[0.62rem] font-black uppercase tracking-[0.1em] text-cyan-700">
+                        {product.status}
+                      </span>
+                      <div
+                        className={`mx-auto mt-5 grid h-20 w-20 place-items-center rounded-full shadow-lg ${styles.icon}`}
+                      >
+                        <Icon size={38} strokeWidth={1.8} />
+                      </div>
+                      <h2
+                        className={`mt-5 text-2xl font-black leading-tight ${styles.title}`}
+                      >
+                        {product.title}
+                      </h2>
+                      <span
+                        className={`mx-auto mt-4 block h-1 w-14 rounded-full ${styles.line}`}
+                      />
+                      <p className="mt-5 text-sm leading-6 text-slate-600">
+                        {product.description}
+                      </p>
+
+                      <ul className="mt-5 grid gap-2 text-left text-sm leading-5 text-slate-700">
+                        {product.items.map((item) => (
+                          <li
+                            key={item}
+                            className="grid grid-cols-[20px_1fr] gap-2"
+                          >
+                            <CheckCircle2
+                              className={styles.check}
+                              size={17}
+                              strokeWidth={2.5}
+                            />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {product.id === "kit-auditoria-iso-9001" ? (
+                        <ProductCheckoutButton
+                          productId={product.id}
+                          className={`inline-flex w-full items-center justify-center gap-2 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-wide transition ${styles.button}`}
+                        />
+                      ) : (
+                        <Link
+                          href="/#contato"
+                          className={`mt-auto inline-flex items-center justify-center gap-2 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-wide transition ${styles.button}`}
+                        >
+                          Tenho interesse <ArrowRight size={16} />
+                        </Link>
+                      )}
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="mt-12 border-t border-slate-200 pt-8">
+              <div className="flex flex-col gap-2 text-center">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+                  Pacotes e linhas futuras
+                </p>
+                <h2 className="text-2xl font-black text-slate-950 sm:text-3xl">
+                  Combos QualityPro Solutions
+                </h2>
+              </div>
+            </div>
+
+            <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
               {productLines.map((product) => {
                 const Icon = product.icon;
                 const styles =
@@ -211,8 +350,11 @@ export default function ProdutosPage() {
                 return (
                   <article
                     key={product.title}
-                    className="flex min-h-full flex-col rounded-lg border border-slate-200 bg-white p-5 text-center shadow-lg shadow-slate-200/60 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-300/60"
+                    className="relative flex min-h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white p-5 text-center shadow-lg shadow-slate-200/60 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-300/60"
                   >
+                    <span className="absolute right-0 top-5 z-10 rotate-45 bg-slate-950 px-8 py-1 text-[0.62rem] font-black uppercase tracking-[0.14em] text-white shadow-md">
+                      Em breve
+                    </span>
                     <div
                       className={`mx-auto grid h-20 w-20 place-items-center rounded-full shadow-lg ${styles.icon}`}
                     >
