@@ -279,9 +279,6 @@ export default function ProdutosPage() {
                       key={product.title}
                       className="relative flex min-h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white p-5 text-center shadow-lg shadow-slate-200/60 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-300/60"
                     >
-                      <span className="absolute left-1/2 top-3 min-w-[11.75rem] -translate-x-1/2 whitespace-nowrap rounded-full border border-cyan-200 bg-cyan-50 px-4 py-1 text-center text-[0.62rem] font-black uppercase tracking-[0.1em] text-cyan-700">
-                        {product.status}
-                      </span>
                       <div
                         className={`mx-auto mt-5 grid h-20 w-20 place-items-center rounded-full shadow-lg ${styles.icon}`}
                       >
