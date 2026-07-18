@@ -381,12 +381,12 @@ export default function ProdutosPage() {
                       ))}
                     </ul>
 
-                    <Link
-                      href="/#contato"
-                      className={`mt-4 inline-flex items-center justify-center gap-2 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-wide transition sm:mt-auto ${styles.button}`}
+                    <span
+                      aria-disabled="true"
+                      className={`mt-4 inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-wide opacity-80 sm:mt-auto ${styles.button}`}
                     >
                       Em breve
-                    </Link>
+                    </span>
                   </article>
                 );
               })}
