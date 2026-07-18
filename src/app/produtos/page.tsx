@@ -35,7 +35,7 @@ const productLines = [
     icon: ClipboardCheck,
     items: [
       "Auditoria interna",
-      "Não conformidade e ação corretiva",
+      "NC e ação corretiva",
       "Controles essenciais",
       "Organização do SGQ",
       "Documentos do SGQ",
@@ -52,7 +52,7 @@ const productLines = [
       "Indicadores e dashboards",
       "Auditorias e planos de ação",
       "Fornecedores e calibração",
-      "Rotinas de acompanhamento",
+      "Rotinas de controle",
     ],
   },
   {
@@ -64,7 +64,7 @@ const productLines = [
     items: [
       "Treinamentos em PPTX",
       "Apostilas e exercícios",
-      "Materiais para instrutores",
+      "Material para instrutores",
       "Certificados editáveis",
       "Conteúdo adaptável",
     ],
@@ -77,10 +77,10 @@ const productLines = [
     icon: UserRound,
     items: [
       "Book de ideias",
-      "Modelos de comunicação",
+      "Modelos comerciais",
       "Propostas comerciais",
       "Contratos e documentos",
-      "Ferramentas de consultoria",
+      "Ferramentas práticas",
     ],
   },
   {
@@ -334,7 +334,7 @@ export default function ProdutosPage() {
               </div>
             </div>
 
-            <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
               {productLines.map((product) => {
                 const Icon = product.icon;
                 const styles =
@@ -365,7 +365,7 @@ export default function ProdutosPage() {
                       {product.description}
                     </p>
 
-                    <ul className="mt-5 grid gap-2 text-left text-sm leading-5 text-slate-700">
+                    <ul className="mt-5 grid gap-2 text-left text-[0.83rem] leading-5 text-slate-700 min-[1500px]:text-sm">
                       {product.items.map((item) => (
                         <li key={item} className="grid grid-cols-[20px_1fr] gap-2">
                           <CheckCircle2
@@ -373,7 +373,9 @@ export default function ProdutosPage() {
                             size={17}
                             strokeWidth={2.5}
                           />
-                          <span>{item}</span>
+                          <span className="whitespace-nowrap">
+                            {item}
+                          </span>
                         </li>
                       ))}
                     </ul>
