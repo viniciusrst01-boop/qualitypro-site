@@ -12,7 +12,7 @@ export const paidProducts: PaidProduct[] = [
     name: "Kit Auditoria ISO 9001",
     description:
       "Modelos profissionais para planejar, executar, registrar e acompanhar auditorias internas ISO 9001.",
-    priceInCents: 10000,
+    priceInCents: 9700,
     fileName: "private-products/private-products/QualityPro-Kit-Auditoria-ISO-9001.zip",
   },
   {

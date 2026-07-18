@@ -108,7 +108,7 @@ const individualKits = [
     color: "blue",
     icon: ClipboardCheck,
     status: "Disponível",
-    priceLabel: "R$ 100",
+    priceLabel: "R$ 97",
     items: [
       "Plano e programa de auditoria",
       "Checklist ISO 9001 e gap analysis",
