@@ -385,7 +385,7 @@ export default function ProdutosPage() {
                       href="/#contato"
                       className={`mt-auto inline-flex items-center justify-center gap-2 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-wide transition ${styles.button}`}
                     >
-                      Ver materiais <ArrowRight size={16} />
+                      Em breve
                     </Link>
                   </article>
                 );

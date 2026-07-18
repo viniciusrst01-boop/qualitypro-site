@@ -287,6 +287,15 @@ export default function Home() {
               </TrackedLink>
             </div>
 
+            <TrackedLink
+              href="/produtos"
+              eventLabel="Materiais de Apoio"
+              eventLocation="hero-mobile"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md border border-cyan-300/35 bg-slate-950/35 px-4 py-3 text-sm font-black uppercase tracking-[0.12em] text-cyan-100 backdrop-blur-sm transition hover:border-cyan-300 hover:bg-cyan-400/10 sm:hidden"
+            >
+              Materiais de Apoio <ArrowRight size={16} />
+            </TrackedLink>
+
           </div>
         </div>
 
