@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const STORAGE_KEY = "qualitypro_cookie_notice";
+const STORAGE_KEY = "qualitypro_cookie_notice_v2";
 
 type NoticeStatus = "seen" | "pending";
 
@@ -32,11 +32,11 @@ export default function CookieConsent() {
       <Analytics />
 
       {loaded && status === "pending" && (
-        <div className="fixed inset-x-0 bottom-0 z-[80] px-4 pb-4 sm:px-5 sm:pb-5">
-          <div className="mx-auto flex max-w-5xl flex-col gap-4 rounded-xl border border-cyan-300/20 bg-slate-950/95 p-4 text-sm text-slate-200 shadow-2xl shadow-slate-950/40 backdrop-blur-md sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-5">
-            <div className="max-w-3xl">
-              <p className="font-black text-white">Cookies e privacidade</p>
-              <p className="mt-1 leading-6 text-slate-300">
+        <div className="fixed inset-x-0 bottom-0 z-[80] px-4 pb-4 lg:px-0 lg:pb-0">
+          <div className="mx-auto flex max-w-5xl flex-col gap-4 rounded-xl border border-cyan-300/20 bg-[#101d34]/95 p-4 text-sm text-slate-200 shadow-2xl shadow-slate-950/40 backdrop-blur-md sm:flex-row sm:items-center sm:justify-between sm:gap-6 lg:max-w-none lg:rounded-none lg:border-x-0 lg:border-b-0 lg:border-t lg:border-cyan-300/15 lg:bg-[#143052]/95 lg:px-8 lg:py-4">
+            <div className="max-w-3xl lg:mx-auto lg:max-w-none">
+              <p className="font-black text-white lg:hidden">Cookies e privacidade</p>
+              <p className="mt-1 leading-6 text-slate-300 lg:mt-0 lg:text-center lg:text-[0.82rem] lg:leading-5 lg:text-slate-100">
                 Usamos cookies essenciais e dados de navegação para melhorar o
                 site e acompanhar o desempenho das páginas. Veja nossa{" "}
                 <Link
@@ -53,7 +53,7 @@ export default function CookieConsent() {
               <button
                 type="button"
                 onClick={closeNotice}
-                className="rounded-md bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950 transition hover:bg-cyan-300"
+                className="rounded-md bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950 transition hover:bg-cyan-300 lg:px-8 lg:py-2 lg:text-xs lg:uppercase lg:tracking-wide"
               >
                 Entendi
               </button>

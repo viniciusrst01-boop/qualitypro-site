@@ -346,15 +346,15 @@ export default function Home() {
                 <div>
                   <h3 className="text-lg font-black">Quem somos</h3>
                   <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-                    A QualityPro Solutions é uma consultoria voltada à
-                    organização e estruturação de Sistemas de Gestão da
-                    Qualidade. Atuamos com ISO 9001, auditorias, padronização de
-                    processos, indicadores e melhoria contínua.
+                    A QualityPro Solutions apoia empresas na estruturação e
+                    melhoria de Sistemas de Gestão da Qualidade, com foco em
+                    organização, padronização, auditorias, indicadores e
+                    melhoria contínua.
                   </p>
                   <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-                    Cada projeto parte da realidade e do nível de maturidade da
-                    organização para criar documentos, controles e rotinas que
-                    façam sentido para as equipes e apoiem a gestão.
+                    Nosso trabalho transforma requisitos da qualidade em
+                    rotinas mais claras, controles mais simples e processos
+                    mais fáceis de acompanhar no dia a dia da operação.
                   </p>
                 </div>
               </div>
