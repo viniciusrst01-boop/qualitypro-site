@@ -318,7 +318,7 @@ export default function ProdutosPage() {
                       <ProductCheckoutButton
                         productId={product.id}
                         priceLabel={product.priceLabel}
-                        className={`inline-flex w-full items-center justify-center gap-2 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-wide transition ${styles.button}`}
+                        className={`mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-wide transition sm:mt-0 ${styles.button}`}
                       />
                     </article>
                   );
@@ -383,7 +383,7 @@ export default function ProdutosPage() {
 
                     <Link
                       href="/#contato"
-                      className={`mt-auto inline-flex items-center justify-center gap-2 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-wide transition ${styles.button}`}
+                      className={`mt-4 inline-flex items-center justify-center gap-2 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-wide transition sm:mt-auto ${styles.button}`}
                     >
                       Em breve
                     </Link>
