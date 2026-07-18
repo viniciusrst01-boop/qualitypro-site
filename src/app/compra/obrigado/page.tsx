@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import { createDownloadToken } from "@/lib/download-token";
 import { getPaidProduct } from "@/lib/products";
 import CheckoutRecovery from "./CheckoutRecovery";
+import EmailDownloadForm from "./EmailDownloadForm";
 
 export const metadata: Metadata = {
   title: "Compra recebida | QualityPro Solutions",
@@ -164,6 +165,7 @@ async function getApprovedDownloadUrl({
 
   return {
     productName: product.name,
+    token,
     url: `${getSiteUrl()}/api/download/${encodeURIComponent(token)}`,
   };
 }
@@ -207,6 +209,10 @@ export default async function CompraObrigadoPage({
               >
                 Baixar material <Download size={17} />
               </a>
+              <EmailDownloadForm
+                productName={download.productName}
+                token={download.token}
+              />
             </>
           ) : (
             <>
