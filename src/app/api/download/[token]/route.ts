@@ -48,7 +48,7 @@ export async function GET(_request: Request, context: RouteContext) {
   return new Response(new Uint8Array(file), {
     headers: {
       "Content-Type": "application/zip",
-      "Content-Disposition": `attachment; filename="${product.fileName}"`,
+      "Content-Disposition": `attachment; filename="${path.basename(product.fileName)}"`,
       "Cache-Control": "private, no-store",
     },
   });

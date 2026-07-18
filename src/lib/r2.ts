@@ -23,6 +23,10 @@ export function hasR2Config() {
   return Boolean(getR2Config());
 }
 
+function getDownloadFileName(fileName: string) {
+  return fileName.split(/[\\/]/).pop() || fileName;
+}
+
 export async function createPrivateDownloadUrl(fileName: string) {
   const config = getR2Config();
 
@@ -42,7 +46,7 @@ export async function createPrivateDownloadUrl(fileName: string) {
   const command = new GetObjectCommand({
     Bucket: config.bucket,
     Key: fileName,
-    ResponseContentDisposition: `attachment; filename="${fileName}"`,
+    ResponseContentDisposition: `attachment; filename="${getDownloadFileName(fileName)}"`,
     ResponseContentType: "application/zip",
   });
 
