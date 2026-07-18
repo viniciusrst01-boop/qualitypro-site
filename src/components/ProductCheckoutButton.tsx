@@ -7,12 +7,14 @@ type ProductCheckoutButtonProps = {
   productId: string;
   className: string;
   priceLabel?: string;
+  testMode?: boolean;
 };
 
 export default function ProductCheckoutButton({
   productId,
   className,
   priceLabel = "R$ 100",
+  testMode = false,
 }: ProductCheckoutButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -40,7 +42,11 @@ export default function ProductCheckoutButton({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ productId, ...(testKey ? { testKey } : {}) }),
+        body: JSON.stringify({
+          productId,
+          ...(testMode ? { testMode: true } : {}),
+          ...(testKey ? { testKey } : {}),
+        }),
         signal: controller.signal,
       });
       window.clearTimeout(timeoutId);
@@ -62,6 +68,7 @@ export default function ProductCheckoutButton({
           JSON.stringify({
             preferenceId: data.preferenceId,
             productId,
+            testMode,
             createdAt: Date.now(),
           }),
         );
@@ -97,7 +104,7 @@ export default function ProductCheckoutButton({
       >
         {isLoading
           ? "Abrindo pagamento..."
-          : isTestMode
+          : testMode || isTestMode
             ? "Comprar teste por R$ 0,01"
             : `Comprar por ${priceLabel}`}
         {!isLoading && <ArrowRight size={16} />}
