@@ -6,11 +6,13 @@ import { ArrowRight } from "lucide-react";
 type ProductCheckoutButtonProps = {
   productId: string;
   className: string;
+  priceLabel?: string;
 };
 
 export default function ProductCheckoutButton({
   productId,
   className,
+  priceLabel = "R$ 100",
 }: ProductCheckoutButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -97,7 +99,7 @@ export default function ProductCheckoutButton({
           ? "Abrindo pagamento..."
           : isTestMode
             ? "Comprar teste por R$ 0,01"
-            : "Comprar por R$ 100"}
+            : `Comprar por ${priceLabel}`}
         {!isLoading && <ArrowRight size={16} />}
       </button>
       {message && (

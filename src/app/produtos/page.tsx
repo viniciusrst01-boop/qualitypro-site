@@ -108,6 +108,7 @@ const individualKits = [
     color: "blue",
     icon: ClipboardCheck,
     status: "Disponível",
+    priceLabel: "R$ 100",
     items: [
       "Plano e programa de auditoria",
       "Checklist ISO 9001 e gap analysis",
@@ -124,6 +125,7 @@ const individualKits = [
     color: "orange",
     icon: BadgeCheck,
     status: "Disponível",
+    priceLabel: "R$ 67",
     items: [
       "Relatório de não conformidade",
       "Controle de NC e eficácia",
@@ -140,6 +142,7 @@ const individualKits = [
     color: "navy",
     icon: PackageCheck,
     status: "Disponível",
+    priceLabel: "R$ 147",
     items: [
       "Kit Auditoria ISO 9001",
       "Kit Não Conformidade",
@@ -149,19 +152,20 @@ const individualKits = [
     ],
   },
   {
-    id: "kit-controles-essenciais-sgq",
-    title: "Kit Controles Essenciais do SGQ",
+    id: "kit-controle-documentos",
+    title: "Kit Controle de Documentos",
     description:
-      "Base de controles para organizar documentos, registros, rotinas e evidências do Sistema de Gestão da Qualidade.",
+      "Modelos e controles para organizar documentos, registros e evidências do Sistema de Gestão da Qualidade.",
     color: "green",
     icon: MonitorCog,
-    status: "Em preparação",
+    status: "Disponível",
+    priceLabel: "R$ 100",
     items: [
       "Controle de documentos",
-      "Controle de registros",
       "Listas mestras",
-      "Rotinas de acompanhamento",
-      "Indicadores básicos do SGQ",
+      "Controle de registros",
+      "Modelo de procedimento",
+      "Rotina de revisão e aprovação",
     ],
   },
 ];
@@ -311,19 +315,11 @@ export default function ProdutosPage() {
                         ))}
                       </ul>
 
-                      {product.id === "kit-auditoria-iso-9001" ? (
-                        <ProductCheckoutButton
-                          productId={product.id}
-                          className={`inline-flex w-full items-center justify-center gap-2 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-wide transition ${styles.button}`}
-                        />
-                      ) : (
-                        <Link
-                          href="/#contato"
-                          className={`mt-auto inline-flex items-center justify-center gap-2 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-wide transition ${styles.button}`}
-                        >
-                          Tenho interesse <ArrowRight size={16} />
-                        </Link>
-                      )}
+                      <ProductCheckoutButton
+                        productId={product.id}
+                        priceLabel={product.priceLabel}
+                        className={`inline-flex w-full items-center justify-center gap-2 rounded-md border px-4 py-3 text-sm font-black uppercase tracking-wide transition ${styles.button}`}
+                      />
                     </article>
                   );
                 })}
