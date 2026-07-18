@@ -44,7 +44,6 @@ export default function ProductCheckoutButton({
         },
         body: JSON.stringify({
           productId,
-          ...(testMode ? { testMode: true } : {}),
           ...(testKey ? { testKey } : {}),
         }),
         signal: controller.signal,
@@ -68,7 +67,6 @@ export default function ProductCheckoutButton({
           JSON.stringify({
             preferenceId: data.preferenceId,
             productId,
-            testMode,
             createdAt: Date.now(),
           }),
         );
